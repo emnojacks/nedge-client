@@ -4,16 +4,16 @@ import Login from './Login';
 import Signup from './Signup';
 
 
-interface ValidateSessionProps {
+interface ValidateSessionAdminProps {
     
 }
  
-interface ValidateSessionState {
+interface ValidateSessionAdminState {
     
 }
  
-class ValidateSession extends Component<ValidateSessionProps, ValidateSessionState> {
-    constructor(props: ValidateSessionProps) {
+class ValidateSessionAdmin extends Component<ValidateSessionAdminProps, ValidateSessionAdminState> {
+    constructor(props: ValidateSessionAdminProps) {
     super(props)
     this.state = { sessionToken: "" }
   }
@@ -26,4 +26,4 @@ class ValidateSession extends Component<ValidateSessionProps, ValidateSessionSta
         </div>);
     }
 }
-export default ValidateSession;
+export default ValidateSessionAdmin;

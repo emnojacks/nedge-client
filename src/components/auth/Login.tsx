@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
 
 
-interface Props {
+interface LoginProps {
     
 }
  
-interface State {
+interface LoginState {
     
 }
  
-class Login extends Component<Props, State> {
-    state = { :  }
+class Login extends Component<LoginProps, LoginState> {
+    constructor(props: LoginProps) {
+    super(props)
+    this.state = { sessionToken: "" }
+  }
+
+    
+    
     render() { 
-        return (  );
+      return ( 
+        <div>
+          Login Component
+        </div>);
     }
 }
  

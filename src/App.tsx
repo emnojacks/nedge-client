@@ -3,56 +3,81 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import Navigation from './components/site/Navigation'
+import Footer from './components/site/Footer'
+import ValidateSession from './components/auth/ValidateSession'
+import ValidateSessionAdmin from './components/auth/ValidateSessionAdmin'
+import GymIndex from './components/gyms/GymIndex'
+import ClimberIndex from './components/climbers/ClimberIndex'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
 
 interface AppProps {
   
 }
  
 interface AppState {
-  sessionToken: null | string
-  //this goes for both admin and nonadmin roles
+  sessionToken: string;
 }
 
 //putting the token in the state not in the props bc props is readonly?
 class App extends Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props)
-    this.state = { sessionToken: "" }
+    this.state = {
+      sessionToken: "",
+    }
   }
   
   componentDidMount() {
-    //this used to be useeffect
-    //updates sessionToken state variable if browser has saved a sessionToken in localStorage.  
-    if (localStorage.getItem("sessionToken")) {
+    //if there is a token in local storage - it sets it to your variable sessiontoken
+    if (localStorage.getItem("token")) {
       this.setState({
-        sessionToken: localStorage.getItem("sessionToken")
+        sessionToken: localStorage.getItem("token")
       })
+      console.log("token found")
     }
   }
   
   //sets current token to new token
   updateSessionToken = (newToken: string) => {
-    localStorage.setItem("sessionToken", newToken);
+    localStorage.setItem("token", newToken);
     this.setState({
       sessionToken: newToken
     });
+    console.log(this.state.sessionToken)
   }
   
   //clear token at end of session 
     clearSessionToken = () => {
       localStorage.clear();
-        this.setState({   sessionToken: ""});
+      this.setState({ sessionToken: "" });
+      console.log("token cleared")
     }
   
   
-  userOnlyViews = () => {
-    return this.state.sessionToken === localStorage.getItem("sessionToken") ?
-      (<Component
+  climberViews = () => {
+    return this.state.sessionToken === localStorage.getItem("token") ? (
+        <ClimberIndex
         sessionToken={this.state.sessionToken} />)
-      : (<Component
-updateSessionToken = {this.updateSessionToken}/>)
+      
+      : (<ValidateSession
+        updateSessionToken = {this.updateSessionToken}/>)
 }
-    
+
+  gymViews = () => {
+    return this.state.sessionToken === localStorage.getItem("token") ?
+      (<GymIndex
+        sessionToken={this.state.sessionToken} />)
+      : (<ValidateSessionAdmin
+        updateSessionToken = {this.updateSessionToken}/>)
+}  
+  
   render() { 
     return (
       
@@ -64,7 +89,22 @@ updateSessionToken = {this.updateSessionToken}/>)
       </header>
         
         <div>
-        put components here 
+  
+          <Switch>
+            
+            <Route exact path='/climber'>
+              {this.climberViews}
+           </Route>
+          
+            <Route exact path='/gym'>
+              {this.gymViews}
+              
+            </Route>
+
+          </Switch>
+
+          
+          <Footer />
         </div>
     </div>
  );
