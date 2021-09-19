@@ -34,3 +34,16 @@ text-transform: capitalize;
     transform: rotate(360deg);
   }
 }
+
+/* .goal-btn:focus {
+background-color: orange!important;
+}
+
+.goal-btn:hover {
+background-color: orange!important;
+} */
+
+.text-input {
+  width: 50vw!important;
+  margin:auto;
+}

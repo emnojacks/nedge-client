@@ -6,20 +6,22 @@ import {
   Nav,
   Navbar,
   NavItem,
-  NavLink,
+  //NavLink,
   NavbarBrand,
-  NavbarText,
+  //NavbarText,
   Button
 } from 'reactstrap';
 import logo from '../../assets/logo.svg'
 
 
 interface NavigationProps {
-    
+  clearSessionToken: () => void;
+  sessionToken: string;
+  updateSessionToken: (newToken: string) => void;
 }
  
 interface NavigationState {
-    
+  isOpen: boolean
 }
  
 class Navigation extends Component<NavigationProps, NavigationState> {
@@ -29,42 +31,58 @@ class Navigation extends Component<NavigationProps, NavigationState> {
       isOpen: false,
     }
   }
+  toggleNavbar=()=>{
+    this.setState({
+      isOpen:!this.state.isOpen
+    })
+  }
+  
+  logout=()=>{
+
+  }
     render() {
         return ( 
-            <Navbar dark>
-            <NavbarBrand>
-                    <img src={logo} alt="nedge logo" height="32px" width="32px"></img>
+            <Navbar light>
+            <NavbarBrand
+             style={{ marginLeft: "1em"}}>
+                <img src={logo} alt="nedge logo" height="32px" width="32px"></img>
             </NavbarBrand>
+            
             <NavbarToggler
-              // onClick={toggleNavbar}
+              onClick={this.toggleNavbar}
               className="mr-2" />
             <Collapse
-              // isOpen={!collapsed} navbar
-            >
+             isOpen={this.state.isOpen} navbar >
+            
+              
           <Nav navbar>
             <NavItem>
-                <Button
+                  <Button
                   className="btn-nav"
-                  style={{ marginLeft: "1em" }}
-                  >Logout</Button>
-                        </NavItem>
-                        <br></br>
+                    style={{ marginLeft: "1em", marginBottom: ".5em" }}
+                    onClick={this.props.clearSessionToken}
+                  >Logout
+                  </Button>
+            </NavItem>
+                    
             <NavItem>
                 <Button
                   className="btn-nav"
-                  style={{ marginLeft: "1em" }}
-                    // onClick={props.GroceryListGet}
-                  
-                  >Goals</Button>
-                </NavItem>
-                         <NavItem>
+                  style={{ marginLeft: "1em",marginBottom: ".5em" }}
+                    // onClick={this.props.GroceryListGet}
+                  >Update Profile
+                  </Button>
+              </NavItem>
+              
+              <NavItem>
                 <Button
                   className="btn-nav"
-                  style={{ marginLeft: "1em" }}
-                    // onClick={props.GroceryListGet}
-                  
-                  >Sessions</Button>
-            </NavItem>
+                  style={{ marginLeft: "1em",marginBottom: ".5em" }}
+                    // onClick={this.props.GroceryListGet}
+                  >Sessions
+                </Button>
+              </NavItem>
+                
           </Nav>
         </Collapse>
       </Navbar>

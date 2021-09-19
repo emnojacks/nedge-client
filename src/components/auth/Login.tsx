@@ -77,8 +77,10 @@ class Login extends Component<LoginProps, LoginState> {
                 className="form-label"
                 htmlFor="password">password</Label>
               <Input
+                pattern="^(?=.{5,10})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$"
+                title="Password must be at least 6 characters, and contain at least 1 uppercase character, a lowercase character, a number, and a special character."
                 name="password"
-                placeholder="secrety-secret"
+                placeholder="S3cret!"
                 aria-required="true"
                 type="password"
                 required

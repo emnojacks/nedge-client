@@ -21,7 +21,7 @@ class Signup extends Component<SignupProps, SignupState> {
         password: ""
       }
   }
-    
+  
   handleSubmit = (event: React.FormEvent):void => {
         event.preventDefault();
         fetch(`${APIURL}/climber/create`, {
@@ -78,8 +78,10 @@ class Signup extends Component<SignupProps, SignupState> {
                 className="form-label"
                 htmlFor="password">create password</Label>
               <Input
+                pattern="^(?=.{5,10})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$"
+                title="Password must be at least 6 characters, and contain at least 1 uppercase character, a lowercase character, a number, and a special character."
                 name="password"
-                placeholder="secrety-secret"
+                placeholder="S3cret!"
                 type="password"
                 aria-required="true"
                 required

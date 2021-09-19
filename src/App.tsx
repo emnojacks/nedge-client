@@ -58,7 +58,7 @@ class App extends Component<AppProps, AppState> {
   }
   
   //clear token at end of session 
-    clearSessionToken = ():void => {
+  clearSessionToken = ():void => {
       localStorage.clear();
       this.setState({ sessionToken: "" });
       console.log("token cleared")
@@ -97,8 +97,9 @@ class App extends Component<AppProps, AppState> {
            {/* //ternary to display gym login or climber login */}
             {this.state.sessionToken && (
           <Navigation
-            // logout={this.clearToken}
-            // token={this.state.token}
+                clearSessionToken={this.clearSessionToken}
+                sessionToken={this.state.sessionToken}
+                updateSessionToken={this.updateSessionToken}
           />
         )}
             <Switch>
