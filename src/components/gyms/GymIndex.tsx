@@ -3,7 +3,7 @@ import { Component } from 'react';
 
 
 interface GymIndexProps {
-    
+    sessionToken: string
 }
  
 interface GymIndexState {

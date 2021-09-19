@@ -5,7 +5,7 @@ import Signup from './Signup';
 
 
 interface ValidateSessionAdminProps {
-    
+   updateSessionToken: (newToken: string) => void
 }
  
 interface ValidateSessionAdminState {
@@ -21,8 +21,12 @@ class ValidateSessionAdmin extends Component<ValidateSessionAdminProps, Validate
     render() { 
       return ( 
           <div>
-              <Login/>
-              <Signup/>
+          <Login
+          updateSessionToken={this.props.updateSessionToken}
+          />
+          <Signup
+          updateSessionToken={this.props.updateSessionToken}
+          />
         </div>);
     }
 }
