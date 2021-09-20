@@ -9,7 +9,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 60vh;
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,4 +46,9 @@ background-color: orange!important;
 .text-input {
   width: 50vw!important;
   margin:auto;
+}
+
+.btn-nav {
+margin-left: 1em;
+margin-bottom: .5em;
 }

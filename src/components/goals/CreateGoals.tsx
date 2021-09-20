@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, ButtonGroup, Input, Form } from 'reactstrap'
+import { Link } from 'react-router-dom'
 let APIURL ="http://localhost:3000"
 
 interface CreateGoalsProps {
@@ -21,8 +22,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
             goalachieved: false
         }
     }
-  
-    
+
     handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault()
         fetch(`${APIURL}/goal/create/`, {
@@ -61,7 +61,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                    
               <ButtonGroup>
                   <Button
-                      className="goal-btn"
+                      className="btn-goal"
                       size="sm"
                       outline
                     active={this.state.goaldescription==="increase endurance"}
@@ -72,10 +72,10 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                       }
               >
             increase endurance  
-            </Button>
+                      </Button>
 
               <Button
-                  className="goal-btn"
+                  className="btn-goal"
                     size="sm"
                       outline
                       active={this.state.goaldescription==="increase tendon strength"}
@@ -87,7 +87,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
             </Button>
 
               <Button
-                          className="goal-btn"
+                          className="btn-goal"
                           size="sm"
                           outline
                           active={this.state.goaldescription === "increase muscle strength"}
@@ -101,7 +101,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
               </Button>
               
               <Button
-                  className="goal-btn"
+                  className="btn-goal"
                       size="sm"
                       outline
                        active={this.state.goaldescription==="improve mental game"}
@@ -115,7 +115,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
               </Button>
               
               <Button
-                      className="goal-btn"
+                      className="btn-goal"
                       size="sm"
                       outline
                       active={this.state.goaldescription==="work on technique"}
@@ -136,7 +136,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
               </Button>
                   
                   <Input
-                    className="text-input"
+                className="text-input"
                 name="othergoal"
                 placeholder="other goal"
                 type="text"

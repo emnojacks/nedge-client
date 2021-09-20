@@ -6,7 +6,7 @@ import {
   Nav,
   Navbar,
   NavItem,
-  //NavLink,
+  NavLink,
   NavbarBrand,
   //NavbarText,
   Button
@@ -42,10 +42,12 @@ class Navigation extends Component<NavigationProps, NavigationState> {
   }
     render() {
         return ( 
-            <Navbar light>
+            <Navbar color="light" expand="md">
             <NavbarBrand
-             style={{ marginLeft: "1em"}}>
+              style={{ marginLeft: "1em" }}
+            >
                 <img src={logo} alt="nedge logo" height="32px" width="32px"></img>
+            &nbsp; NEDGE
             </NavbarBrand>
             
             <NavbarToggler
@@ -57,32 +59,40 @@ class Navigation extends Component<NavigationProps, NavigationState> {
               
           <Nav navbar>
             <NavItem>
+                <NavLink
+                  className="btn-nav"
+                    // onClick={this.props.GroceryListGet}
+                  >Goals
+                  </NavLink>
+              </NavItem>
+
+                
+        
+                    
+            <NavItem>
+                <NavLink
+                  className="btn-nav"
+                    // onClick=
+                  >Profile
+                  </NavLink>
+              </NavItem>
+              
+              <NavItem>
+                <NavLink
+                  className="btn-nav"
+                  onClick={this.props.clearSessionToken}
+                  >Sessions
+                </NavLink>
+              </NavItem>
+
+                
+                    <NavItem>
                   <Button
                   className="btn-nav"
-                    style={{ marginLeft: "1em", marginBottom: ".5em" }}
                     onClick={this.props.clearSessionToken}
                   >Logout
                   </Button>
             </NavItem>
-                    
-            <NavItem>
-                <Button
-                  className="btn-nav"
-                  style={{ marginLeft: "1em",marginBottom: ".5em" }}
-                    // onClick={this.props.GroceryListGet}
-                  >Update Profile
-                  </Button>
-              </NavItem>
-              
-              <NavItem>
-                <Button
-                  className="btn-nav"
-                  style={{ marginLeft: "1em",marginBottom: ".5em" }}
-                    // onClick={this.props.GroceryListGet}
-                  >Sessions
-                </Button>
-              </NavItem>
-                
           </Nav>
         </Collapse>
       </Navbar>
