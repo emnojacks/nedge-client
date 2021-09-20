@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Button, Input, Form, Label } from 'reactstrap'
-import InputRange, { Range } from 'react-input-range'
-import { Link } from 'react-router-dom'
-import { truncateSync } from 'fs';
-let APIURL ="http://localhost:3000"
+import { Button, Input, Form, Label, InputGroupText } from 'reactstrap'
+import InputRange from 'react-input-range'
+import 'react-input-range/lib/css/index.css'
+let APIURL = "http://localhost:3000"
+
 
 interface CreateSessionProps {
     sessionToken: string
@@ -12,13 +12,13 @@ interface CreateSessionProps {
 interface CreateSessionState {
     sessiondate: string
     sessionsuccessful: boolean
-    sessionlength: number
+    sessionlength: string
     sessionpartner: boolean
     crosstraining?: boolean
-    nutritioncondition: number 
-    sleepcondition: number
-    stresscondition: number
-    egocondition: number
+    nutritioncondition: string
+    sleepcondition: string
+    stresscondition: string
+    egocondition: string
     sessionnotes?: string
 }
 
@@ -28,15 +28,15 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
         super(props)
         this.state = {
             sessiondate: "", 
-            sessionsuccessful: true,
-            sessionlength: 2,
-            sessionpartner: true,
-            crosstraining: true, 
-            nutritioncondition: 1,
-            sleepcondition: 1,
-            stresscondition: 1,
-            egocondition: 1,
-            sessionnotes: " "
+            sessionsuccessful: false,
+            sessionlength: "",
+            sessionpartner: false,
+            crosstraining: false, 
+            nutritioncondition: "",
+            sleepcondition: "",
+            stresscondition: "",
+            egocondition: "",
+            sessionnotes: " ",
         }
     }
 
@@ -103,8 +103,6 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                   <Input
                     type="checkbox"
                       name="sessionsuccessful"
-                      required
-                      checked
                       onChange={() => this.setState({ sessionsuccessful: !this.state.sessionsuccessful })}
                       >
 
@@ -117,98 +115,94 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                   <Input
                     type="checkbox"
                       name="sessionpartner"
-                      checked
-                      required
                       onChange={() => this.setState({ sessionpartner: !this.state.sessionpartner })}
                       >
             </Input>
-                
+                   {/* X TRAINING OPTIONAL */}
+                  <Label
+                    className="form-label"
+                    htmlFor="crosstraining">Recently Crosstrained</Label>
+                  <Input
+                    type="checkbox"
+                      name="crosstraining"
+                      onChange={() => this.setState({ crosstraining: !this.state.crosstraining })}
+                      >
+            </Input>
                 {/* SESSION LENGTH */}
                   <Label
                     className="form-label"
-                    htmlFor="sessionlength">Session length</Label>
-                <Input>
-                  <InputRange
-                        maxValue={5}
-                        minValue={0}
+                    htmlFor="sessionlength">Session length (hrs)</Label>
+                  <Input
+                        type="number"
+                        max={7}
+                        min={.5}
                         step={.5}
-                        value={this.state.nutritioncondition}
-                        onChange={()=> this.setState({ nutritioncondition: this.state.nutritioncondition })}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement> )=> this.setState({ sessionlength: event.target.value })}
                       >
-            </InputRange>
             </Input>
                 
                 {/* NUTRITIONCONDITION */}
                   <Label
                     className="form-label"
                     htmlFor="nutritioncondition">Nutrition Condition</Label>
-                <InputRange
-                        maxValue={5}
-                        minValue={0}
+                  <Input
+                      type="range"
+                        max={5}
+                        min={0}
                         step={1}
-                        value={this.state.nutritioncondition}
-                        onChange={()=> this.setState({ nutritioncondition: this.state.nutritioncondition })}
+                       onChange={(event: React.ChangeEvent<HTMLInputElement>)=> this.setState({ nutritioncondition: event.target.value })}
+                      
                       >
-                  </InputRange>
+                  </Input>
                   
                        {/* SLEEPCONDITION */}
                   <Label
                     className="form-label"
                     htmlFor="sleepcondition">Sleep State</Label>
-                <InputRange
-                        maxValue={5}
-                        minValue={0}
+                  <Input
+                      type="range"
+                        max={5}
+                        min={0}
                         step={1}
-                        value={this.state.sleepcondition}
-                        onChange={()=> this.setState({ sleepcondition: this.state.sleepcondition })}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>)=> this.setState({ sleepcondition: event.target.value })}
                       >
-                  </InputRange>
+                  </Input>
                   
              {/* STRESS CONDITION */}
                   <Label
                     className="form-label"
                     htmlFor="stresscondition">Stress State</Label>
-                <InputRange
-                        maxValue={5}
-                        minValue={0}
+                  <Input
+                      type="range"
+                        max={5}
+                        min={0}
                         step={1}
-                        value={this.state.stresscondition}
-                        onChange={()=> this.setState({ stresscondition: this.state.stresscondition })}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>)=> this.setState({ stresscondition: event.target.value })}
                       >
-                  </InputRange>
+                  </Input>
                   
                      {/* EGO CONDITION */}
                   <Label
                     className="form-label"
                     htmlFor="egocondition">Ego State</Label>
-                <InputRange
-                        maxValue={5}
-                        minValue={0}
-                        step={1}
-                        value={this.state.egocondition}
-                        onChange={()=> this.setState({ egocondition: this.state.egocondition })}
-                      >
-                  </InputRange>
-                  
-                 {/* X TRAINING OPTIONAL */}
-                  <Label
-                    className="form-label"
-                    htmlFor="crosstraining">Recently Cross trained?</Label>
                   <Input
-                    type="checkbox"
-                      name="crosstraining"
-                      checked
-                      onChange={() => this.setState({ crosstraining: !this.state.crosstraining })}
+                      type="range"
+                        max={5}
+                        min={0}
+                        step={1}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>)=> this.setState({ egocondition: event.target.value })}
                       >
-            </Input>
+                  </Input>
+                  
+              
               
                      {/* SESSIONNOTES OPTIONAL */}
                   <Input
                 className="text-input"
                 name="sessionnotes"
-                placeholder="sent first v4"
+                placeholder="'sent first v4'"
                 type="text"
-                onBlur={(event) => this.setState({
+                onBlur={(event: React.ChangeEvent<HTMLInputElement>) => this.setState({
                           sessionnotes: event.target.value
                       })}
               />      
@@ -216,13 +210,26 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                 <Button
                   size="sm"
                   type="submit">
-                  Add Goal
+                  Log Session
               </Button>
                 
 </Form>
         </div>);
     }
 }
- 
+
 export default CreateSession;
 
+  
+                // {/* NUTRITIONCONDITION */}
+                //   <Label
+                //     className="form-label"
+                //     htmlFor="nutritioncondition">Nutrition Condition</Label>
+                //   <InputRange
+                //         maxValue={5}
+                //         minValue={0}
+                //         step={1}
+                //         value={this.state.value}
+                //         onChange={(value)=> this.setState({ nutritioncondition: this.state.value })}
+                //       >
+                //   </InputRange>

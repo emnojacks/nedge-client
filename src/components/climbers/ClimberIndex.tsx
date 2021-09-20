@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
 import CreateGoals from '../goals/CreateGoals'
+import CreateSession from '../sessions/CreateSession'
 
 interface ClimberIndexProps {
     sessionToken: string 
@@ -26,6 +27,10 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                 <CreateGoals
                 sessionToken={this.props.sessionToken}
                 />
+                 <CreateSession
+                sessionToken={this.props.sessionToken}
+                />
+                
             </div>);
     }
 }
