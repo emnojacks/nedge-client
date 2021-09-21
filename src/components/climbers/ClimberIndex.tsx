@@ -1,14 +1,18 @@
 import * as React from 'react';
 import { Component } from 'react';
-import CreateGoals from '../goals/CreateGoals'
 import CreateSession from '../sessions/CreateSession'
+// import DisplayGoals from '../goals/DisplayGoals'
+//cant display just Display bc of data 
+import GoalIndex from '../goals/GoalIndex'
+let APIURL = "http://localhost:3000";
+
 
 interface ClimberIndexProps {
     sessionToken: string 
 }
  
 interface ClimberIndexState {
-    
+   
 }
  
 class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
@@ -18,17 +22,24 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
             sessionToken: ""
         }
     }
+    
+    componentDidMount() {
+      //this.fetchSessions();       
+    };
 
     
     render() {
         return (
             <div>
                 ClimberIndex
-                <CreateGoals
-                sessionToken={this.props.sessionToken}
-                />
+                
                  <CreateSession
                 sessionToken={this.props.sessionToken}
+                />
+                
+                <GoalIndex
+                sessionToken={this.props.sessionToken}
+                
                 />
                 
             </div>);

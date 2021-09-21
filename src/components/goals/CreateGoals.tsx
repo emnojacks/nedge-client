@@ -5,6 +5,7 @@ let APIURL ="http://localhost:3000"
 
 interface CreateGoalsProps {
     sessionToken: string
+    fetchClimberGoals: CallableFunction
 }
  
 interface CreateGoalsState {
@@ -44,9 +45,15 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
             .then((data) => {
                 console.log("creating goal");
                 window.alert("goal created")
+                this.setState({
+                goaldescription: "",
+                goalpriority: "",
+                goalachieved: false
+                })
             })
-            .catch((error) => {
-            console.log(error.message)
+        this.props.fetchClimberGoals()
+            .catch((error: Error) => {
+            console.log(error)
             })
     };
     
@@ -126,7 +133,9 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                       }
               >
              work on technique
-            </Button>
+                      </Button>
+                      
+                        <p>Goal to Set: {this.state.goaldescription}</p>
                   </ButtonGroup>
                   
                 <Button
@@ -149,10 +158,6 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                   type="submit">
                   Add Personal Goal
               </Button>
-              
-            <p>Selected: {this.state.goaldescription}</p>
-        
-           
 </Form>
         </div>);
     }
