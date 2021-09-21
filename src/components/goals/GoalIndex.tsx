@@ -56,7 +56,7 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
                     fetchClimberGoals={this.fetchClimberGoals}
                 />
                 <DisplayGoals
-                 climberGoals={this.state.climberGoals}
+                    climberGoals={this.state.climberGoals}
                     sessionToken={this.props.sessionToken}
                     fetchClimberGoals={this.fetchClimberGoals}
                 />

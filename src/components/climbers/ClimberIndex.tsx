@@ -33,13 +33,13 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
             <div>
                 ClimberIndex
                 
+                {/* //link to create session component   */}
                  <CreateSession
                 sessionToken={this.props.sessionToken}
                 />
                 
                 <GoalIndex
                 sessionToken={this.props.sessionToken}
-                
                 />
                 
             </div>);
