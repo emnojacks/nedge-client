@@ -24,37 +24,41 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
         }
     }
 
-    handleSubmit = (event: { preventDefault: () => void; }) => {
-        event.preventDefault()
-        fetch(`${APIURL}/goal/create/`, {
+    submitGoal = async() => {
+        return await fetch(`${APIURL}/goal/create/`, {
             method: "POST",
             body: JSON.stringify(
-              {
-                goal: {
-                goaldescription: this.state.goaldescription,
-                goalpriority: "first",
-                goalachieved: false
-                }
-              }),
+                {
+                    goal: {
+                        goaldescription: this.state.goaldescription,
+                        goalpriority: "first",
+                        goalachieved: false
+                    }
+                }),
             headers: new Headers({
                 "Content-Type": "application/json",
                 'Authorization': `Bearer ${this.props.sessionToken}`
-            })
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log("creating goal");
-                window.alert("goal created")
-                this.setState({
-                goaldescription: "",
-                goalpriority: "",
-                goalachieved: false
                 })
-            })
-        this.props.fetchClimberGoals()
-            .catch((error: Error) => {
-            console.log(error)
-            })
+        })
+    }
+        
+    handleSubmit = async (event: { preventDefault: () => void; }) => {
+        event.preventDefault()
+        if (this.state.goaldescription) {
+            try {
+                let res = await this.submitGoal()
+                if (res?.ok) {
+                    console.log("goal created")
+                }
+            }
+            catch {
+            }
+            this.props.fetchClimberGoals()
+        }
+        else {
+            console.log("emtpty goal attempt")
+            window.alert("You can't add emtpy goals. Click an option from the list or add a unique goal in the text input.")
+        }
     };
     
    
@@ -62,7 +66,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
       return (
           <div>
                
-              <h1>Create Goals</h1>
+              <h1>Set a Goal</h1>
               <h5>Here are some common goals climbers work on. Don't get crazy. Choose no more than three goals.</h5>
               <Form onSubmit={this.handleSubmit}>
                    
@@ -119,8 +123,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                       }
               >
              improve mental game
-              </Button>
-              
+              </Button>              
               <Button
                       className="btn-goal"
                       size="sm"

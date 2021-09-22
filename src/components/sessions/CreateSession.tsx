@@ -12,7 +12,7 @@ interface CreateSessionProps {
 interface CreateSessionState {
     sessiondate: string
     sessionsuccessful: boolean
-    sessionlength: string
+    sessionlength?: string
     sessionpartner: boolean
     crosstraining?: boolean
     nutritioncondition: string
@@ -67,10 +67,11 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
             .then((res) => res.json())
             .then((data) => {
                 console.log("creating session");
-                window.alert("session logged")
+                // window.alert("session logged")
             })
             .catch((error) => {
             console.log(error.message)
+            window.alert('failed to log session')
             })
     };
     

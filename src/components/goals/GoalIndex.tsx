@@ -2,17 +2,19 @@ import * as React from 'react';
 import { Component } from 'react';
 import CreateGoals from '../goals/CreateGoals'
 import DisplayGoals from '../goals/DisplayGoals'
-//eventually import edit and delete goals
+import { Goal } from '../../types/Types';
 let APIURL = "http://localhost:3000";
+
+//eventually import edit and delete goals
 
 interface GoalIndexProps {
     sessionToken: string 
 }
  
 interface GoalIndexState {
-    climberGoals: Array<object>
+    climberGoals: Array<Goal>
 }
- 
+
 class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
     constructor(props: GoalIndexProps) {
         super(props)
@@ -31,11 +33,11 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
                     'Authorization': `Bearer ${this.props.sessionToken}`
                 }),
             })
-            const data = await res.json();
+            const json = await res.json();
             this.setState({
-            climberGoals: data
+            climberGoals: json.existingGoals
             })
-            console.log(data)
+            console.log(this.state.climberGoals)
         } catch (error) {
             console.log(error)
         };
@@ -50,13 +52,13 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
     render() {
         return (
             <div>
-                ClimberIndex
-                <CreateGoals
+            <h2>Goal Index</h2>
+                <DisplayGoals
+                    climberGoals={this.state.climberGoals}
                     sessionToken={this.props.sessionToken}
                     fetchClimberGoals={this.fetchClimberGoals}
                 />
-                <DisplayGoals
-                    climberGoals={this.state.climberGoals}
+                   <CreateGoals
                     sessionToken={this.props.sessionToken}
                     fetchClimberGoals={this.fetchClimberGoals}
                 />
