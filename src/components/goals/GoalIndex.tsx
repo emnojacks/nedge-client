@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Component } from 'react';
-import CreateGoals from '../goals/CreateGoals'
-import DisplayGoals from '../goals/DisplayGoals'
+import CreateGoals from '../goals/CreateGoals';
+import DisplayGoals from '../goals/DisplayGoals';
+import UpdateGoals from '../goals/UpdateGoals';
 import { Goal } from '../../types/Types';
 let APIURL = "http://localhost:3000";
 
@@ -13,13 +14,15 @@ interface GoalIndexProps {
  
 interface GoalIndexState {
     climberGoals: Array<Goal>
+    modalVisible: boolean
 }
 
 class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
     constructor(props: GoalIndexProps) {
         super(props)
         this.state = {
-            climberGoals: []
+            climberGoals: [],
+            modalVisible: false
         }
     }
     
@@ -44,10 +47,20 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
     };
     
     componentDidMount() {
-        this.fetchClimberGoals();
-      //this.fetchSessions();       
+        this.fetchClimberGoals();    
     };
 
+   openModal = ():void => {
+        this.setState({
+        modalVisible: true
+        })
+    }
+    
+    closeModal = ():void => {
+        this.setState({
+        modalVisible: false
+        })
+    }
     
     render() {
         return (
@@ -62,7 +75,13 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
                     sessionToken={this.props.sessionToken}
                     fetchClimberGoals={this.fetchClimberGoals}
                 />
-                {/* //edit component here  */}
+                {this.state.modalVisible ?
+                    <UpdateGoals
+                        sessionToken={this.props.sessionToken}
+                        fetchClimberGoals={this.fetchClimberGoals}
+                        climberGoals={this.state.climberGoals}
+                        closeModal={this.closeModal}
+                    /> : <> </>}
                 
             </div>);
     }

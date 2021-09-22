@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Table, Button, Card, CardBody, CardTitle, CardText, Row, Col } from 'reactstrap'
-import { resourceLimits } from 'worker_threads';
-// import map from 'async';
 import { Goal } from '../../types/Types'
 let APIURL = "http://localhost:3000"
 
@@ -53,9 +51,8 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
 //           <p>Your goal deck is empty. Set a Goal to start working towards the climber you want to be.</p>
 //   }
     
-    updateGoal = async (event, goal: Goal) => {
+    updateGoal = async (goal: Goal) => {
         console.log(goal)
-        event.preventDefault();
         try {
         const goalToUpdate = await fetch(`${APIURL}/goal/update/${goal.id}`, {
             method: "PUT",
@@ -116,7 +113,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
 </CardText>
                                         <Button
                                         onClick={()=>this.updateGoal(goal)}
-                                        >Update
+                                        >Prioritize
                                         
                                         </Button>
                                         <Button
