@@ -10,7 +10,8 @@ interface UpdateGoalsProps {
     fetchClimberGoals: CallableFunction
     closeModal: () => void
     modalVisible: boolean
-    openModal:()=>void
+    openModal: () => void
+    goalToUpdate: Goal
 }
  
 interface UpdateGoalsState {
@@ -26,19 +27,19 @@ class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
     constructor(props: UpdateGoalsProps) {
         super(props)
         this.state = {
-            id: 0,
-            goaldescription: "",
-            goalpriority: "first",
-            goalachieved: false,
+            id: this.props.goalToUpdate.id,
+            goaldescription: this.props.goalToUpdate.goaldescription,
+            goalpriority: this.props.goalToUpdate.goalpriority,
+            goalachieved: this.props.goalToUpdate.goalachieved,
             modalVisible: true,
         }
     }
     
-    componentDidMount() {
-    }
+    // componentDidMount() {
+    // }
     
-    componentDidUpdate() {
-    }
+    // componentDidUpdate() {
+    // }
     
     toggleModal = () => {
         this.setState({
@@ -46,8 +47,9 @@ class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
         })
     }     
     
-    updateGoal = async(goal: Goal) => {
-        return await fetch(`${APIURL}/goal/update/${goal.id}`, {
+    updateGoal = async () => {
+        console.log(this.props.goalToUpdate)
+        return await fetch(`${APIURL}/goal/update/${this.props.goalToUpdate.id}`, {
             method: "PUT",
             body: JSON.stringify(
                 {
@@ -64,30 +66,30 @@ class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
         })
     }
         
-    handleSubmit = async (event: { preventDefault: () => void; }, goal: Goal) => {
+    handleSubmit = async (event: { preventDefault: () => void; }) => {
+        console.log(this.props.goalToUpdate)
         event.preventDefault()
         if (this.state.goaldescription) {
             try {
-                let res = await this.updateGoal(goal)
+                let res = await this.updateGoal()
                 if (res?.ok) {
-                    console.log("goal created")
+                    console.log("goal updated")
                 }
             }
             catch {
             }
             this.props.fetchClimberGoals();
-            this.props.closeModal();
         }
         else {
             console.log("emtpty goal attempt")
             window.alert("You can't set emtpy goals.")
         }
+        this.props.closeModal();
     };
     
     render()
     {
-        console.log(this.props.climberGoals)
-        
+         console.log(this.props.goalToUpdate)
         return (
             <Modal
                 isOpen={true}
@@ -138,29 +140,29 @@ export default UpdateGoals;
 
 
 
-updateGoal = async(goal: Goal) => {
-        console.log(goal)
-        try {
-            const goalToUpdate = await fetch(`${APIURL}/goal/update/${goal.id}`, {
-                method: "PUT",
-                body: JSON.stringify(
-                    {
-                        goal: {
-                            goaldescription: this.state.goaldescription,
-                            goalpriority: this.state.goalpriority,
-                            goalachieved: false
-                        }
-                    }),
-                headers: new Headers({
-                    "Content-Type": "application/json",
-                    'Authorization': `Bearer ${this.props.sessionToken}`
-                })
-            })
-            await goalToUpdate.json();
-            console.log(`${goalToUpdate} updated`)
-        } catch {
-            window.alert("couldn't update goal")
-        }
-        this.props.fetchClimberGoals()
-        this.props.closeModal();
-    };
+// updateGoal = async(goal: Goal) => {
+//         console.log(goal)
+//         try {
+//             const goalToUpdate = await fetch(`${APIURL}/goal/update/${goal.id}`, {
+//                 method: "PUT",
+//                 body: JSON.stringify(
+//                     {
+//                         goal: {
+//                             goaldescription: this.state.goaldescription,
+//                             goalpriority: this.state.goalpriority,
+//                             goalachieved: false
+//                         }
+//                     }),
+//                 headers: new Headers({
+//                     "Content-Type": "application/json",
+//                     'Authorization': `Bearer ${this.props.sessionToken}`
+//                 })
+//             })
+//             await goalToUpdate.json();
+//             console.log(`${goalToUpdate} updated`)
+//         } catch {
+//             window.alert("couldn't update goal")
+//         }
+//         this.props.fetchClimberGoals()
+//         this.props.closeModal();
+//     };
