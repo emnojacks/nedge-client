@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Button, Card, CardBody, CardTitle, CardText, Row, Col } from 'reactstrap'
+import { Button, Card, CardBody, CardTitle, CardText, Row, Col } from 'reactstrap'
 import { Goal } from '../../types/Types'
 let APIURL = "http://localhost:3000"
 
@@ -7,26 +7,25 @@ interface DisplayGoalsProps {
     sessionToken: string
     climberGoals: Array<Goal>
     fetchClimberGoals: CallableFunction
-    openModal: ()=>void
+    openModal: () => void
+    setGoalToUpdate: (goal: Goal) => void
     //edit and delete goal funcs
 }
  
 interface DisplayGoalsState {
     id: number
     goaldescription: string
-    goalpriority: string
+    goalpriority: number
     goalachieved: boolean
 }
 
-
- 
 class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
     constructor(props: DisplayGoalsProps) {
         super(props)
         this.state = {
             id: 1,
             goaldescription: "",
-            goalpriority: "first",
+            goalpriority: 1,
             goalachieved: false,
         }
     }
@@ -52,30 +51,30 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
 //           <p>Your goal deck is empty. Set a Goal to start working towards the climber you want to be.</p>
 //   }
     
-    updateGoal = async (goal: Goal) => {
-        console.log(goal)
-        try {
-        const goalToUpdate = await fetch(`${APIURL}/goal/update/${goal.id}`, {
-            method: "PUT",
-            body: JSON.stringify(
-                {
-                    goal: {
-                        goaldescription: this.state.goaldescription,
-                        goalpriority: this.state.goalpriority,
-                        goalachieved: false
-                    }
-                }),
-                headers: new Headers({
-                    "Content-Type": "application/json",
-                    'Authorization': `Bearer ${this.props.sessionToken}`
-                })
-            })
-            console.log(`${goalToUpdate} updated`)
-        } catch {
-        window.alert("couldn't update goal")
-        }
-        this.props.fetchClimberGoals()
-    }
+    // updateGoal = async (goal: Goal) => {
+    //     console.log(goal)
+    //     try {
+    //     const goalToUpdate = await fetch(`${APIURL}/goal/update/${goal.id}`, {
+    //         method: "PUT",
+    //         body: JSON.stringify(
+    //             {
+    //                 goal: {
+    //                     goaldescription: this.state.goaldescription,
+    //                     goalpriority: this.state.goalpriority,
+    //                     goalachieved: false
+    //                 }
+    //             }),
+    //             headers: new Headers({
+    //                 "Content-Type": "application/json",
+    //                 'Authorization': `Bearer ${this.props.sessionToken}`
+    //             })
+    //         })
+    //         console.log(`${goalToUpdate} updated`)
+    //     } catch {
+    //     window.alert("couldn't update goal")
+    //     }
+    //     this.props.fetchClimberGoals()
+    // }
         
 
     deleteGoal = async (goal: Goal) => {
@@ -113,7 +112,12 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
           <CardText>{goal.goalachieved} priority: {goal.goalpriority}
 </CardText>
                                         <Button
-                                        onClick={this.props.openModal}
+                                            onClick={() => {
+                                            this.props.setGoalToUpdate(goal)
+                                                this.props.openModal()
+                                            }}
+                                            
+                                           
                                         >Prioritize
                                         
                                         </Button>

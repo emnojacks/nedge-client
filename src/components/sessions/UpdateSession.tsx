@@ -1,35 +1,49 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Button, Modal, ModalBody, ModalHeader, Label, Input} from 'reactstrap'
-import { Goal } from '../../types/Types'
+import { Session } from '../../types/Types'
 let APIURL = "http://localhost:3000"
 
 
-interface UpdateGoalsProps {
+interface UpdateSessionProps {
     sessionToken: string
-    climberGoals: Array<Goal>
-    fetchClimberGoals: CallableFunction
+    climberSessions: Array<Session>
+    fetchClimberSessions: CallableFunction
     closeModal: () => void
     modalVisible: boolean
     openModal: () => void
-    goalToUpdate: Goal
+    sessionToUpdate: Session
 }
  
-interface UpdateGoalsState {
+interface UpdateSessionState {
     id: number
     modalVisible: boolean
-    goaldescription: string
-    goalpriority: number | string
-    goalachieved: boolean
+    sessiondate: string
+    sessionsuccessful: boolean
+    sessionlength?: string
+    sessionpartner: boolean
+    crosstraining?: boolean
+    nutritioncondition: string
+    sleepcondition: string
+    stresscondition: string
+    egocondition: string
+    sessionnotes?: string
 }
 
-class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
-    constructor(props: UpdateGoalsProps) {
+class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
+    constructor(props: UpdateSessionProps) {
         super(props)
         this.state = {
-            id: this.props.goalToUpdate.id,
-            goaldescription: this.props.goalToUpdate.goaldescription,
-            goalpriority: this.props.goalToUpdate.goalpriority,
-            goalachieved: this.props.goalToUpdate.goalachieved,
+            id: this.props.sessionToUpdate.id,
+            sessiondate: this.props.sessionToUpdate.sessiondate,
+            sessionsuccessful: this.props.sessionToUpdate.sessionsuccessful,
+            sessionlength: this.props.sessionToUpdate.sessionlength,
+            sessionpartner: this.props.sessionToUpdate.sessionpartner,
+            crosstraining: this.props.sessionToUpdate.crosstraining, 
+            nutritioncondition: this.props.sessionToUpdate.nutritioncondition,
+            sleepcondition: this.props.sessionToUpdate.sleepcondition,
+            stresscondition: this.props.sessionToUpdate.stresscondition,
+            egocondition: this.props.sessionToUpdate.egocondition,
+            sessionnotes: this.props.sessionToUpdate.sessionnotes,
             modalVisible: true,
             //may not need modalvisible
         }
@@ -41,16 +55,23 @@ class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
         })
     }     
     
-    updateGoal = async () => {
-        console.log(this.props.goalToUpdate)
-        return await fetch(`${APIURL}/goal/update/${this.props.goalToUpdate.id}`, {
+    updateSession = async () => {
+        console.log(this.props.sessionToUpdate)
+        return await fetch(`${APIURL}/session/update/${this.props.sessionToUpdate.id}`, {
             method: "PUT",
             body: JSON.stringify(
                 {
-                    goal: {
-                        goaldescription: this.state.goaldescription,
-                        goalpriority: this.state.goalpriority,
-                        goalachieved: false
+                    session: {
+                    sessiondate: this.state.sessiondate, 
+                    sessionsuccessful: this.state.sessionsuccessful,
+                    sessionlength: this.state.sessionlength,
+                    sessionpartner: this.state.sessionpartner,
+                    crosstraining: this.state.crosstraining, 
+                    nutritioncondition: this.state.nutritioncondition,
+                    sleepcondition: this.state.sleepcondition,
+                    stresscondition: this.state.stresscondition,
+                    egocondition: this.state.egocondition,
+                    sessionnotes: this.state.sessionnotes
                     }
                 }),
             headers: new Headers({
@@ -61,39 +82,40 @@ class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
     }
         
     handleSubmit = async (event: { preventDefault: () => void; }) => {
-        console.log(this.props.goalToUpdate)
+        console.log(this.props.sessionToUpdate)
         event.preventDefault()
-        if (this.state.goaldescription) {
+        if (this.state.sessiondate) {
             try {
-                let res = await this.updateGoal()
+                let res = await this.updateSession()
                 if (res?.ok) {
-                    console.log("goal updated")
+                    console.log("session updated")
                 }
             }
             catch {
             }
-            this.props.fetchClimberGoals();
+            this.props.fetchClimberSessions();
         }
         else {
-            console.log("emtpty goal attempt")
-            window.alert("You can't set emtpy goals.")
+            console.log("emtpty session update attempt")
+            window.alert("You can't set emtpy sessions.")
         }
         this.props.closeModal();
     };
     
     render()
     {
-         console.log(this.props.goalToUpdate)
+         console.log(this.props.sessionToUpdate)
         return (
             <Modal
                 isOpen={true}
                 toggle={this.toggleModal}>
                 <ModalHeader
-                    className="modalHeader">Prioritize your Goals</ModalHeader>
+                    className="modalHeader">Update your Sessions</ModalHeader>
             <ModalBody className="modalBody">
                     <Form onSubmit={this.handleSubmit}>
+                        
                     <FormGroup>
-                        <Label className="modalLabel" htmlFor="goaldescription">Goal:</Label>
+                        <Label className="modalLabel" htmlFor="goaldescription">Session:</Label>
                             <Input name="goaldescription"
                                 type="text"
                                 value={this.state.goaldescription} 
@@ -130,33 +152,5 @@ class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
     }
 }
 
-export default UpdateGoals;
+export default UpdateSession;
 
-
-
-// updateGoal = async(goal: Goal) => {
-//         console.log(goal)
-//         try {
-//             const goalToUpdate = await fetch(`${APIURL}/goal/update/${goal.id}`, {
-//                 method: "PUT",
-//                 body: JSON.stringify(
-//                     {
-//                         goal: {
-//                             goaldescription: this.state.goaldescription,
-//                             goalpriority: this.state.goalpriority,
-//                             goalachieved: false
-//                         }
-//                     }),
-//                 headers: new Headers({
-//                     "Content-Type": "application/json",
-//                     'Authorization': `Bearer ${this.props.sessionToken}`
-//                 })
-//             })
-//             await goalToUpdate.json();
-//             console.log(`${goalToUpdate} updated`)
-//         } catch {
-//             window.alert("couldn't update goal")
-//         }
-//         this.props.fetchClimberGoals()
-//         this.props.closeModal();
-//     };

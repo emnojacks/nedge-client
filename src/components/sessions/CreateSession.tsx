@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Button, Input, Form, Label, InputGroupText } from 'reactstrap'
-import InputRange from 'react-input-range'
+import { Button, Input, Form, Label, FormGroup } from 'reactstrap'
+// import InputRange from 'react-input-range'
 import 'react-input-range/lib/css/index.css'
 let APIURL = "http://localhost:3000"
 
 
 interface CreateSessionProps {
-    sessionToken: string
+  sessionToken: string
+  fetchClimberSessions: CallableFunction
 }
  
 interface CreateSessionState {
@@ -83,7 +84,8 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
               <h5>Log a climbing session for today.</h5>
               
               <Form onSubmit={this.handleSubmit}>
-                  {/* SESSION DATE */}
+            {/* SESSION DATE */}
+            <FormGroup>
                   <Label
                     className="form-label"
                     htmlFor="sessiondate">Session Date</Label>
@@ -96,8 +98,9 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                       onChange={event => this.setState({ sessiondate: event.target.value })}
                   >
                 </Input>
-                  
-                  {/* SESSION SUCCESS */}
+            </FormGroup>
+            {/* SESSION SUCCESS */}
+            <FormGroup>
                   <Label
                     className="form-label"
                     htmlFor="sessionsuccessful">Session successful?</Label>
@@ -108,8 +111,9 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                       >
 
                   </Input>
-                  
-                   {/* SESSION PARTNER */}
+                     </FormGroup>
+            {/* SESSION PARTNER */}
+            <FormGroup>
                   <Label
                     className="form-label"
                     htmlFor="sessionpartner">Partner</Label>
@@ -118,8 +122,10 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                       name="sessionpartner"
                       onChange={() => this.setState({ sessionpartner: !this.state.sessionpartner })}
                       >
-            </Input>
-                   {/* X TRAINING OPTIONAL */}
+              </Input>
+                 </FormGroup>
+            {/* X TRAINING OPTIONAL */}
+            <FormGroup>
                   <Label
                     className="form-label"
                     htmlFor="crosstraining">Recently Crosstrained</Label>
@@ -129,7 +135,9 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                       onChange={() => this.setState({ crosstraining: !this.state.crosstraining })}
                       >
             </Input>
-                {/* SESSION LENGTH */}
+   </FormGroup>
+            {/* SESSION LENGTH */}
+            <FormGroup>
                   <Label
                     className="form-label"
                     htmlFor="sessionlength">Session length (hrs)</Label>
@@ -141,8 +149,9 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                         onChange={(event: React.ChangeEvent<HTMLInputElement> )=> this.setState({ sessionlength: event.target.value })}
                       >
             </Input>
-                
-                {/* NUTRITIONCONDITION */}
+                </FormGroup>
+            {/* NUTRITIONCONDITION */}
+            <FormGroup>
                   <Label
                     className="form-label"
                     htmlFor="nutritioncondition">Nutrition Condition</Label>
@@ -155,8 +164,9 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                       
                       >
                   </Input>
-                  
-                       {/* SLEEPCONDITION */}
+                  </FormGroup>
+            {/* SLEEPCONDITION */}
+            <FormGroup>
                   <Label
                     className="form-label"
                     htmlFor="sleepcondition">Sleep State</Label>
@@ -168,8 +178,9 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                         onChange={(event: React.ChangeEvent<HTMLInputElement>)=> this.setState({ sleepcondition: event.target.value })}
                       >
                   </Input>
-                  
-             {/* STRESS CONDITION */}
+                  </FormGroup>
+            {/* STRESS CONDITION */}
+            <FormGroup>
                   <Label
                     className="form-label"
                     htmlFor="stresscondition">Stress State</Label>
@@ -181,8 +192,9 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                         onChange={(event: React.ChangeEvent<HTMLInputElement>)=> this.setState({ stresscondition: event.target.value })}
                       >
                   </Input>
-                  
+                </FormGroup>
                      {/* EGO CONDITION */}
+    <FormGroup>
                   <Label
                     className="form-label"
                     htmlFor="egocondition">Ego State</Label>
@@ -194,9 +206,8 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                         onChange={(event: React.ChangeEvent<HTMLInputElement>)=> this.setState({ egocondition: event.target.value })}
                       >
                   </Input>
-                  
-              
-              
+              </FormGroup>
+              <FormGroup>
                      {/* SESSIONNOTES OPTIONAL */}
                   <Input
                 className="text-input"
@@ -207,7 +218,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                           sessionnotes: event.target.value
                       })}
               />      
-                  
+                  </FormGroup>
                 <Button
                   size="sm"
                   type="submit">

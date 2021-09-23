@@ -42,7 +42,7 @@ class Navigation extends Component<NavigationProps, NavigationState> {
   }
     render() {
         return ( 
-            <Navbar color="light" expand="md">
+            <Navbar color="light" expand="sm">
             <NavbarBrand
               style={{ marginLeft: "1em" }}
             >

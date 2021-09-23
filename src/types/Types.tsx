@@ -1,7 +1,7 @@
 export type Goal ={
     id: number
     goaldescription: string
-    goalpriority: string
+    goalpriority: number
     goalachieved: boolean
 }
 

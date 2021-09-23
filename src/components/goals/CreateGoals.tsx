@@ -10,7 +10,7 @@ interface CreateGoalsProps {
  
 interface CreateGoalsState {
     goaldescription: string
-    goalpriority: string
+    goalpriority: number
     goalachieved: boolean
 }
  
@@ -19,7 +19,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
         super(props)
         this.state = {
             goaldescription: "",
-            goalpriority: "first",
+            goalpriority: 1,
             goalachieved: false
         }
     }
@@ -31,7 +31,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                 {
                     goal: {
                         goaldescription: this.state.goaldescription,
-                        goalpriority: "first",
+                        goalpriority: 1,
                         goalachieved: false
                     }
                 }),

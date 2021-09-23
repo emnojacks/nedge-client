@@ -15,7 +15,7 @@ interface GoalIndexProps {
 interface GoalIndexState {
     climberGoals: Array<Goal>
     modalVisible: boolean
-    goalToUpdate: Goal
+    goalToUpdate: Goal 
     }
 
 class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
@@ -26,8 +26,8 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
             modalVisible: false,
             goalToUpdate: {
                 id: 0,
-                goaldescription: "",
-                goalpriority: "first",
+                goaldescription: "update your goal",
+                goalpriority: 0,
                 goalachieved: false,
             },
         }
@@ -57,7 +57,7 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
         this.fetchClimberGoals();    
     };
 
-    updateGoal = (goal: Goal) => {
+    setGoaltoUpdate = (goal: Goal) => {
         this.setState({ goalToUpdate: goal })
     };
     
@@ -82,6 +82,7 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
                     climberGoals={this.state.climberGoals}
                     sessionToken={this.props.sessionToken}
                     fetchClimberGoals={this.fetchClimberGoals}
+                    setGoalToUpdate={this.setGoaltoUpdate}
                 />
                    <CreateGoals
                     sessionToken={this.props.sessionToken}
@@ -95,8 +96,7 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
                         goalToUpdate={this.state.goalToUpdate}
                         closeModal={this.closeModal}
                         openModal={this.openModal}
-                        modalVisible={this.state.modalVisible}
-                    /> : <> </>}
+                        modalVisible={this.state.modalVisible}  /> : <> </>}
                 
             </div>);
     }
