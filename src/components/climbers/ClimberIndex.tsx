@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
-import CreateSession from '../sessions/CreateSession'
+import SessionIndex from '../sessions/SessionIndex'
 // import DisplayGoals from '../goals/DisplayGoals'
 //cant display just Display bc of data 
 import GoalIndex from '../goals/GoalIndex'
@@ -32,9 +32,8 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
         return (
             <div>
                 ClimberIndex
-                
-                {/* //link to create session component   */}
-                 <CreateSession
+            
+                 <SessionIndex
                 sessionToken={this.props.sessionToken}
                 />
                 

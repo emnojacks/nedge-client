@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card, CardBody, CardTitle, CardText, Row, Col } from 'reactstrap'
+import { Button, Card, CardBody, CardHeader, CardFooter, CardTitle, CardText, Row, Col } from 'reactstrap'
 import { Session } from '../../types/Types'
 let APIURL = "http://localhost:3000"
 
@@ -78,23 +78,33 @@ class DisplaySessions extends Component<DisplaySessionsProps, DisplaySessionsSta
                         <Row>
       <Col sm="3">
                         <Card key={session.id}>
-    
+    <CardHeader>{session.sessiondate}</CardHeader>
         <CardBody>
-          <CardTitle tag="h5">{index+1} {session.sessiondate}</CardTitle>
-          <CardText>{session.sessionlength} priority: {session.nutritioncondition}
+                                        <CardTitle tag="h5">{index + 1} {session.sessiondate}</CardTitle>
+                                        
+                                        <CardText>
+                                            Length:{session.sessionlength}
+                                            Successful? {session.sessionsuccessful}
+                                            Partnered? {session.sessionpartner}
+                                            Recently Crosstrained? {session.crosstraining}
+                                            Nutrition Condition? {session.nutritioncondition}
+                                            Sleep Condition? {session.sleepcondition}
+                                            Stress Condition? {session.stresscondition}
+                                            Ego Condition? {session.egocondition}
+                                            Session Notes: {session.sessionnotes}
+                              
 </CardText>
                                         <Button
                                             onClick={() => {
                                             this.props.setSessionToUpdate(session)
                                                 this.props.openModal()
                                             }}
-                                        >Change 
-                                        
-                                        </Button>
+                                        >Edit</Button>
                                         <Button
                                           onClick={()=>this.deleteSession(session)}
                                         >Remove</Button>
-        </CardBody>
+                                    </CardBody>
+                                    <CardFooter>{session.sessionnotes}</CardFooter>
                                 </Card>
 </Col>
                                 </Row>

@@ -113,29 +113,145 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
                     className="modalHeader">Update your Sessions</ModalHeader>
             <ModalBody className="modalBody">
                     <Form onSubmit={this.handleSubmit}>
-                        
+                            {/* SESSION DATE */}
                     <FormGroup>
-                        <Label className="modalLabel" htmlFor="goaldescription">Session:</Label>
-                            <Input name="goaldescription"
-                                type="text"
-                                value={this.state.goaldescription} 
+                            <Label className="modalLabel"
+                                htmlFor="sessiondate">Session Date:</Label>
+                            <Input name="sessiondate"
+                                type="date"
+                                value={this.state.sessiondate}
+                                required
                                 onChange={(e) =>
                                     this.setState({
-                                        goaldescription: e.target.value
+                                        sessiondate: e.target.value
                                     })}/>
                     </FormGroup>
-
+       {/* SESSION SUCCESS */}
                     <FormGroup>
-                    <Label className="modalLabel" htmlFor="goalpriority">Priority</Label>
+                    <Label className="modalLabel" htmlFor="sessionsuccessful">Session Successful?</Label>
                             <Input
-                                type="number"
-                                name="goalpriority"
-                                value={this.state.goalpriority}
+                               type="checkbox"
+                                name="sessionsuccessful"
+                                //value={this.state.sessionsuccessful}
                                 onChange={(e) => 
                                     this.setState({
-                                        goalpriority: e.target.value
+                                       sessionsuccessful: !this.state.sessionsuccessful
                                     })}/>
-                        </FormGroup>
+                    </FormGroup>
+       
+                        {/* SESSION PARTNER */}
+            <FormGroup>
+                  <Label
+                    className="form-label"
+                    htmlFor="sessionpartner">Partner</Label>
+                  <Input
+                    type="checkbox"
+                      name="sessionpartner"
+                      onChange={() => this.setState({ sessionpartner: !this.state.sessionpartner })}
+                      >
+              </Input>
+                 </FormGroup>
+            {/* X TRAINING OPTIONAL */}
+            <FormGroup>
+                  <Label
+                    className="form-label"
+                    htmlFor="crosstraining">Recently Crosstrained</Label>
+                  <Input
+                    type="checkbox"
+                      name="crosstraining"
+                      onChange={() => this.setState({ crosstraining: !this.state.crosstraining })}
+                      >
+            </Input>
+   </FormGroup>
+            {/* SESSION LENGTH */}
+            <FormGroup>
+                  <Label
+                    className="form-label"
+                    htmlFor="sessionlength">Session length (hrs)</Label>
+                  <Input
+                        type="number"
+                        max={7}
+                        min={.5}
+                        step={.5}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement> )=> this.setState({ sessionlength: event.target.value })}
+                      >
+            </Input>
+                </FormGroup>
+            {/* NUTRITIONCONDITION */}
+            <FormGroup>
+                  <Label
+                    className="form-label"
+                    htmlFor="nutritioncondition">Nutrition Condition</Label>
+                  <Input
+                      type="range"
+                        max={5}
+                        min={0}
+                        step={1}
+                       onChange={(event: React.ChangeEvent<HTMLInputElement>)=> this.setState({ nutritioncondition: event.target.value })}
+                      
+                      >
+                  </Input>
+                  </FormGroup>
+            {/* SLEEPCONDITION */}
+            <FormGroup>
+                  <Label
+                    className="form-label"
+                    htmlFor="sleepcondition">Sleep State</Label>
+                  <Input
+                      type="range"
+                        max={5}
+                        min={0}
+                        step={1}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>)=> this.setState({ sleepcondition: event.target.value })}
+                      >
+                  </Input>
+                  </FormGroup>
+            {/* STRESS CONDITION */}
+            <FormGroup>
+                  <Label
+                    className="form-label"
+                    htmlFor="stresscondition">Stress State</Label>
+                  <Input
+                      type="range"
+                        max={5}
+                        min={0}
+                        step={1}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>)=> this.setState({ stresscondition: event.target.value })}
+                      >
+                  </Input>
+                </FormGroup>
+                     {/* EGO CONDITION */}
+    <FormGroup>
+                  <Label
+                    className="form-label"
+                    htmlFor="egocondition">Ego State</Label>
+                  <Input
+                      type="range"
+                        max={5}
+                        min={0}
+                        step={1}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>)=> this.setState({ egocondition: event.target.value })}
+                      >
+                  </Input>
+              </FormGroup>
+              <FormGroup>
+                     {/* SESSIONNOTES OPTIONAL */}
+                  <Input
+                className="text-input"
+                name="sessionnotes"
+                placeholder="'sent first v4'"
+                type="text"
+                onBlur={(event: React.ChangeEvent<HTMLInputElement>) => this.setState({
+                          sessionnotes: event.target.value
+                      })}
+              />      
+                  </FormGroup>
+                        
+                        
+                        
+                        
+                        
+                        
                         
                     <br></br>
                         <Button
