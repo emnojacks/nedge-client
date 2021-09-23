@@ -67,6 +67,7 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
             <div>
             <h2>Goal Index</h2>
                 <DisplayGoals
+                    openModal={this.openModal}
                     climberGoals={this.state.climberGoals}
                     sessionToken={this.props.sessionToken}
                     fetchClimberGoals={this.fetchClimberGoals}
@@ -81,6 +82,8 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
                         fetchClimberGoals={this.fetchClimberGoals}
                         climberGoals={this.state.climberGoals}
                         closeModal={this.closeModal}
+                        openModal={this.openModal}
+                        modalVisible={this.state.modalVisible}
                     /> : <> </>}
                 
             </div>);

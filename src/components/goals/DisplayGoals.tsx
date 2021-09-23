@@ -7,6 +7,7 @@ interface DisplayGoalsProps {
     sessionToken: string
     climberGoals: Array<Goal>
     fetchClimberGoals: CallableFunction
+    openModal: ()=>void
     //edit and delete goal funcs
 }
  
@@ -112,7 +113,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
           <CardText>{goal.goalachieved} priority: {goal.goalpriority}
 </CardText>
                                         <Button
-                                        onClick={()=>this.updateGoal(goal)}
+                                        onClick={this.props.openModal}
                                         >Prioritize
                                         
                                         </Button>
