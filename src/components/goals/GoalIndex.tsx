@@ -62,18 +62,18 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
         this.setState({ goalToUpdate: goal })
     };
     
-   openModal = ():void => {
+    openModal = (): void => {
         this.setState({
-        modalVisible: true
+            modalVisible: true
         })
-    }
+    };
     
-    closeModal = ():void => {
+    closeModal = (): void => {
         this.setState({
-        modalVisible: false
+            modalVisible: false
         })
-    }
-    
+    };
+        
     render() {
         return (
               <Container>

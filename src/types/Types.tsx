@@ -20,6 +20,7 @@ export type Session ={
 }
 
 export type Climber = {
+    id: number
     username: string
     password: string
     gymname?: string

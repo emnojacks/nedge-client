@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, ButtonGroup, Input, Form } from "reactstrap";
+import { Button, ButtonGroup, Input, Form, FormGroup} from "reactstrap";
 import { Link } from "react-router-dom";
 let APIURL = "http://localhost:3000";
 
@@ -69,6 +69,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
           crazy, Ondra.{" "}
         </p>
         <Form onSubmit={this.handleSubmit}>
+          <FormGroup>
           <ButtonGroup>
             <Button
               className="btn-goal"
@@ -138,10 +139,12 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
             </Button>
             <br></br>
           </ButtonGroup>
-          <p>Goal set to {this.state.goaldescription}</p>
+        
           <Button size="sm" type="submit">
             Add Goal
           </Button>
+</FormGroup>
+<FormGroup>
           <br></br>
           <Input
             className="text-input"
@@ -158,6 +161,8 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
           <Button size="sm" type="submit">
             Add Personal Goal
           </Button>
+</FormGroup>
+          {/* <p>Goal set to {this.state.goaldescription}</p> */}
         </Form>
       </div>
     );

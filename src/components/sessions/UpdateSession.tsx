@@ -119,7 +119,7 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
             {/* SESSION DATE */}
             <FormGroup>
               <Label className="modalLabel" htmlFor="sessiondate">
-                Session Date:
+                Session Date
               </Label>
               <Input
                 name="sessiondate"
@@ -132,49 +132,6 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
                   })
                 }
               />
-            </FormGroup>
-            {/* SESSION SUCCESS */}
-            <FormGroup>
-              <Label className="modalLabel" htmlFor="sessionsuccessful">
-                Session Successful?
-              </Label>
-              <Input
-                type="checkbox"
-                name="sessionsuccessful"
-                // placholder={this.state.sessionsuccessful}
-                onChange={(e) =>
-                  this.setState({
-                    sessionsuccessful: !this.state.sessionsuccessful,
-                  })
-                }
-              />
-            </FormGroup>
-
-            {/* SESSION PARTNER */}
-            <FormGroup>
-              <Label className="form-label" htmlFor="sessionpartner">
-                Partner
-              </Label>
-              <Input
-                type="checkbox"
-                name="sessionpartner"
-                onChange={() =>
-                  this.setState({ sessionpartner: !this.state.sessionpartner })
-                }
-              ></Input>
-            </FormGroup>
-            {/* X TRAINING OPTIONAL */}
-            <FormGroup>
-              <Label className="form-label" htmlFor="crosstraining">
-                Recently Crosstrained
-              </Label>
-              <Input
-                type="checkbox"
-                name="crosstraining"
-                onChange={() =>
-                  this.setState({ crosstraining: !this.state.crosstraining })
-                }
-              ></Input>
             </FormGroup>
             {/* SESSION LENGTH */}
             <FormGroup>
@@ -191,12 +148,59 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
                 }
               ></Input>
             </FormGroup>
+            {/* SESSION SUCCESS */}
+            <FormGroup>
+              <Label className="modalLabel" htmlFor="sessionsuccessful">
+                Session Successful?
+              </Label>
+              <Input
+                type="checkbox"
+                name="sessionsuccessful"
+                checked={this.state.sessionsuccessful}
+                onChange={(e) =>
+                  this.setState({
+                    sessionsuccessful: !this.state.sessionsuccessful,
+                  })
+                }
+              />
+            </FormGroup>
+
+            {/* SESSION PARTNER */}
+            <FormGroup>
+              <Label className="form-label" htmlFor="sessionpartner">
+                Partner
+              </Label>
+              <Input
+                type="checkbox"
+                name="sessionpartner"
+                checked={this.state.sessionpartner}
+                onChange={() =>
+                  this.setState({ sessionpartner: !this.state.sessionpartner })
+                }
+              ></Input>
+            </FormGroup>
+            {/* X TRAINING OPTIONAL */}
+            <FormGroup>
+              <Label className="form-label" htmlFor="crosstraining">
+                Recently Crosstrained
+              </Label>
+              <Input
+                type="checkbox"
+                check={this.state.crosstraining}
+                name="crosstraining"
+                onChange={() =>
+                  this.setState({ crosstraining: !this.state.crosstraining })
+                }
+              ></Input>
+            </FormGroup>
+
             {/* NUTRITIONCONDITION */}
             <FormGroup>
               <Label className="form-label" htmlFor="nutritioncondition">
                 Nutrition Condition
               </Label>
-              <Input
+                <Input
+                value={this.state.nutritioncondition}
                 type="range"
                 max={5}
                 min={0}
@@ -211,7 +215,8 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
               <Label className="form-label" htmlFor="sleepcondition">
                 Sleep State
               </Label>
-              <Input
+                        <Input
+                                 value={this.state.sleepcondition}
                 type="range"
                 max={5}
                 min={0}
@@ -226,7 +231,8 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
               <Label className="form-label" htmlFor="stresscondition">
                 Stress State
               </Label>
-              <Input
+                <Input
+                value={this.state.stresscondition}
                 type="range"
                 max={5}
                 min={0}
@@ -241,7 +247,8 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
               <Label className="form-label" htmlFor="egocondition">
                 Ego State
               </Label>
-              <Input
+                <Input
+                value={this.state.egocondition}
                 type="range"
                 max={5}
                 min={0}
@@ -253,8 +260,9 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
             </FormGroup>
             <FormGroup>
               {/* SESSIONNOTES OPTIONAL */}
-              <Input
+                 <Input
                 className="text-input"
+                value={this.state.sessionnotes}
                 name="sessionnotes"
                 type="text"
                 onBlur={(event: React.ChangeEvent<HTMLInputElement>) =>
@@ -273,7 +281,7 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
               color="warning"
               onClick={this.props.closeModal}
             >
-              Nvm
+              Nevermind
             </Button>
           </Form>
         </ModalBody>
