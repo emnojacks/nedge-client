@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
+import { Container } from 'reactstrap'
 import CreateGoals from '../goals/CreateGoals';
 import DisplayGoals from '../goals/DisplayGoals';
 import UpdateGoals from '../goals/UpdateGoals';
@@ -75,8 +76,9 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
     
     render() {
         return (
+              <Container>
             <div>
-            <h2>Goal Index</h2>
+              
                 <DisplayGoals
                     openModal={this.openModal}
                     climberGoals={this.state.climberGoals}
@@ -98,7 +100,8 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
                         openModal={this.openModal}
                         modalVisible={this.state.modalVisible}  /> : <> </>}
                 
-            </div>);
+                </div>
+                </Container>);
     }
 }
  

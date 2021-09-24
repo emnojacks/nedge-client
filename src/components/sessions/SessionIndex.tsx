@@ -82,7 +82,6 @@ class SessionIndex extends Component<SessionIndexProps, SessionIndexState> {
     render() {
         return (
             <div>
-            <h2>session Index</h2>
                 <DisplaySessions
                     openModal={this.openModal}
                     climberSessions={this.state.climberSessions}

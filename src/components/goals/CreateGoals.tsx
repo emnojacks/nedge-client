@@ -63,7 +63,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
     return (
       <div>
         <h1>Set Goals</h1>
-        <h5>Set a common goal or create you own.</h5>
+        <h5>Set a common climbing goal or create you own.</h5>
         <p>
           It's not realistic to work on more than 3 goals at a time so don't go
           crazy, Ondra.{" "}
@@ -138,7 +138,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
             </Button>
             <br></br>
           </ButtonGroup>
-          <p>Goal Set to {this.state.goaldescription}</p>
+          <p>Goal set to {this.state.goaldescription}</p>
           <Button size="sm" type="submit">
             Add Goal
           </Button>

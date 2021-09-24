@@ -8,7 +8,8 @@ import {
   CardTitle,
   CardText,
   Row,
-  Col,
+    Col,
+  Container
 } from "reactstrap";
 import { Session } from "../../types/Types";
 let APIURL = "http://localhost:3000";
@@ -84,31 +85,38 @@ class DisplaySessions extends Component<
     console.log(this.props.climberSessions);
 
     return (
-      <div className="session-display">
-        <h1>Session Display</h1>
+        <div className="session-display">
+            <Container>
+        <h1>Sessions</h1>
         {this.props.climberSessions.length > 0 ? (
           this.props.climberSessions.map((session: Session, index: number) => (
-            <Row key={index}>
-              <Col sm="3">
-                      <Card key={session.id} style={{ backgroundColor: session.sessionsuccessful ? "#E8FFB3" : "#FFC6B3"}}>
+            // <Row key={index}>
+            //   <Col sm="3">
+                      <Card key={session.id} style={{ backgroundColor: session.sessionsuccessful ? "#E8FFB3" : "#FFDED2"}}>
                   <CardHeader>{session.sessiondate}</CardHeader>
                   <CardBody>
                     <CardTitle tag="h5">Session Deets</CardTitle>
 
                     <CardText>
-                      Length: {session.sessionlength} hrs Partnered?{" "}
-                      {session.sessionpartner}
-                      Recently Crosstrained: {session.crosstraining}
+                          Length: {session.sessionlength} hrs
+                      <br></br>
+                                  Partnered?{session.sessionpartner ? " 👥 " : "👤 "}
+                                         <br></br>
+                    Crosstrained: {session.crosstraining ? "🏋️" : " "}
                       <h6>Conditions</h6>
                       <small className="text-muted">
-                        Nutrition: {session.nutritioncondition}
-                        Sleep: {session.sleepcondition}
-                        Stress: {session.stresscondition}
-                                      Ego: {session.egocondition}
-                      </small>{ session.sessionpartner ? "This workout was with a partner" : ""}
-                      <h6>Notes</h6> {session.sessionnotes}
+                                      Nutrition: {session.nutritioncondition >= "3" ? "✅" : "❌"}
+                                      <br></br>
+                                      Sleep:  {session.sleepcondition >= "3" ? "✅" : "❌"}
+                                      <br></br>
+                                      Stress: {session.stresscondition  >= "3" ? "✅" : "❌"}
+                                      <br></br>
+                                      Ego: {session.egocondition  >= "3" ? "✅" : "❌"}
+                                      <br></br>
+                      </small>
                     </CardText>
-                    <Button
+                              <Button
+                                  color="secondary"
                       onClick={() => {
                         this.props.setSessionToUpdate(session);
                         this.props.openModal();
@@ -116,14 +124,16 @@ class DisplaySessions extends Component<
                     >
                       Edit
                     </Button>
-                    <Button onClick={() => this.deleteSession(session)}>
+                              <Button
+                                  color="warning"
+                                  onClick={() => this.deleteSession(session)}>
                       Remove
                     </Button>
                   </CardBody>
                   <CardFooter>{session.sessionnotes}</CardFooter>
                 </Card>
-              </Col>
-            </Row>
+            //       {/* </Col>
+            // </Row> */}
           ))
         ) : (
           <p>
@@ -131,6 +141,7 @@ class DisplaySessions extends Component<
             your session data.
           </p>
         )}
+</Container>
       </div>
     );
   }

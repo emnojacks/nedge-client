@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
+import { Container } from 'reactstrap'
 import SessionIndex from '../sessions/SessionIndex'
 // import DisplayGoals from '../goals/DisplayGoals'
 //cant display just Display bc of data 
@@ -30,8 +31,8 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
     
     render() {
         return (
+            <Container>
             <div>
-                ClimberIndex
             
                  <SessionIndex
                 sessionToken={this.props.sessionToken}
@@ -41,7 +42,8 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                 sessionToken={this.props.sessionToken}
                 />
                 
-            </div>);
+                </div>
+                </Container>);
     }
 }
  
