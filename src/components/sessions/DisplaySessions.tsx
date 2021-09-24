@@ -93,17 +93,19 @@ class DisplaySessions extends Component<
             // <Row key={index}>
             //   <Col sm="3">
                       <Card key={session.id} style={{ backgroundColor: session.sessionsuccessful ? "#E8FFB3" : "#FFDED2"}}>
-                  <CardHeader>{session.sessiondate}</CardHeader>
+                  <CardHeader tag="h4"
+                  style={{ fontWeight: "bold" }}
+                  >{session.sessiondate}</CardHeader>
                   <CardBody>
                     <CardTitle tag="h5">Session Deets</CardTitle>
 
                     <CardText>
                           Length: {session.sessionlength} hrs
                       <br></br>
-                                  Partnered?{session.sessionpartner ? " 👥 " : "👤 "}
+                                  {session.sessionpartner ? "Partnered 👥 " : ""}
                                          <br></br>
-                    Crosstrained: {session.crosstraining ? "🏋️" : " "}
-                      <h6>Conditions</h6>
+                        {session.crosstraining ? "Crosstrained: 🏋️" : " "}
+                          <br></br>
                       <small className="text-muted">
                                       Nutrition: {session.nutritioncondition >= "3" ? "✅" : "❌"}
                                       <br></br>
@@ -130,7 +132,9 @@ class DisplaySessions extends Component<
                       Remove
                     </Button>
                   </CardBody>
-                  <CardFooter>{session.sessionnotes}</CardFooter>
+                  <CardFooter
+                      tag="h6"
+                      style={{ fontWeight: "bold" }}> {session.sessionnotes}</CardFooter>
                 </Card>
             //       {/* </Col>
             // </Row> */}

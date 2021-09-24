@@ -118,11 +118,11 @@ class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
                     <br></br>
                         <Button
                             type="submit"
-                            // style={{ backgroundColor: "#82c787", margin: "3px" }}
                         > Update</Button>
                         
-                    <Button 
-                    style={{backgroundColor:"#AC663E"}} onClick={this.props.closeModal}>Nvm</Button>
+                        <Button
+                            color="warning"
+                     onClick={this.props.closeModal}>Nvm</Button>
                 </Form>
             </ModalBody>
         </Modal>
