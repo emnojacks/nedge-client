@@ -257,7 +257,7 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
                         <Button
                             type="submit"
                             // style={{ backgroundColor: "#82c787", margin: "3px" }}
-                        > Prioritize</Button>
+                        > Update</Button>
                         
                     <Button 
                     style={{backgroundColor:"#AC663E"}} onClick={this.props.closeModal}>Nvm</Button>
