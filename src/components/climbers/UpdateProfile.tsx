@@ -1,11 +1,23 @@
 import React, { Component } from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import {
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  DropdownToggle,
+  DropdownItem,
+  InputGroup,
+  InputGroupButtonDropdown,
+} from "reactstrap";
+import { IndexKind } from "typescript";
 import { Climber } from "../../types/Types";
 let APIURL = "http://localhost:3000";
 
 interface UpdateProfileProps {
   sessionToken: string;
-  climberToUpdate: Climber;
+  climberProfile: Climber;
+  fetchClimberProfile: () => void;
 }
 
 interface UpdateProfileState {
@@ -14,30 +26,38 @@ interface UpdateProfileState {
   needpartner: boolean | undefined;
   experiencelevel: string | undefined;
   location: string | undefined;
+  options: Array<string>;
 }
 
 class UpdateProfile extends Component<UpdateProfileProps, UpdateProfileState> {
   constructor(props: UpdateProfileProps) {
     super(props);
     this.state = {
-      id: this.props.climberToUpdate.id,
-      gymname: this.props.climberToUpdate.gymname,
-      needpartner: this.props.climberToUpdate.needpartner,
-      experiencelevel: this.props.climberToUpdate.experiencelevel,
-      location: this.props.climberToUpdate.location,
+      id: this.props.climberProfile.id,
+      gymname: this.props.climberProfile.gymname,
+      needpartner: this.props.climberProfile.needpartner,
+      experiencelevel: this.props.climberProfile.experiencelevel,
+      location: this.props.climberProfile.location,
+      options: [
+        "noob",
+        "gumby but psyched",
+        "intermediate",
+        "veteran",
+        "ondra",
+      ],
     };
   }
 
   handleSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
-    fetch(`${APIURL}/climber/profile/${this.props.climberToUpdate.id}`, {
+    fetch(`${APIURL}/climber/profile/${this.props.climberProfile.id}`, {
       method: "PUT",
       body: JSON.stringify({
         climber: {
-          gymname: this.props.climberToUpdate.gymname,
-          needpartner: this.props.climberToUpdate.needpartner,
-          experiencelevel: this.props.climberToUpdate.experiencelevel,
-          location: this.props.climberToUpdate.location,
+          gymname: this.props.climberProfile.gymname,
+          needpartner: this.props.climberProfile.needpartner,
+          experiencelevel: this.props.climberProfile.experiencelevel,
+          location: this.props.climberProfile.location,
         },
       }),
       headers: new Headers({
@@ -48,7 +68,7 @@ class UpdateProfile extends Component<UpdateProfileProps, UpdateProfileState> {
       .then((res) => res.json())
       .then((data) => {
         window.alert(data.message);
-        //this.fetchProfile
+        this.props.fetchClimberProfile();
       })
       .catch((error) => {
         console.log(error.message);
@@ -62,68 +82,87 @@ class UpdateProfile extends Component<UpdateProfileProps, UpdateProfileState> {
         <Form onSubmit={this.handleSubmit}>
           {/* HOMEGYM */}
           <FormGroup>
-            <Label className="form-label" htmlFor="gymname">
-              Home Gym
-            </Label>
-            <Input
-              name="gymname"
-              placeholder="climb time"
-              type="text"
-              onChange={(event) =>
-                this.setState({ gymname: event.target.value })
-              }
-              value={this.state.gymname}
-            />
+            <InputGroup>
+              <Label className="form-label" htmlFor="gymname">
+                Home Gym
+              </Label>
+              <Input
+                name="gymname"
+                placeholder="'climb time'"
+                type="text"
+                onChange={(event) =>
+                  this.setState({ gymname: event.target.value })
+                }
+                value={this.state.gymname}
+              />
+            </InputGroup>
           </FormGroup>
 
           {/* NEEDPARTNER */}
           <FormGroup>
-            <Label className="form-label" htmlFor="needpartner">
-              Need a Partner?
-            </Label>
-            <Input
-              name="needpartner"
-              type="checkbox"
-              checked
-              onChange={(event) => this.setState({ needpartner: false })}
-            />
+            <InputGroup>
+              <Label className="form-label" htmlFor="needpartner">
+                Need a Partner?
+              </Label>
+              <Input
+                name="needpartner"
+                type="checkbox"
+                onChange={() => this.setState({ needpartner: true })}
+              />
+            </InputGroup>
           </FormGroup>
 
           {/* EXPERIENCELEVEL */}
           <FormGroup>
-            <Label className="form-label" htmlFor="experiencelevel">
-              Experience Level
-            </Label>
-            <Input
-              name="experiencelevel"
-              placeholder="beginner"
-              type="text"
-              onChange={(event) =>
-                this.setState({ experiencelevel: event.target.value })
-              }
-              value={this.state.experiencelevel}
-            />
+            <InputGroup>
+              <Label className="form-label" htmlFor="experiencelevel">
+                Experience Level
+              </Label>
+              <Input
+                type="text"
+                list="options"
+                name="experiencelevel"
+                id="experiencelevel"
+                placeholder="beginner"
+                onChange={(event) =>
+                  this.setState({ experiencelevel: event.target.value })
+                }
+              />
+              <select>
+  <option value="grapefruit">Grapefruit</option>
+  <option value="lime">Lime</option>
+  <option selected value="coconut">Coconut</option>
+  <option value="mango">Mango</option>
+</select>
+              {/* <datalist id="experiencelevel">
+                {this.state.options.map((option, index) => (
+                  <option key={index}>{option}</option>
+                ))}
+               
+              </datalist> */}
+            </InputGroup>
           </FormGroup>
 
           {/* LOCATION */}
           <FormGroup>
-            <Label className="form-label" htmlFor="location">
-              Location
-            </Label>
-            <Input
-              name="location"
-              placeholder="chicago"
-              type="text"
-              onChange={(event) =>
-                this.setState({ location: event.target.value })
-              }
-              value={this.state.location}
-            />
+            <InputGroup>
+              <Label className="form-label" htmlFor="location">
+                Location
+              </Label>
+              <Input
+                name="location"
+                placeholder="'Chicago'"
+                type="text"
+                onChange={(event) =>
+                  this.setState({ location: event.target.value })
+                }
+                value={this.state.location}
+              />
+            </InputGroup>
           </FormGroup>
 
           <br></br>
           <Button className="btn-auth" type="submit">
-            {" "}
             Update Profile
           </Button>
         </Form>
