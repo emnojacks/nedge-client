@@ -3,11 +3,11 @@ import { Component } from 'react';
 import Login from './Login';
 import Signup from './Signup';
 import { Button } from 'reactstrap'
-import {Climber} from '../../types/Types'
-import {Link } from 'react-router-dom'
+
 
 interface ValidateSessionProps {
-     updateSessionToken: (newToken: string) => void
+  updateSessionToken: (newToken: string) => void
+  setIsAdmin: (isAdmin: boolean) => void;
 }
  
 interface ValidateSessionState {
@@ -43,10 +43,13 @@ class ValidateSession extends Component<ValidateSessionProps, ValidateSessionSta
     return this.state.showsignup ? (
       <Signup
         updateSessionToken={this.props.updateSessionToken}
+        setIsAdmin={this.props.setIsAdmin}
         // setClimberProfile={this.setClimberProfile}
+     
       /> ) : 
       (<Login
         updateSessionToken={this.props.updateSessionToken}
+        setIsAdmin={this.props.setIsAdmin}
         // setClimberProfile={this.setClimberProfile}
       />
       )

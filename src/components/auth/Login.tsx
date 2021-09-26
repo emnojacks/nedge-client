@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import {Climber} from '../../types/Types'
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 let APIURL = "http://localhost:3000";
 
 interface LoginProps {
   updateSessionToken: (newToken: string) => void;
+  setIsAdmin: (isAdmin: boolean) => void;
   // setClimberProfile: (climber: Climber) => void
 }
 
@@ -23,7 +23,7 @@ class Login extends Component<LoginProps, LoginState> {
     };
   }
 
-    // setClimberProfile = (climber: Climber) => {
+  // setClimberProfile = (climber: Climber) => {
   //     this.setState({ climberProfile: climber })
   //   };
   
@@ -43,16 +43,17 @@ class Login extends Component<LoginProps, LoginState> {
     })
       .then((res) => res.json())
       .then((data) =>
-        //takes the session token from the response and passes it to the updatetoken object
-        {
-          //displays what message the server has programmed
-          window.alert(data.message);
-          if (data.sessionToken) {
-            this.props.updateSessionToken(data.sessionToken);
-// this.setClimberProfile()
-          }
+      //takes the session token from the response and passes it to the updatetoken object
+      {
+        //displays what message the server has programmed
+        window.alert(data.message);
+        if (data.sessionToken) {
+          this.props.updateSessionToken(data.sessionToken);
         }
-      )
+        if (data.isAdmin === true) {
+          this.props.setIsAdmin(data.isAdmin)
+        }
+      })
       .catch((error) => {
         console.log(error.message);
       });
@@ -88,7 +89,7 @@ class Login extends Component<LoginProps, LoginState> {
               pattern="^(?=.{5,10})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$"
               title="Password must be at least 6 characters, and contain at least 1 uppercase character, a lowercase character, a number, and a special character."
               name="password"
-              placeholder="S3cret!"
+              placeholder="S3crety!"
               aria-required="true"
               type="password"
               required

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, InputGroup, Button } from "reactstrap";
-import { Climber } from "../../types/Types";
 let APIURL = "http://localhost:3000";
 
 interface SignupProps {
   updateSessionToken: (newToken: string) => void;
-  // setClimberProfile: (climber: Climber) => void
+  setIsAdmin: (isAdmin: boolean) => void;
+//  updateSessionToken: (newToken: string, isAdmin: boolean) => void;
 }
 
 interface SignupState {
@@ -17,7 +17,7 @@ interface SignupState {
   experiencelevel: string;
   climbingtype: string;
   location: string;
-  // isAdmin: boolean
+  isAdmin: boolean
 }
 
 class Signup extends Component<SignupProps, SignupState> {
@@ -32,6 +32,7 @@ class Signup extends Component<SignupProps, SignupState> {
       experiencelevel: "",
       climbingtype: "",
       location: "",
+      isAdmin: false
     };
   }
 
@@ -48,6 +49,7 @@ class Signup extends Component<SignupProps, SignupState> {
           experiencelevel: this.state.experiencelevel,
           climbingtype: this.state.climbingtype,
           location: this.state.location,
+          isAdmin: this.state.isAdmin
         },
       }),
       headers: new Headers({
@@ -62,6 +64,9 @@ class Signup extends Component<SignupProps, SignupState> {
           window.alert(data.message);
           if (data.sessionToken) {
             this.props.updateSessionToken(data.sessionToken);
+            if (data.climber.isAdmin === true)
+              this.props.setIsAdmin(this.state.isAdmin)
+            // this.props.updateSessionToken(data.sessionToken, this.state.isAdmin);
           }
         }
       )
@@ -100,7 +105,7 @@ class Signup extends Component<SignupProps, SignupState> {
               pattern="^(?=.{5,10})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$"
               title="Password must be at least 6 characters, and contain at least 1 uppercase character, a lowercase character, a number, and a special character."
               name="password"
-              placeholder="S3cret!"
+              placeholder="S3crety!"
               type="password"
               aria-required="true"
               required
@@ -117,11 +122,14 @@ class Signup extends Component<SignupProps, SignupState> {
               Home Gym
               <select
                 name="gymname"
+                required
                 onChange={(event) =>
                   this.setState({ gymname: event.target.value })
                 }
               >
-                <option value="nonmember">real rock</option>
+                   <option value="Select your gym">
+                 Select your gym
+                </option>
                 <option value="Ball State University Indoor Climbing Wall">
                   Ball State University Indoor Climbing Wall
                 </option>
@@ -151,7 +159,20 @@ class Signup extends Component<SignupProps, SignupState> {
                 ))}
                
               </datalist> */}
-
+ <FormGroup>
+            <InputGroup>
+              <Label className="form-label" htmlFor="isAdmin">
+                Do you work at this gym?  All gym employees can set up an account with gym views.
+              </Label>
+              <Input
+                name="isAdmin"
+                type="checkbox"
+                onChange={() =>
+                  this.setState({ isAdmin: true })
+                }
+              />
+            </InputGroup>
+          </FormGroup>
           {/* NEEDPARTNER */}
           <FormGroup>
             <InputGroup>

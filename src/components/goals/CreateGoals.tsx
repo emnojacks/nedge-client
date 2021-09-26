@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button, ButtonGroup, Input, Form, FormGroup} from "reactstrap";
-import { Link } from "react-router-dom";
 let APIURL = "http://localhost:3000";
 
 interface CreateGoalsProps {
@@ -173,9 +172,4 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
 //and want user defined goals
 export default CreateGoals;
 
-// onClick={() => {
-//                           this.setState({
-//                               goaldescription: "work on technique"
-//                           });
-//                         this.onRadioBtnClick("work on technique")}
-//                       }
+

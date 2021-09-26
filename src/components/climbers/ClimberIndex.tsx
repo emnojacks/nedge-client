@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Component } from "react";
 import {
   Container,
@@ -11,7 +10,6 @@ import {
   CardFooter,
     Button,
 } from "reactstrap";
-import logo from'../../assets/logo.svg'
 import AdamOndra from "../../assets/profilepics/AdamOndra.jpeg";
 import AidClimber from "../../assets/profilepics/AidClimber.jpeg";
 import Alpinist from "../../assets/profilepics/Alpinist.jpeg";
@@ -27,6 +25,7 @@ let APIURL = "http://localhost:3000";
 
 interface ClimberIndexProps {
   sessionToken: string;
+  setIsAdmin: (isAdmin: boolean) => void;
 }
 
 interface ClimberIndexState {

@@ -7,7 +7,7 @@ import {
   CardFooter,
   CardTitle,
   CardText,
-  Container
+  Container,
 } from "reactstrap";
 import { Session } from "../../types/Types";
 let APIURL = "http://localhost:3000";
@@ -57,9 +57,7 @@ class DisplaySessions extends Component<
 
   componentDidMount() {}
 
-  componentDidUpdate() {
-  
-  }
+  componentDidUpdate() {}
 
   deleteSession = async (session: Session) => {
     console.log(session);
@@ -85,69 +83,74 @@ class DisplaySessions extends Component<
     console.log(this.props.climberSessions);
 
     return (
-        <div className="mainDiv">
+      <div className="mainDiv">
         <Container>
           <h1>Sessions</h1>
           <div className="session-display">
-          {this.props.climberSessions.length > 0 ? (
-          this.props.climberSessions.map((session: Session, index: number) => (
-           
-                      <Card key={session.id} style={{ backgroundColor: session.sessionsuccessful ? "#E8FFB3" : "#FFDED2"}}>
-                  <CardHeader tag="h5"
-                  >{session.sessiondate}</CardHeader>
-                  <CardBody>
-                    <CardTitle tag="h6">Session Deets</CardTitle>
+            {this.props.climberSessions.length > 0 ? (
+              this.props.climberSessions.map(
+                (session: Session, index: number) => (
+                  <Card
+                    key={session.id}
+                    style={{
+                      backgroundColor: session.sessionsuccessful
+                        ? "#E8FFB3"
+                        : "#FFDED2",
+                    }}
+                  >
+                    <CardHeader tag="h5">{session.sessiondate}</CardHeader>
+                    <CardBody>
+                      <CardTitle tag="h6">Deets</CardTitle>
 
-                    <CardText>
-                           {session.sessionlength} hr
-                      <br></br>
-                                  {session.sessionpartner ? " 👥 " : ""}
-                                    
+                      <CardText>
+                        {session.sessionlength} hr
+                        <br></br>
+                        {session.sessionpartner ? " 👥 " : ""}
                         {session.crosstraining ? " 🏋️" : " "}
+                        <br></br>
+                        <small className="text-muted">
+                          Nutrition{" "}
+                          {session.nutritioncondition >= "3" ? "✅" : "❌"}
                           <br></br>
-                      <small className="text-muted">
-                                      Nutrition {session.nutritioncondition >= "3" ? "✅" : "❌"}
-                                      <br></br>
-                                      Sleep  {session.sleepcondition >= "3" ? "✅" : "❌"}
-                                      <br></br>
-                                      Stress {session.stresscondition  >= "3" ? "✅" : "❌"}
-                                      <br></br>
-                                      Ego {session.egocondition  >= "3" ? "✅" : "❌"}
-                                      <br></br>
-                      </small>
-  <br></br>
-                 {session.sessionnotes}
-                    </CardText>
-              
-                  </CardBody>
-                  <CardFooter>
-                  
-                              <Button
-                                  color="secondary"
-                      onClick={() => {
-                        this.props.setSessionToUpdate(session);
-                        this.props.openModal();
-                      }}
-                    >
-                      ✏️
-                </Button>
-                {" "}
-                              <Button
-                                  color="warning"
-                                  onClick={() => this.deleteSession(session)}>
-                     🚫
-                    </Button>
-              </CardFooter>
-                </Card>
-          ))
-        ) : (
-          <p>
-            Your session log is empty. Log your first session to start building
-            your session data.
-          </p>
-          )}
+                          Sleep {session.sleepcondition >= "3" ? "✅" : "❌"}
+                          <br></br>
+                          Stress {session.stresscondition >= "3" ? "✅" : "❌"}
+                          <br></br>
+                          Ego {session.egocondition >= "3" ? "✅" : "❌"}
+                          <br></br>
+                        </small>
+                        <br></br>
+                        {session.sessionnotes}
+                      </CardText>
+                    </CardBody>
+                    <CardFooter>
+                      <Button
+                        color="secondary"
+                        onClick={() => {
+                          this.props.setSessionToUpdate(session);
+                          this.props.openModal();
+                        }}
+                      >
+                        ✏️
+                      </Button>{" "}
+                      <Button
+                        color="warning"
+                        onClick={() => this.deleteSession(session)}
+                      >
+                        🚫
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                )
+              )
+            ) : (
+              <p>
+                Your session log is empty. Log your first session to start
+                building your session data.
+              </p>
+            )}
           </div>
-</Container>
+        </Container>
       </div>
     );
   }
