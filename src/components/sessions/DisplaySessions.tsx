@@ -59,7 +59,9 @@ class DisplaySessions extends Component<
 
   componentDidMount() {}
 
-  componentDidUpdate() {}
+  componentDidUpdate() {
+  
+  }
 
   deleteSession = async (session: Session) => {
     console.log(session);

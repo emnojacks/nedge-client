@@ -35,6 +35,8 @@ text-transform: capitalize;
   }
 }
 
+/* .climber-profile-card {
+border-radius: 3em!important;} */
 /* .goal-btn:focus {
 background-color: orange!important;
 }
@@ -51,4 +53,20 @@ background-color: orange!important;
 .btn-nav {
 margin-left: 1em;
 margin-bottom: .5em;
+}
+
+.climber-profile-card {
+border-bottom-right-radius: 1em!important;
+border-bottom-left-radius: 1em!important;
+max-width: min-content;
+max-height: min-content;
+border-style: none!important;
+}
+
+
+#profilePic {
+border-bottom-right-radius: 0em;
+border-bottom-left-radius: 0em;
+border-top-left-radius: 1em;
+border-top-right-radius: 1em;
 }

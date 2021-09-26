@@ -41,7 +41,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
 
   handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    fetch(`${APIURL}/session/create/`, {
+    fetch(`${APIURL}/session/create`, {
       method: "POST",
       body: JSON.stringify({
         session: {
@@ -65,13 +65,13 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
       .then((res) => res.json())
       .then((data) => {
         console.log("session logged");
-        // window.alert("session logged")
+        this.props.fetchClimberSessions();
       })
       .catch((error) => {
         console.log(error.message);
         window.alert("failed to log session");
-      });
-    this.props.fetchClimberSessions();
+      })
+    
   };
 
   render() {
@@ -191,7 +191,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
           {/* SLEEPCONDITION */}
           <FormGroup>
             <Label className="form-label" htmlFor="sleepcondition">
-              Sleep
+              Sleep 
             </Label>
             &nbsp;
             <Input

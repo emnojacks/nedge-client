@@ -37,7 +37,7 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
     fetchClimberGoals = async () => {
         try {
             console.log("fetching climber goals");
-            const res = await fetch(`${APIURL}/goal/mine/`, {
+            const res = await fetch(`${APIURL}/goal/mine`, {
                 method: "GET",
                 headers: new Headers({
                     "Content-Type": "application/json",

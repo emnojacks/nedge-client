@@ -42,7 +42,7 @@ class SessionIndex extends Component<SessionIndexProps, SessionIndexState> {
     fetchClimberSessions = async () => {
         try {
             console.log("fetching climber sessions");
-            const res = await fetch(`${APIURL}/session/mine/`, {
+            const res = await fetch(`${APIURL}/session/mine`, {
                 method: "GET",
                 headers: new Headers({
                     "Content-Type": "application/json",

@@ -26,6 +26,7 @@ export type Climber = {
     gymname?: string
     needpartner?: boolean
     experiencelevel?: string
+    climbingtype?: string
     location?: string
     isAdmin?: boolean
 }

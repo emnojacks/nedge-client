@@ -5,28 +5,25 @@ import {
   Label,
   Input,
   Button,
-  DropdownToggle,
-  DropdownItem,
   InputGroup,
-  InputGroupButtonDropdown,
 } from "reactstrap";
-import { IndexKind } from "typescript";
 import { Climber } from "../../types/Types";
 let APIURL = "http://localhost:3000";
 
 interface UpdateProfileProps {
   sessionToken: string;
-  climberProfile: Climber;
+  climberProfile: { [key: string]: any }
   fetchClimberProfile: () => void;
 }
 
 interface UpdateProfileState {
   id: number;
-  gymname: string | undefined;
-  needpartner: boolean | undefined;
-  experiencelevel: string | undefined;
-  location: string | undefined;
-  options: Array<string>;
+  gymname?: string;
+  needpartner?: boolean;
+  experiencelevel?: string;
+  climbingtype?: string;
+  location?: string;
+  // options: Array<string>;
 }
 
 class UpdateProfile extends Component<UpdateProfileProps, UpdateProfileState> {
@@ -37,15 +34,18 @@ class UpdateProfile extends Component<UpdateProfileProps, UpdateProfileState> {
       gymname: this.props.climberProfile.gymname,
       needpartner: this.props.climberProfile.needpartner,
       experiencelevel: this.props.climberProfile.experiencelevel,
+      climbingtype: this.props.climberProfile.climbingtype,
       location: this.props.climberProfile.location,
-      options: [
-        "noob",
-        "gumby but psyched",
-        "intermediate",
-        "veteran",
-        "ondra",
-      ],
     };
+  }
+
+  handleChange=(event: React.ChangeEvent<HTMLInputElement>): void=>{
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+    this.setState({
+      [name]: value,
+    } as unknown as Pick<Climber, keyof Climber>);
   }
 
   handleSubmit = (event: React.FormEvent): void => {
@@ -57,6 +57,7 @@ class UpdateProfile extends Component<UpdateProfileProps, UpdateProfileState> {
           gymname: this.props.climberProfile.gymname,
           needpartner: this.props.climberProfile.needpartner,
           experiencelevel: this.props.climberProfile.experiencelevel,
+          climbingtype: this.props.climberProfile.climbingtype,
           location: this.props.climberProfile.location,
         },
       }),
@@ -88,11 +89,9 @@ class UpdateProfile extends Component<UpdateProfileProps, UpdateProfileState> {
               </Label>
               <Input
                 name="gymname"
-                placeholder="'climb time'"
+                placeholder="'Climb Time'"
                 type="text"
-                onChange={(event) =>
-                  this.setState({ gymname: event.target.value })
-                }
+                onChange={this.handleChange}
                 value={this.state.gymname}
               />
             </InputGroup>
@@ -102,12 +101,12 @@ class UpdateProfile extends Component<UpdateProfileProps, UpdateProfileState> {
           <FormGroup>
             <InputGroup>
               <Label className="form-label" htmlFor="needpartner">
-                Need a Partner?
+                Need a Belay?
               </Label>
               <Input
                 name="needpartner"
                 type="checkbox"
-                onChange={() => this.setState({ needpartner: true })}
+                onChange={this.handleChange}
               />
             </InputGroup>
           </FormGroup>
@@ -117,23 +116,20 @@ class UpdateProfile extends Component<UpdateProfileProps, UpdateProfileState> {
             <InputGroup>
               <Label className="form-label" htmlFor="experiencelevel">
                 Experience Level
+                <select
+                  name="experiencelevel"
+                  onChange={(event) =>
+                    this.setState({ experiencelevel: event.target.value })
+                  }
+                >
+                  <option value="noob">noob - gumby </option>
+                  <option value="gumby but psyched">
+                    intermediate - weekend warrior
+                  </option>
+                  <option value="veteran">incumbent dirtbag</option>
+                  <option value="veteran">seasoned veteran - trad dad</option>
+                </select>
               </Label>
-              <Input
-                type="text"
-                list="options"
-                name="experiencelevel"
-                id="experiencelevel"
-                placeholder="beginner"
-                onChange={(event) =>
-                  this.setState({ experiencelevel: event.target.value })
-                }
-              />
-              <select>
-  <option value="grapefruit">Grapefruit</option>
-  <option value="lime">Lime</option>
-  <option selected value="coconut">Coconut</option>
-  <option value="mango">Mango</option>
-</select>
               {/* <datalist id="experiencelevel">
                 {this.state.options.map((option, index) => (
                   <option key={index}>{option}</option>
@@ -145,26 +141,41 @@ class UpdateProfile extends Component<UpdateProfileProps, UpdateProfileState> {
 
           {/* LOCATION */}
           <FormGroup>
+            <Label className="form-label" htmlFor="experiencelevel">
+              What are you psyched on?
+              <select
+                name="experiencelevel"
+                onChange={(event) =>
+                  this.setState({ climbingtype: event.target.value })
+                }
+              >
+                <option value="bouldering">booldering</option>
+                <option value="sport">clipping bolts</option>
+                <option value="trad">plugging gear</option>
+                <option value="ice">picking ice</option>
+                <option value="alpine">big wall</option>
+              </select>
+            </Label>
+          </FormGroup>
+
+          {/* LOCATION */}
+          <FormGroup>
             <InputGroup>
               <Label className="form-label" htmlFor="location">
-                Location
+                City
               </Label>
               <Input
                 name="location"
                 placeholder="'Chicago'"
                 type="text"
-                onChange={(event) =>
-                  this.setState({ location: event.target.value })
-                }
+                onChange={this.handleChange}
                 value={this.state.location}
               />
             </InputGroup>
           </FormGroup>
 
           <br></br>
-          <Button className="btn-auth" type="submit">
-            Update Profile
-          </Button>
+          <Button type="submit">Update Climber Profile</Button>
         </Form>
         <br></br>
       </div>

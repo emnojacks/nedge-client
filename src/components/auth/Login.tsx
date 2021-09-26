@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import {Climber} from '../../types/Types'
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 let APIURL = "http://localhost:3000";
 
 interface LoginProps {
   updateSessionToken: (newToken: string) => void;
+  // setClimberProfile: (climber: Climber) => void
 }
 
 interface LoginState {
@@ -21,6 +23,10 @@ class Login extends Component<LoginProps, LoginState> {
     };
   }
 
+    // setClimberProfile = (climber: Climber) => {
+  //     this.setState({ climberProfile: climber })
+  //   };
+  
   handleSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
     fetch(`${APIURL}/climber/login`, {
@@ -43,6 +49,7 @@ class Login extends Component<LoginProps, LoginState> {
           window.alert(data.message);
           if (data.sessionToken) {
             this.props.updateSessionToken(data.sessionToken);
+// this.setClimberProfile()
           }
         }
       )
@@ -54,7 +61,7 @@ class Login extends Component<LoginProps, LoginState> {
   render() {
     return (
       <div>
-        <h1>Climber LogIn</h1>
+        <h1>Climber Log In</h1>
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
             <Label className="form-label" htmlFor="username">
