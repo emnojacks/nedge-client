@@ -7,8 +7,6 @@ import {
   CardFooter,
   CardTitle,
   CardText,
-  Row,
-    Col,
   Container
 } from "reactstrap";
 import { Session } from "../../types/Types";
@@ -87,38 +85,43 @@ class DisplaySessions extends Component<
     console.log(this.props.climberSessions);
 
     return (
-        <div className="session-display">
-            <Container>
-        <h1>Sessions</h1>
-        {this.props.climberSessions.length > 0 ? (
+        <div className="mainDiv">
+        <Container>
+          <h1>Sessions</h1>
+          <div className="session-display">
+          {this.props.climberSessions.length > 0 ? (
           this.props.climberSessions.map((session: Session, index: number) => (
-            // <Row key={index}>
-            //   <Col sm="3">
+           
                       <Card key={session.id} style={{ backgroundColor: session.sessionsuccessful ? "#E8FFB3" : "#FFDED2"}}>
-                  <CardHeader tag="h4"
-                  style={{ fontWeight: "bold" }}
+                  <CardHeader tag="h5"
                   >{session.sessiondate}</CardHeader>
                   <CardBody>
-                    <CardTitle tag="h5">Session Deets</CardTitle>
+                    <CardTitle tag="h6">Session Deets</CardTitle>
 
                     <CardText>
-                          Length: {session.sessionlength} hrs
+                           {session.sessionlength} hr
                       <br></br>
-                                  {session.sessionpartner ? "Partnered 👥 " : ""}
-                                         <br></br>
-                        {session.crosstraining ? "Crosstrained: 🏋️" : " "}
+                                  {session.sessionpartner ? " 👥 " : ""}
+                                    
+                        {session.crosstraining ? " 🏋️" : " "}
                           <br></br>
                       <small className="text-muted">
-                                      Nutrition: {session.nutritioncondition >= "3" ? "✅" : "❌"}
+                                      Nutrition {session.nutritioncondition >= "3" ? "✅" : "❌"}
                                       <br></br>
-                                      Sleep:  {session.sleepcondition >= "3" ? "✅" : "❌"}
+                                      Sleep  {session.sleepcondition >= "3" ? "✅" : "❌"}
                                       <br></br>
-                                      Stress: {session.stresscondition  >= "3" ? "✅" : "❌"}
+                                      Stress {session.stresscondition  >= "3" ? "✅" : "❌"}
                                       <br></br>
-                                      Ego: {session.egocondition  >= "3" ? "✅" : "❌"}
+                                      Ego {session.egocondition  >= "3" ? "✅" : "❌"}
                                       <br></br>
                       </small>
+  <br></br>
+                 {session.sessionnotes}
                     </CardText>
+              
+                  </CardBody>
+                  <CardFooter>
+                  
                               <Button
                                   color="secondary"
                       onClick={() => {
@@ -126,27 +129,24 @@ class DisplaySessions extends Component<
                         this.props.openModal();
                       }}
                     >
-                      Edit
-                    </Button>
+                      ✏️
+                </Button>
+                {" "}
                               <Button
                                   color="warning"
                                   onClick={() => this.deleteSession(session)}>
-                      Remove
+                     🚫
                     </Button>
-                  </CardBody>
-                  <CardFooter
-                      tag="h6"
-                      style={{ fontWeight: "bold" }}> {session.sessionnotes}</CardFooter>
+              </CardFooter>
                 </Card>
-            //       {/* </Col>
-            // </Row> */}
           ))
         ) : (
           <p>
             Your session log is empty. Log your first session to start building
             your session data.
           </p>
-        )}
+          )}
+          </div>
 </Container>
       </div>
     );

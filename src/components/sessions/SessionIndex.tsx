@@ -40,6 +40,8 @@ class SessionIndex extends Component<SessionIndexProps, SessionIndexState> {
     }
     
     fetchClimberSessions = async () => {
+        this.state.climberSessions.length = 260;
+        console.log(this.state.climberSessions)
         try {
             console.log("fetching climber sessions");
             const res = await fetch(`${APIURL}/session/mine`, {

@@ -71,15 +71,16 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
     console.log(this.props.climberGoals);
 
     return (
-      <div className="goal-display">
+      <div className="mainDiv">
         <Container>
           <h1>Goal Deck</h1>
+           <div className="goal-display">
           {this.props.climberGoals.length > 0 ? (
             this.props.climberGoals.map((goal: Goal, index: number) => (
               <Row key={index}>
                 <Col sm="7">
                   <Card key={goal.id}>
-                    <CardHeader> priority: {goal.goalpriority}</CardHeader>
+                    <CardHeader> Priority #{goal.goalpriority}</CardHeader>
                     <CardBody>
                       <CardTitle tag="h6">
                         {/* {index + 1} */}
@@ -92,7 +93,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                         color="success"
                         onClick={() => this.deleteGoal(goal)}
                       >
-                       Done
+                       ✅
                                 </Button>
                                 &nbsp;
                                  <Button
@@ -102,7 +103,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                           this.props.openModal();
                         }}
                       >
-                        Change
+                         ✏️
                       </Button>
                             </CardFooter>
                   </Card>
@@ -115,6 +116,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
               climber you want to be.
             </p>
           )}
+  </div>
         </Container>
       </div>
     );

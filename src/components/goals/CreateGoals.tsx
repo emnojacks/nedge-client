@@ -62,10 +62,10 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
   render() {
     return (
       <div>
-        <h1>Set Goals</h1>
-        <h5>Set a common climbing goal or create you own.</h5>
+        <h1>Set a Goal</h1>
         <p>
-          It's not realistic to work on more than 3 goals at a time so don't go
+          Set a common climbing goal or create you own.
+          P.S. It's not realistic to work on more than 3 goals at a time so don't go
           crazy, Ondra.{" "}
         </p>
         <Form onSubmit={this.handleSubmit}>

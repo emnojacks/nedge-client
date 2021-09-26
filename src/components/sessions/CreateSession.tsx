@@ -65,20 +65,46 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
       .then((res) => res.json())
       .then((data) => {
         console.log("session logged");
+        // this.setState({
+        //   sessiondate: "",
+        //   sessionsuccessful: false,
+        //   sessionlength: "",
+        //   sessionpartner: false,
+        //   crosstraining: false,
+        //   nutritioncondition: "",
+        //   sleepcondition: "",
+        //   stresscondition: "",
+        //   egocondition: "",
+        //   sessionnotes: " ",
+        // });
+        // this.clearInputs();
         this.props.fetchClimberSessions();
       })
       .catch((error) => {
         console.log(error.message);
         window.alert("failed to log session");
-      })
-    
+      });
+  };
+
+  clearInputs = () => {
+    this.setState({
+      sessiondate: "",
+      sessionsuccessful: false,
+      sessionlength: "",
+      sessionpartner: false,
+      crosstraining: false,
+      nutritioncondition: "",
+      sleepcondition: "",
+      stresscondition: "",
+      egocondition: "",
+      sessionnotes: " ",
+    });
   };
 
   render() {
     return (
       <div>
-        <h1>Log a Session</h1>
-        <h5>Log your climbing session today.</h5>
+        <h1>Today's Session</h1>
 
         <Form onSubmit={this.handleSubmit}>
           {/* SESSION DATE */}
@@ -191,7 +217,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
           {/* SLEEPCONDITION */}
           <FormGroup>
             <Label className="form-label" htmlFor="sleepcondition">
-              Sleep 
+              Sleep
             </Label>
             &nbsp;
             <Input
@@ -259,6 +285,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
               placeholder="deets to help you recall sesh"
               type="text"
               title="what happened that was memorable? Recording deets will help you remember why this sesh was diff than the rest."
+              maxLength={50}
               onBlur={(event: React.ChangeEvent<HTMLInputElement>) =>
                 this.setState({
                   sessionnotes: event.target.value,

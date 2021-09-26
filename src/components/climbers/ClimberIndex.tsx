@@ -4,13 +4,12 @@ import {
   Container,
   Card,
   CardImg,
-  CardText,
   CardBody,
   CardTitle,
   CardSubtitle,
   CardHeader,
   CardFooter,
-  Button,
+    Button,
 } from "reactstrap";
 import logo from'../../assets/logo.svg'
 import AdamOndra from "../../assets/profilepics/AdamOndra.jpeg";
@@ -139,12 +138,12 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                         src={this.state.profilePic}
                         alt="Card image cap"
                     />
-                     <CardHeader tag="h3">
+                     <CardHeader tag="h4">
               {this.state.climberProfile.username}
             </CardHeader>
             <CardBody>
               <CardTitle tag="h5">
-                {this.state.climberProfile.experiencelevel} |{" "}
+                            {this.state.climberProfile.experiencelevel}{" "}
                 {this.state.climberProfile.climbingtype}
               </CardTitle>
               <CardSubtitle tag="h6" className="mb-2 text-muted">

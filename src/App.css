@@ -70,3 +70,16 @@ border-bottom-left-radius: 0em;
 border-top-left-radius: 1em;
 border-top-right-radius: 1em;
 }
+
+.session-display{
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+grid-template-rows: 1fr 1fr;
+}
+
+.goal-display{
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: 1fr 1fr;
+
+}

@@ -143,6 +143,7 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
                 max={7}
                 min={0.5}
                 step={0.5}
+                value={this.state.sessionlength}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                   this.setState({ sessionlength: event.target.value })
                 }
