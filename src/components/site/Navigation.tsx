@@ -6,10 +6,9 @@ import {
   Navbar,
   NavItem,
   NavbarBrand,
-  //NavbarText,
   Button,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 
 interface NavigationProps {
@@ -70,6 +69,12 @@ class Navigation extends Component<NavigationProps, NavigationState> {
               >
                 Logout
               </Button>
+              
+                      <NavLink to='/'
+             
+              >
+                Home
+              </NavLink>
             </NavItem>
           </Nav>
         </Collapse>

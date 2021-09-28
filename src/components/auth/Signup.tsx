@@ -66,6 +66,7 @@ class Signup extends Component<SignupProps, SignupState> {
             this.props.updateSessionToken(data.sessionToken);
             if (data.climber.isAdmin === true)
               this.props.setIsAdmin(this.state.isAdmin)
+             console.log("climber set to admin via signup")
             // this.props.updateSessionToken(data.sessionToken, this.state.isAdmin);
           }
         }

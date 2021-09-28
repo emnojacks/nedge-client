@@ -52,6 +52,7 @@ class Login extends Component<LoginProps, LoginState> {
         }
         if (data.isAdmin === true) {
           this.props.setIsAdmin(data.isAdmin)
+          console.log("climber set to admin via login")
         }
       })
       .catch((error) => {

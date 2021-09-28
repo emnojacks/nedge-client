@@ -11,7 +11,8 @@ import ClimberIndex from "./components/climbers/ClimberIndex";
 import SessionIndex from "./components/sessions/SessionIndex";
 import GoalIndex from "./components/goals/GoalIndex";
 import GymIndex from "./components/gyms/GymIndex";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NotFound from './components/site/NotFound'
+import { BrowserRouter as Switch, Route } from "react-router-dom";
 
 interface AppProps {
   // sessionToken: string,
@@ -83,7 +84,7 @@ class App extends Component<AppProps, AppState> {
       />
     );
   };
-
+  
   // gymViews = (): JSX.Element => {
   //   return this.state.sessionToken === localStorage.getItem("token") ?
   //     (<GymIndex
@@ -114,27 +115,39 @@ class App extends Component<AppProps, AppState> {
           <h1 className="appheader">NEDGE</h1>
         </header>
         <div>
-          <Router>
-            {/* //ternary to display gym login or climber login */}
-            {this.state.sessionToken && (
-              <Navigation
-                clearSessionToken={this.clearSessionToken}
-                sessionToken={this.state.sessionToken}
-                updateSessionToken={this.updateSessionToken}
+       
+          {this.state.sessionToken && (
+            <Navigation
+              clearSessionToken={this.clearSessionToken}
+              sessionToken={this.state.sessionToken}
+              updateSessionToken={this.updateSessionToken}
+            />
+          )}
+          <Switch>
+            <Route exact path="/">
+              {this.climberViews}
+            </Route>
+            <Route path="/climber/sessions">
+              <SessionIndex sessionToken={this.state.sessionToken} />
+            </Route>
+            <Route exact path="/climber/goals">
+              <GoalIndex sessionToken={this.state.sessionToken} />
+            </Route>
+            <Route exact path="/gym">
+              <GymIndex sessionToken={this.state.sessionToken}
               />
-            )}
-            <Switch>
-              <Route exact path="/">
-                {this.climberViews}
+            </Route>
+             {this.state.isAdmin && (
+            <Route exact path="/gym">
+              <GymIndex sessionToken={this.state.sessionToken}
+              />
               </Route>
-              <Route path="/climber/sessions"
-              component={SessionIndex}
-              />
-              <Route exact path="/climber/goals" component={GoalIndex} />
-              <Route exact path="/gym" component={GymIndex} />
-              {/* {this.gymViews} */}
-            </Switch>
-          </Router>
+            )}
+            <Route path="*">
+<NotFound 
+ sessionToken={this.state.sessionToken} />
+            </Route>
+          </Switch>
           <Footer />
         </div>
       </div>
@@ -143,10 +156,3 @@ class App extends Component<AppProps, AppState> {
 }
 
 export default App;
-
-//           <Router>
-//             {/* //ternary to display gym login or climber login */}
-//             {this.state.sessionToken}
-// {/* //               ?
-// //               <Redirect to='/home' /> :
-// //               <Redirect to="/auth" />
