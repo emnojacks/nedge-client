@@ -84,23 +84,19 @@ class App extends Component<AppProps, AppState> {
     );
   };
   
-  // gymViews = (): JSX.Element => {
-  //   return this.state.sessionToken === localStorage.getItem("token") ?
-  //     (<GymIndex
-  //       sessionToken={this.state.sessionToken} />)
-  //     : (<ValidateSessionAdmin
-  //       updateSessionToken = {this.updateSessionToken}/>)
-  // }
 
-  // gymViews = (): JSX.Element => {
-  //  return localStorage.getItem('isAdmin') === 'true' ?
-  //    (<GymIndex
-  //       setIsAdmin={this.setIsAdmin}
-  //       sessionToken={this.state.sessionToken} />)
-  //    : (<ValidateSession
-  //       setIsAdmin={this.setIsAdmin}
-  //       updateSessionToken = {this.updateSessionToken}/>)
-  // }
+  gymViews = (): JSX.Element => {
+   return this.state.isAdmin === true ?
+     (<GymIndex
+       setIsAdmin={this.setIsAdmin}
+       isAdmin={this.state.isAdmin}
+        sessionToken={this.state.sessionToken} />)
+     : (
+       <ClimberIndex
+          sessionToken={this.state.sessionToken}
+           setIsAdmin={this.setIsAdmin}
+     />
+     )}
 
   //use token to determine which views are appropriate
   //query after they have signed in - what is the user role
@@ -137,9 +133,12 @@ class App extends Component<AppProps, AppState> {
             </Route>
            
               <Route exact path="/gym">
-              <GymIndex sessionToken={this.state.sessionToken}
+              {/* <GymIndex
+                setIsAdmin={this.setIsAdmin}
+                sessionToken={this.state.sessionToken}
                 isAdmin = {this.state.isAdmin}
-                />
+                /> */}
+              {this.gymViews}
               </Route>
           </Switch>
      </Container>

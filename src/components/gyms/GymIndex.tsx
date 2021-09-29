@@ -17,7 +17,8 @@ let APIURL = "http://localhost:3000";
 
 interface GymIndexProps {
   sessionToken: string;
-  isAdmin: boolean
+  isAdmin: boolean;
+  setIsAdmin: (isAdmin: boolean) => void;
 }
 
 interface GymIndexState {
