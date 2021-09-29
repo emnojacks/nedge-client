@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Form, FormGroup, Label, Input, Button, Container, InputGroup } from "reactstrap";
 let APIURL = "http://localhost:3000";
 
 interface LoginProps {
@@ -65,15 +65,21 @@ class Login extends Component<LoginProps, LoginState> {
   render() {
     return (
       <div>
+        <Container>
         <h1>Climber Log In</h1>
         <Form onSubmit={this.handleSubmit}>
-          <FormGroup>
-            <Label className="form-label" htmlFor="username">
-              username
-            </Label>
-            <Input
+            <FormGroup row>
+              <InputGroup className="sign-up-input-grp">
+              <Label className="form-label" htmlFor="username" 
+                style={{ marginRight: "1em"}}
+              >
+                username
+              </Label>
+              
+              <Input
+                className="sign-up-input-area"
               name="username"
-              placeholder="alexhandhold"
+              placeholder="AlexHandhold"
               type="text"
               aria-required="true"
               required
@@ -81,14 +87,19 @@ class Login extends Component<LoginProps, LoginState> {
                 this.setState({ username: event.target.value })
               }
               value={this.state.username}
-            />
+            /> 
+</InputGroup>
           </FormGroup>
-
-          <FormGroup>
-            <Label className="form-label" htmlFor="password">
+<br></br>
+            <FormGroup row>
+              <InputGroup className="sign-up-input-grp">
+              <Label className="form-label" htmlFor="password" 
+              style={{marginRight: "1em"}}>
               password
-            </Label>
-            <Input
+              </Label>
+      
+              <Input
+                   className="sign-up-input-area"
               pattern="^(?=.{5,10})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$"
               title="Password must be at least 6 characters, and contain at least 1 uppercase character, a lowercase character, a number, and a special character."
               name="password"
@@ -102,13 +113,17 @@ class Login extends Component<LoginProps, LoginState> {
               }
               value={this.state.password}
             />
+</InputGroup>
           </FormGroup>
           <br></br>
-          <Button className="btn-auth" type="submit">
+            <Button
+              className="btn-auth" type="submit"
+              color="warning">
             {" "}
             Login
           </Button>
         </Form>
+</Container>
         <br></br>
       </div>
     );

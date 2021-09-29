@@ -1,5 +1,22 @@
+/* Colors */
+:root {
+--soft-white: #FFFAF6;
+--mango-tango: #F08A4B;
+--middle-red: #d78a76;
+--yellow-orange: #f2a541;
+--maize-crayola: #F3CA40;
+--queen-blue: #577590;
+--burnt-orange: #BD520F;
+--shadow-blue: #6787A2;
+--dark-electric-blue: #465F72;
+--logo-orange: #df9627;
+}
+
 .App {
-  text-align: center;
+/* text-align: center; */
+color: var(--soft-white)!important;
+font-family: 'Fira Sans Condensed', sans-serif;
+background-color: var(--queen-blue)!important;
 }
 
 .App-logo {
@@ -22,19 +39,9 @@ font-family:  'Fira Sans Condensed', sans-serif;
 text-transform: capitalize;
 }
 
-.App-link {
-  color: #61dafb;
+.navBar {
+background-color: var(--queen-blue)!important;
 }
-
-/* .climber-profile-card {
-border-radius: 3em!important;} */
-/* .goal-btn:focus {
-background-color: orange!important;
-}
-
-.goal-btn:hover {
-background-color: orange!important;
-} */
 
 .text-input {
   width: 50vw!important;
@@ -44,16 +51,28 @@ background-color: orange!important;
 .btn-nav {
 margin-left: 1em;
 margin-bottom: .5em;
+background-color: var(--logo-orange)!important;
+}
+
+.btn-nav :hover{
+background-color: var(--middle-red)!important;
+}
+
+h1{
+padding-top: .7em;
 }
 
 .climber-profile-card {
 border-bottom-right-radius: 1em!important;
 border-bottom-left-radius: 1em!important;
+border-top-left-radius: 1em!important;
+border-top-right-radius: 1em!important;
 max-width: min-content;
 max-height: min-content;
 border-style: none!important;
+margin: 1em;
+background-color: var(--logo-orange)!important;
 }
-
 
 #profilePic {
 border-bottom-right-radius: 0em;
@@ -72,5 +91,35 @@ grid-template-rows: 1fr 1fr;
 display: grid;
 grid-template-columns: repeat(2, 1fr);
 grid-template-rows: 1fr 1fr;
+}
 
+a {
+text-decoration: none!important;
+color: var(--soft-white)!important;
+}
+
+.btn-link-auth-toggle {
+color: var(--yellow-orange)!important;
+}
+
+.btn-auth {
+background-color: var(--yellow-orange)!important;
+}
+
+.sign-up-input-grp {
+border-radius: 1em;
+border: solid .2em var(--shadow-blue);
+padding-bottom: .3em;
+}
+
+.sign-up-input-area {
+background-color: transparent!important;
+border-style: none!important;
+font-weight: bolder!important;
+color: var(--soft-white)!important;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color:var(--soft-white)!important;
+  opacity: 1; /* Firefox */
 }

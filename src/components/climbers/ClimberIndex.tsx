@@ -6,9 +6,7 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle,
-  CardHeader,
-  CardFooter,
-  Button,
+  CardHeader
 } from "reactstrap";
 import AdamOndra from "../../assets/profilepics/AdamOndra.jpeg";
 import AidClimber from "../../assets/profilepics/AidClimber.jpeg";
@@ -18,10 +16,10 @@ import DanielWoods from "../../assets/profilepics/DanielWoods.webp";
 import RoyalRobbins from "../../assets/profilepics/RoyalRobbins.webp";
 import SadoCracktivist from "../../assets/profilepics/SadoCracktivist.jpeg";
 import IcePicker from "../../assets/profilepics/IcePicker.jpg";
-import SessionIndex from "../sessions/SessionIndex";
+import { Avatar } from '@mui/material';
 import { Climber } from "../../types/Types";
-import GoalIndex from "../goals/GoalIndex";
 let APIURL = "http://localhost:3000";
+
 
 interface ClimberIndexProps {
   sessionToken: string;
@@ -124,6 +122,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
 
   render() {
     return (
+      
       <Container>
         <div>
           <Card className="climber-profile-card">
@@ -146,11 +145,6 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                 {this.state.climberProfile.location}{" "}
               </CardSubtitle>
             </CardBody>
-            {/* <CardFooter>
-              <Button size="sm" className="btn-profile-edit">
-                Edit
-              </Button>
-            </CardFooter> */}
           </Card>
         </div>
       </Container>

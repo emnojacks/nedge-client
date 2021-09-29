@@ -18,53 +18,72 @@ interface NavigationProps {
 }
 
 interface NavigationState {
-  isOpen: boolean;
+  isCollapsed: boolean;
 }
 
 class Navigation extends Component<NavigationProps, NavigationState> {
   constructor(props: NavigationProps) {
     super(props);
     this.state = {
-      isOpen: false,
+      isCollapsed: false,
     };
   }
   toggleNavbar = () => {
     this.setState({
-      isOpen: !this.state.isOpen,
+      isCollapsed: !this.state.isCollapsed,
     });
   };
 
   render() {
     return (
       //NAV LOGO
-      <Navbar color="light" expand="sm">
+      <Navbar expand="sm" color="faded" light className="navBar">
         <NavbarBrand style={{ marginLeft: "1em" }}>
           <img src={logo} alt="nedge logo" height="32px" width="32px"></img>
-          &nbsp; NEDGE
-          
+          &nbsp;
         </NavbarBrand>
         {/* TOGGLE HAMBURGER */}
-        <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-        <Collapse isOpen={this.state.isOpen} navbar>
+
+        <NavbarToggler
+          style={{ marginRight: "1em" }}
+          onClick={this.toggleNavbar}
+          className="mr-2"
+        />
+
+        <Collapse isOpen={this.state.isCollapsed} navbar>
           {/* GOALS LINK */}
           <Nav navbar>
-              <NavItem>
-              <Link to="/">Home</Link>
-            </NavItem>
             <NavItem>
-              <Link to="/climber/goals">Goals</Link>
+              <Button size="sm" color="warning" className="btn-nav">
+                <Link to="/">Home</Link>
+              </Button>
             </NavItem>
+
+            <NavItem>
+              <Button size="sm" color="warning" className="btn-nav">
+                <Link to="/climber/goals">Goals</Link>
+              </Button>
+            </NavItem>
+
             {/* SESSIONS LINK */}
+
             <NavItem>
-              <Link to="/climber/sessions">Sessions</Link>
+              <Button size="sm" color="warning" className="btn-nav">
+                <Link to="/climber/sessions">Sessions</Link>
+              </Button>
             </NavItem>
+
             {/* GYM VIEW LINK */}
             <NavItem>
-              <Link to="/gym">Gym View</Link>
+              <Button size="sm" color="warning" className="btn-nav">
+                <Link to="/gym">Gym View</Link>
+              </Button>
             </NavItem>
- {/* LOGOUT LINK */}
+            {/* LOGOUT LINK */}
             <NavItem>
               <Button
+                size="sm"
+                color="warning"
                 className="btn-nav"
                 onClick={this.props.clearSessionToken}
               >

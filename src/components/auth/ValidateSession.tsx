@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import Login from './Login';
 import Signup from './Signup';
-import { Button } from 'reactstrap'
+import { Button, Col, Row, Container } from 'reactstrap'
 
 
 interface ValidateSessionProps {
@@ -45,7 +45,6 @@ class ValidateSession extends Component<ValidateSessionProps, ValidateSessionSta
         updateSessionToken={this.props.updateSessionToken}
         setIsAdmin={this.props.setIsAdmin}
         // setClimberProfile={this.setClimberProfile}
-     
       /> ) : 
       (<Login
         updateSessionToken={this.props.updateSessionToken}
@@ -61,20 +60,23 @@ class ValidateSession extends Component<ValidateSessionProps, ValidateSessionSta
     render() { 
       return ( 
         <div>
-          {/* //conditionally displays log in or sign up forms */}
+          <Container>
           {this.loginOrSignUpDisplay()}
           {this.state.showsignup ? (
          <Button
-              color="link"
+                color="link"
+                  className="btn-link-auth-toggle"
               onClick={this.toggleAuthType}>
               Actually I need to login
             </Button>) : (
-              <Button
+                <Button
+                className="btn-link-auth-toggle"
                 color="link"
               onClick={this.toggleAuthType}>
               or create an account
           </Button>)
-}
+              }
+          </Container>
         </div>);
     }
 }
