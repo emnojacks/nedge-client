@@ -5,9 +5,8 @@ import CreateGoals from '../goals/CreateGoals';
 import DisplayGoals from '../goals/DisplayGoals';
 import UpdateGoals from '../goals/UpdateGoals';
 import { Goal } from '../../types/Types';
+import { Redirect } from 'react-router-dom';
 let APIURL = "http://localhost:3000";
-
-//eventually import edit and delete goals
 
 interface GoalIndexProps {
     sessionToken: string 
@@ -76,6 +75,10 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
     };
         
     render() {
+        
+         if  (!this.props.sessionToken) 
+        return <Redirect to= "/" />
+        
         return (
               <Container>
             <div>

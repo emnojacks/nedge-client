@@ -11,7 +11,7 @@ interface LoginProps {
 interface LoginState {
   username: string;
   password: string;
-  //isAdmin?: boolean
+  isAdmin: boolean 
 }
 
 class Login extends Component<LoginProps, LoginState> {
@@ -20,6 +20,7 @@ class Login extends Component<LoginProps, LoginState> {
     this.state = {
       username: "",
       password: "",
+      isAdmin: false,
     };
   }
 
@@ -50,8 +51,9 @@ class Login extends Component<LoginProps, LoginState> {
         if (data.sessionToken) {
           this.props.updateSessionToken(data.sessionToken);
         }
-        if (data.isAdmin === true) {
-          this.props.setIsAdmin(data.isAdmin)
+        console.log(data.climber.isAdmin)
+        if (data.climber.isAdmin === true) {
+          this.props.setIsAdmin(this.state.isAdmin)
           console.log("climber set to admin via login")
         }
       })

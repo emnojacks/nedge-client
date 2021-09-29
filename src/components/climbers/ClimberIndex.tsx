@@ -146,16 +146,12 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                 {this.state.climberProfile.location}{" "}
               </CardSubtitle>
             </CardBody>
-            <CardFooter>
+            {/* <CardFooter>
               <Button size="sm" className="btn-profile-edit">
                 Edit
               </Button>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
-
-          <SessionIndex sessionToken={this.props.sessionToken} />
-
-          <GoalIndex sessionToken={this.props.sessionToken} />
         </div>
       </Container>
     );

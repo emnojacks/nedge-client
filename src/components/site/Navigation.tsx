@@ -8,7 +8,7 @@ import {
   NavbarBrand,
   Button,
 } from "reactstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 
 interface NavigationProps {
@@ -41,6 +41,7 @@ class Navigation extends Component<NavigationProps, NavigationState> {
         <NavbarBrand style={{ marginLeft: "1em" }}>
           <img src={logo} alt="nedge logo" height="32px" width="32px"></img>
           &nbsp; NEDGE
+          
         </NavbarBrand>
         {/* TOGGLE HAMBURGER */}
         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
@@ -69,12 +70,6 @@ class Navigation extends Component<NavigationProps, NavigationState> {
               >
                 Logout
               </Button>
-              
-                      <NavLink to='/'
-             
-              >
-                Home
-              </NavLink>
             </NavItem>
           </Nav>
         </Collapse>

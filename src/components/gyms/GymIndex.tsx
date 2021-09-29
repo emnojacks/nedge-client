@@ -10,12 +10,14 @@ import {
   CardFooter,
   Button,
 } from "reactstrap";
+import { Redirect } from 'react-router-dom';
 import { Climber } from "../../types/Types";
 
 let APIURL = "http://localhost:3000";
 
 interface GymIndexProps {
   sessionToken: string;
+  isAdmin: boolean
 }
 
 interface GymIndexState {
@@ -109,6 +111,13 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
   };
 
   render() {
+    
+     if  (!this.props.sessionToken) 
+        return <Redirect to= "/" />
+    
+    if (!this.props.isAdmin)
+      return <Redirect to="/" />
+    
     return (
       <Container>
         <div>

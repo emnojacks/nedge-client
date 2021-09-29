@@ -11,12 +11,11 @@ import ClimberIndex from "./components/climbers/ClimberIndex";
 import SessionIndex from "./components/sessions/SessionIndex";
 import GoalIndex from "./components/goals/GoalIndex";
 import GymIndex from "./components/gyms/GymIndex";
-import NotFound from './components/site/NotFound'
-import { BrowserRouter as Switch, Route } from "react-router-dom";
+import {Container} from 'reactstrap'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 interface AppProps {
-  // sessionToken: string,
-  // isAdmin: boolean
+ 
 }
 
 interface AppState {
@@ -108,14 +107,14 @@ class App extends Component<AppProps, AppState> {
   //render view based on that
 
   render() {
+    
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="appheader">NEDGE</h1>
         </header>
-        <div>
-       
+  
           {this.state.sessionToken && (
             <Navigation
               clearSessionToken={this.clearSessionToken}
@@ -123,34 +122,30 @@ class App extends Component<AppProps, AppState> {
               updateSessionToken={this.updateSessionToken}
             />
           )}
+          <Container>
           <Switch>
             <Route exact path="/">
               {this.climberViews}
             </Route>
-            <Route path="/climber/sessions">
-              <SessionIndex sessionToken={this.state.sessionToken} />
+            <Route exact path="/climber/sessions">
+              <SessionIndex
+                sessionToken={this.state.sessionToken} />
             </Route>
             <Route exact path="/climber/goals">
-              <GoalIndex sessionToken={this.state.sessionToken} />
+              <GoalIndex
+                sessionToken={this.state.sessionToken} />
             </Route>
-            <Route exact path="/gym">
+           
+              <Route exact path="/gym">
               <GymIndex sessionToken={this.state.sessionToken}
-              />
-            </Route>
-             {this.state.isAdmin && (
-            <Route exact path="/gym">
-              <GymIndex sessionToken={this.state.sessionToken}
-              />
+                isAdmin = {this.state.isAdmin}
+                />
               </Route>
-            )}
-            <Route path="*">
-<NotFound 
- sessionToken={this.state.sessionToken} />
-            </Route>
           </Switch>
+     </Container>
           <Footer />
+        
         </div>
-      </div>
     );
   }
 }

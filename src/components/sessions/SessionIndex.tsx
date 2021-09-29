@@ -4,6 +4,7 @@ import CreateSession from '../sessions/CreateSession';
 import DisplaySessions from '../sessions/DisplaySessions';
 import UpdateSession from '../sessions/UpdateSession';
 import { Session } from '../../types/Types';
+import { Redirect } from 'react-router-dom';
 let APIURL = "http://localhost:3000";
 
 
@@ -82,6 +83,10 @@ class SessionIndex extends Component<SessionIndexProps, SessionIndexState> {
     }
     
     render() {
+        
+        if  (!this.props.sessionToken) 
+        return <Redirect to= "/" />
+        
         return (
             <div>
                 <DisplaySessions

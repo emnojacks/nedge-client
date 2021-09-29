@@ -109,8 +109,8 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                   </Card>
                 </Col>
               </Row>
-            ))
-          ) : (
+            )) 
+          ) : ( 
             <p>
               Your goal deck is empty. Set a Goal to start working towards the
               climber you want to be.

@@ -1,5 +1,4 @@
 //dont touch this  
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -9,9 +8,11 @@ import {BrowserRouter as Router} from 'react-router-dom'
 
 
 ReactDOM.render(
-  <Router>
+  <React.StrictMode>
+ <Router>
     <App />
-    </Router>,
+</Router>
+</React.StrictMode>,
   document.getElementById('root')
 );
 
