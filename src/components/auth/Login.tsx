@@ -47,7 +47,7 @@ class Login extends Component<LoginProps, LoginState> {
       //takes the session token from the response and passes it to the updatetoken object
       {
         //displays what message the server has programmed
-        window.alert(data.message);
+        console.log(data.message);
         if (data.sessionToken) {
           this.props.updateSessionToken(data.sessionToken);
         }
@@ -58,7 +58,7 @@ class Login extends Component<LoginProps, LoginState> {
         }
       })
       .catch((error) => {
-        console.log(error.message);
+        window.alert(error.message);
       });
   };
 

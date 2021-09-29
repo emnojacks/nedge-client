@@ -113,7 +113,7 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
 
   render() {
     
-     if  (!this.props.sessionToken) 
+    if  (!this.props.sessionToken) 
         return <Redirect to= "/" />
     
     if (!this.props.isAdmin)

@@ -21,6 +21,7 @@ import SadoCracktivist from "../../assets/profilepics/SadoCracktivist.jpeg";
 import IcePicker from "../../assets/profilepics/IcePicker.jpg";
 import { Avatar } from "@mui/material";
 import { Climber } from "../../types/Types";
+import { Link } from "react-router-dom";
 let APIURL = "http://localhost:3000";
 
 interface ClimberIndexProps {
@@ -144,7 +145,8 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                 </CardHeader>
                 <CardBody>
                   <CardTitle tag="h5">
-                    {this.state.climberProfile.experiencelevel}{" "}
+                    {this.state.climberProfile.experiencelevel}
+                    {" // "}
                     {this.state.climberProfile.climbingtype}
                   </CardTitle>
                   <CardSubtitle tag="h6" className="mb-2 text-muted">
@@ -156,15 +158,23 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
             </Col>
             <Col>
               <Button
-                style={
-                  {
-backgroundColor: "#465F72"                
-                  }
-                }
-              >Log a Sesh ✏️</Button>
+                style={{
+                  backgroundColor: "#465F72",
+                  border: "none",
+                }}
+              >
+                 <Link to="/climber/sessions">Log a Session ✏️</Link>
+              </Button>
               <br></br>
               <br></br>
-              <Button>Check in on your insights</Button>
+              <Button
+                style={{
+                  backgroundColor: "#465F72",
+                  border: "none",
+                }}
+              >
+                <Link to="/climber/sessions">Your insights 🔎</Link>
+              </Button>
             </Col>
           </Row>
         </div>
