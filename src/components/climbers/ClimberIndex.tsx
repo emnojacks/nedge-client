@@ -6,7 +6,10 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle,
-  CardHeader
+  CardHeader,
+  Col,
+  Row,
+  Button,
 } from "reactstrap";
 import AdamOndra from "../../assets/profilepics/AdamOndra.jpeg";
 import AidClimber from "../../assets/profilepics/AidClimber.jpeg";
@@ -16,10 +19,9 @@ import DanielWoods from "../../assets/profilepics/DanielWoods.webp";
 import RoyalRobbins from "../../assets/profilepics/RoyalRobbins.webp";
 import SadoCracktivist from "../../assets/profilepics/SadoCracktivist.jpeg";
 import IcePicker from "../../assets/profilepics/IcePicker.jpg";
-import { Avatar } from '@mui/material';
+import { Avatar } from "@mui/material";
 import { Climber } from "../../types/Types";
 let APIURL = "http://localhost:3000";
-
 
 interface ClimberIndexProps {
   sessionToken: string;
@@ -122,30 +124,49 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
 
   render() {
     return (
-      
       <Container>
         <div>
-          <Card className="climber-profile-card">
-            <CardImg
-              // top width="50%"
-              id="profilePic"
-              src={this.state.profilePic}
-              alt="Card image cap"
-            />
-            <CardHeader tag="h4">
-              {this.state.climberProfile.username}
-            </CardHeader>
-            <CardBody>
-              <CardTitle tag="h5">
-                {this.state.climberProfile.experiencelevel}{" "}
-                {this.state.climberProfile.climbingtype}
-              </CardTitle>
-              <CardSubtitle tag="h6" className="mb-2 text-muted">
-                {this.state.climberProfile.gymname},{" "}
-                {this.state.climberProfile.location}{" "}
-              </CardSubtitle>
-            </CardBody>
-          </Card>
+          <h1>What's up, {this.state.climberProfile.username}</h1>
+          <h2>You climbing today? Hope so.</h2>
+          <p>ads</p>
+          <Row>
+            <Col>
+              <Card className="climber-profile-card">
+                <CardImg
+                  top
+                  width="100%"
+                  id="profilePic"
+                  src={this.state.profilePic}
+                  alt="Card image cap"
+                />
+                <CardHeader tag="h4">
+                  {this.state.climberProfile.username}
+                </CardHeader>
+                <CardBody>
+                  <CardTitle tag="h5">
+                    {this.state.climberProfile.experiencelevel}{" "}
+                    {this.state.climberProfile.climbingtype}
+                  </CardTitle>
+                  <CardSubtitle tag="h6" className="mb-2 text-muted">
+                    {this.state.climberProfile.gymname},{" "}
+                    {this.state.climberProfile.location}{" "}
+                  </CardSubtitle>
+                </CardBody>
+              </Card>
+            </Col>
+            <Col>
+              <Button
+                style={
+                  {
+backgroundColor: "#465F72"                
+                  }
+                }
+              >Log a Sesh ✏️</Button>
+              <br></br>
+              <br></br>
+              <Button>Check in on your insights</Button>
+            </Col>
+          </Row>
         </div>
       </Container>
     );

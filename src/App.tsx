@@ -9,6 +9,7 @@ import ClimberIndex from "./components/climbers/ClimberIndex";
 import SessionIndex from "./components/sessions/SessionIndex";
 import GoalIndex from "./components/goals/GoalIndex";
 import GymIndex from "./components/gyms/GymIndex";
+import About from "./components/site/About";
 import { Container } from "reactstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -102,6 +103,7 @@ class App extends Component<AppProps, AppState> {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="appheader">NEDGE</h1>
+          <small className="tagline">for the common climber</small>
         </header>
         <Router>
           {this.state.sessionToken && (
@@ -113,6 +115,9 @@ class App extends Component<AppProps, AppState> {
           )}
           <Container>
             <Switch>
+              <Route exact path="/about">
+<About sessionToken={this.state.sessionToken} />
+</Route>
               <Route exact path="/">
                 {this.climberViews}
               </Route>

@@ -6,7 +6,7 @@ import Link from '@mui/material/Link';
 
 function Copyright() {
   return (
-    <Typography variant="body2">
+    <Typography variant="body2" color="white">
       {'Copyright © '}
       <Link color="inherit" href="https://www.incirculytics.com/">
         INcirculytics
@@ -38,6 +38,7 @@ export default function StickyFooter() {
       </Container> */}
       <Box
         component="footer"
+        className="footer"
         sx={{
           py: 3,
           px: 2,

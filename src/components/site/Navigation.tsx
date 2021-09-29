@@ -38,9 +38,12 @@ class Navigation extends Component<NavigationProps, NavigationState> {
     return (
       //NAV LOGO
       <Navbar expand="sm" color="faded" light className="navBar">
-        <NavbarBrand style={{ marginLeft: "1em" }}>
-          <img src={logo} alt="nedge logo" height="32px" width="32px"></img>
+        <NavbarBrand style={{ marginLeft: "1em" }}
+        ><Link to ="/about">
+          <img src={logo} alt="nedge logo" height="35px" width="35px">
+          </img>
           &nbsp;
+         </Link>
         </NavbarBrand>
         {/* TOGGLE HAMBURGER */}
 
@@ -54,13 +57,13 @@ class Navigation extends Component<NavigationProps, NavigationState> {
           {/* GOALS LINK */}
           <Nav navbar>
             <NavItem>
-              <Button size="sm" color="warning" className="btn-nav">
+              <Button  className="btn-nav">
                 <Link to="/">Home</Link>
               </Button>
             </NavItem>
 
             <NavItem>
-              <Button size="sm" color="warning" className="btn-nav">
+              <Button color="warning" className="btn-nav">
                 <Link to="/climber/goals">Goals</Link>
               </Button>
             </NavItem>
@@ -68,21 +71,21 @@ class Navigation extends Component<NavigationProps, NavigationState> {
             {/* SESSIONS LINK */}
 
             <NavItem>
-              <Button size="sm" color="warning" className="btn-nav">
+              <Button color="warning" className="btn-nav">
                 <Link to="/climber/sessions">Sessions</Link>
               </Button>
             </NavItem>
 
             {/* GYM VIEW LINK */}
             <NavItem>
-              <Button size="sm" color="warning" className="btn-nav">
+              <Button color="warning" className="btn-nav">
                 <Link to="/gym">Gym View</Link>
               </Button>
             </NavItem>
             {/* LOGOUT LINK */}
             <NavItem>
               <Button
-                size="sm"
+         
                 color="warning"
                 className="btn-nav"
                 onClick={this.props.clearSessionToken}
