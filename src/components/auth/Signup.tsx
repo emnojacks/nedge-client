@@ -6,6 +6,7 @@ import {
   Input,
   InputGroup,
   Button,
+  FormText,
   Col,
   Row,
 } from "reactstrap";
@@ -92,6 +93,7 @@ class Signup extends Component<SignupProps, SignupState> {
         <h1>Climber Signup</h1>
         <Form onSubmit={this.handleSubmit}>
           <FormGroup row>
+            
             <InputGroup
               className="sign-up-input-grp">
               <Label className="form-label" htmlFor="username">
@@ -111,6 +113,11 @@ class Signup extends Component<SignupProps, SignupState> {
                 value={this.state.username}
               />
             </InputGroup>
+            {/* <FormText
+              style={{
+                color: "red"
+              }}
+            >use your name or nickname so people can find you!</FormText> */}
           </FormGroup>
     <br></br>
           <FormGroup row>
@@ -124,7 +131,7 @@ class Signup extends Component<SignupProps, SignupState> {
                 pattern="^(?=.{5,10})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$"
                 title="Password must be at least 6 characters, and contain at least 1 uppercase character, a lowercase character, a number, and a special character."
                 name="password"
-                placeholder="S3crety!"
+                placeholder="s3cR3t!"
                 type="password"
                 aria-required="true"
                 required
@@ -151,8 +158,8 @@ class Signup extends Component<SignupProps, SignupState> {
                   }
                 >
                   <option value="Select your gym">your gym</option>
-                  <option value="Ball State University Indoor Climbing Wall">
-                    Ball State University Indoor Climbing Wall
+                  <option value="Ball State University Climbing">
+                    Ball State University Climbing
                   </option>
                   <option value="Climb Time Indy">Climb Time Indy</option>
 
@@ -165,7 +172,7 @@ class Signup extends Component<SignupProps, SignupState> {
                     Hoosier Heights Indy
                   </option>
                   <option value="Indiana University Outdoor Adventures">
-                    Indiana University Outdoor Adventures
+                    IU Outdoor Adventures
                   </option>
                   <option value="North Mass Boulder">North Mass Boulder</option>
                   <option value="Vertical eXcape Climbing">
@@ -185,7 +192,7 @@ class Signup extends Component<SignupProps, SignupState> {
           <FormGroup row>
             <InputGroup className="sign-up-input-grp">
               <Col sm={5}>
-                <Label className="form-label" htmlFor="isAdmin">
+                <Label check className="form-label" htmlFor="isAdmin">
                   Do you work at this gym? All gym employees can set up an
                   account with gym views.
                 </Label>
@@ -204,7 +211,7 @@ class Signup extends Component<SignupProps, SignupState> {
           <FormGroup row>
             <InputGroup className="sign-up-input-grp">
               <Col sm={5}>
-                <Label className="form-label" htmlFor="needpartner">
+                <Label check className="form-label" htmlFor="needpartner">
                   Need a catch from time to time?
                 </Label>
               </Col>

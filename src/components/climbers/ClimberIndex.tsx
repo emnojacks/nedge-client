@@ -7,6 +7,7 @@ import {
   CardTitle,
   CardSubtitle,
   CardHeader,
+  CardFooter,
   Col,
   Row,
   Button,
@@ -128,10 +129,13 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
       <Container>
         <div>
           <h1>What's up, {this.state.climberProfile.username}</h1>
-          <h2>You climbing today? Hope so.</h2>
-          <p>ads</p>
+          <h2>You pullin plastic today?</h2>
           <Row>
-            <Col>
+            <Col
+              style={{
+                maxWidth: "40vw",
+              }}
+            >
               <Card className="climber-profile-card">
                 <CardImg
                   top
@@ -140,41 +144,56 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                   src={this.state.profilePic}
                   alt="Card image cap"
                 />
-                <CardHeader tag="h4">
+                <CardHeader tag="h3" style={{ fontWeight: "bolder" }}>
                   {this.state.climberProfile.username}
                 </CardHeader>
                 <CardBody>
-                  <CardTitle tag="h5">
+                  <CardTitle tag="h4">
                     {this.state.climberProfile.experiencelevel}
                     {" // "}
                     {this.state.climberProfile.climbingtype}
                   </CardTitle>
-                  <CardSubtitle tag="h6" className="mb-2 text-muted">
+                  <CardSubtitle tag="h5" className="mb-2">
                     {this.state.climberProfile.gymname},{" "}
                     {this.state.climberProfile.location}{" "}
                   </CardSubtitle>
+                  <a href=" " target="blank">
+                    @mtprojhndl
+                  </a>
                 </CardBody>
+
+                <CardFooter>
+                  <Row>
+                    <Col>
+                      <Button
+                   
+                        style={{
+                          borderRadius:".5em",
+                          backgroundColor: "#BD520F",
+                          border: "none",
+                          marginBottom: "2px"
+                         
+                        }}
+                      >
+                        <Link to="/climber/sessions">edit ✏️</Link>
+                      </Button>
+                    </Col>
+                    <Col>
+                      <Button
+                      
+                        style={{
+                          borderRadius:".5em",
+                          backgroundColor: "#df9627",
+                          border: "none",
+                          marginBottom: "2px"
+                        }}
+                      >
+                        <Link to="/climber/sessions">insights 🔎</Link>
+                      </Button>
+                    </Col>
+                  </Row>
+                </CardFooter>
               </Card>
-            </Col>
-            <Col>
-              <Button
-                style={{
-                  backgroundColor: "#465F72",
-                  border: "none",
-                }}
-              >
-                 <Link to="/climber/sessions">Log a Session ✏️</Link>
-              </Button>
-              <br></br>
-              <br></br>
-              <Button
-                style={{
-                  backgroundColor: "#465F72",
-                  border: "none",
-                }}
-              >
-                <Link to="/climber/sessions">Your insights 🔎</Link>
-              </Button>
             </Col>
           </Row>
         </div>

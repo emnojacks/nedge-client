@@ -103,7 +103,7 @@ class Login extends Component<LoginProps, LoginState> {
               pattern="^(?=.{5,10})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$"
               title="Password must be at least 6 characters, and contain at least 1 uppercase character, a lowercase character, a number, and a special character."
               name="password"
-              placeholder="S3crety!"
+                  placeholder="s3cR3t!"
               aria-required="true"
               type="password"
               required

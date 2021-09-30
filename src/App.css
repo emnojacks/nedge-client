@@ -18,9 +18,11 @@
 color: var(--soft-white)!important;
 font-family: 'Fira Sans Condensed', sans-serif;
 background-color: var(--queen-blue)!important;
+font-size: calc(10px + 1.5vmin);
 }
 
 .App-logo {
+  margin-top:1em;
   height: 20vmin;
   pointer-events: none;
 }
@@ -69,11 +71,10 @@ border-bottom-right-radius: 1em!important;
 border-bottom-left-radius: 1em!important;
 border-top-left-radius: 1em!important;
 border-top-right-radius: 1em!important;
-/* max-width: min-content; */
-/* max-height: min-content; */
 border-style: none!important;
 margin: 1em;
-background-color: var(--logo-orange)!important;
+background-color: var(--dark-electric-blue)!important;
+color: var(--maize-crayola)
 }
 
 #profilePic {
@@ -113,6 +114,7 @@ background-color: var(--yellow-orange)!important;
 border-radius: 1em;
 border: solid .2em var(--shadow-blue);
 padding-bottom: .3em;
+max-width: 50vw!important;
 }
 
 .sign-up-input-area {
@@ -122,10 +124,12 @@ border-radius: 1em!important;
 border-style: none!important;
 font-weight: bolder!important;
 color: var(--soft-white)!important;
+max-width: 50vw;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color:var(--soft-white)!important;
+  font-style: italic!important;
   opacity: 1; /* Firefox */
 }
 
@@ -138,11 +142,16 @@ margin-bottom: 1em;
 }
 
 .footer {
-background-color: var(--yellow-orange)!important;
+background-color: var(--middle-red)!important;
 }
 
 .lighter-div {
 background-color: var(--shadow-blue);
 border-radius: 2em;
 padding: 1em;
+font-weight: bolder;
+}
+
+.form-text {
+color: var(--yellow-orange)!important;
 }
