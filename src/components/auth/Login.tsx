@@ -117,16 +117,13 @@ class Login extends Component<LoginProps, LoginState> {
             />
 </InputGroup>
           </FormGroup>
-          <br></br>
             <Button
               className="btn-auth" type="submit"
               color="warning">
-            {" "}
             Login
           </Button>
         </Form>
 </Container>
-        <br></br>
       </div>
     );
   }

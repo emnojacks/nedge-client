@@ -10,7 +10,7 @@ import {
   CardFooter,
   Col,
   Row,
-  Button,
+  Button
 } from "reactstrap";
 import AdamOndra from "../../assets/profilepics/AdamOndra.jpeg";
 import AidClimber from "../../assets/profilepics/AidClimber.jpeg";
@@ -126,21 +126,18 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
 
   render() {
     return (
-      <Container>
-        <div>
+      
+      <div>
+        <Container>
+          <Container className="spaced-div">
+            <div className="content-header">
           <h2>What's up, {this.state.climberProfile.username}</h2>
           <h3>You pullin plastic today?</h3>
+</div>
           <Row>
-            <Col
-              style={{
-                maxWidth: "40vw",
-              }}
-            >
+            <Col>
               <Card className="climber-profile-card">
                 <CardImg
-                  top
-                  width="100%"
-                  height="auto"
                   id="profilePic"
                   src={this.state.profilePic}
                   alt="Card image cap"
@@ -166,41 +163,47 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                 <CardFooter>
                   <Row>
                     <Col>
-                      <Button
+                      <Button outline color="warning" size="sm"
+                        disabled
                    
-                        style={{
-                          borderRadius:".5em",
-                          backgroundColor: "#BD520F",
-                          border: "none",
-                          marginBottom: "2px"
+                        // style={{
+                        //   borderRadius:".5em",
+                        //   backgroundColor: "#BD520F",
+                        //   border: "none",
+                        //   marginBottom: "2px"
                          
-                        }}
+                        // }}
                       >
                         <Link to="/climber/sessions">edit profile</Link>
                       </Button>
                     </Col>
                     <Col>
                       <Button
-                      
+                        
                         style={{
-                          borderRadius:".5em",
-                          backgroundColor: "#df9627",
-                          border: "none",
-                          marginBottom: "2px"
+                          backgroundColor: "#df9627"
                         }}
+                        size="sm"
+                        color="warning"
                       >
-                        <Link to="/climber/sessions">new sesh</Link>
+                        <Link to="/climber/sessions"> new sesh</Link>
                       </Button>
                     </Col>
                   </Row>
                 </CardFooter>
               </Card>
-            </Col>
+</Col>
           </Row>
+</Container>
+         </Container>
         </div>
-      </Container>
+     
     );
   }
 }
 
 export default ClimberIndex;
+
+
+  
+                        

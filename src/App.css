@@ -73,15 +73,8 @@ background-color: var(--queen-blue)!important;
 
 .btn-nav {
 margin-left: 1em;
-background-color: var(--yellow-orange)!important;
-color: var(--react-bg)!important;
+background-color: var(--yellow-orange)!important
 }
-
-
-.btn-nav a{
-color: var(--react-bg)!important;
-}
-
 
 h1{
 padding-top: .5em;
@@ -94,7 +87,7 @@ border-top-left-radius: 1em!important;
 border-top-right-radius: 1em!important;
 border-style: none!important;
 margin: 1em;
-width: auto;
+max-width: 300px;
 height: auto;
 background-color: var(--dark-electric-blue)!important;
 color: var(--maize-crayola)
@@ -105,6 +98,8 @@ border-bottom-right-radius: 0em;
 border-bottom-left-radius: 0em;
 border-top-left-radius: 1em;
 border-top-right-radius: 1em;
+height: auto;
+width: auto;
 }
 
 .session-display{
@@ -179,7 +174,7 @@ font-weight: bolder;
 .spaced-div {
 border-radius: 2em;
 padding: 1em;
-margin: 2em;
+margin: 1em;
 }
 
 .content-header{
@@ -195,7 +190,8 @@ padding-left: 5em;
 }
 
 .btn {
-margin: .8em;
+margin-top: .8em;
+/* potentially change the margin on btns */
 border-radius: 5em!important;
 font-weight: bold!important;
 width: auto;
@@ -218,5 +214,4 @@ grid-template-columns:repeat(1, 1fr);
 font-size: calc(7px + 1vmin);
 row-gap: 0px;
 justify-items: start;
-border: solid 1px red;
 }

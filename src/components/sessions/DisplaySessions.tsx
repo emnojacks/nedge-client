@@ -91,7 +91,7 @@ class DisplaySessions extends Component<
             {this.props.climberSessions.length > 0 ? (
               this.props.climberSessions.map(
                 (session: Session, index: number) => (
-                  <Card
+                  <Card 
                     className="session-card"
                     key={session.id}
                     style={{

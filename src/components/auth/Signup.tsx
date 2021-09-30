@@ -306,12 +306,10 @@ class Signup extends Component<SignupProps, SignupState> {
              
             </InputGroup>
           </FormGroup>
-          <br></br>
           <Button
             color="warning"
             className="btn-auth"
             type="submit">
-            {" "}
             sign up
           </Button>
         </Form>
