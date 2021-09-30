@@ -16,7 +16,7 @@
 .App {
 color: var(--soft-white)!important;
 font-family: 'Fira Sans Condensed', sans-serif;
-background-color: var(--queen-blue)!important;
+background-color: var(--dark-electric-blue);
 font-size: calc(10px + 1vmin);
 display: flex;
 flex-direction: column;
@@ -31,7 +31,7 @@ justify-content: center;
 }
 
 .App-header {
-  background-color: var(--react-bg);
+  background-color: var(--dark-electric-blue);
   min-height: 25vh;
   display: flex;
   flex-direction: column;
@@ -71,12 +71,7 @@ padding: .2em!important;
 }
 
 .navBar {
-background-color: var(--queen-blue)!important;
-}
-
-.text-input {
-  width: 50vw!important;
-  margin:auto;
+background-color: var(--dark-electric-blue);
 }
 
 .btn-nav {
@@ -93,11 +88,10 @@ border-bottom-right-radius: 1em!important;
 border-bottom-left-radius: 1em!important;
 border-top-left-radius: 1em!important;
 border-top-right-radius: 1em!important;
-border-style: none!important;
 margin: 1em;
 max-width: 300px;
 height: auto;
-background-color: var(--dark-electric-blue)!important;
+background-color: var(--queen-blue);
 color: var(--maize-crayola)
 }
 
@@ -118,11 +112,21 @@ grid-template-rows: 1fr 1fr;
 
 .goal-display{
 display: grid;
-grid-template-columns: repeat(2, 1fr);
-grid-template-rows: 1fr 1fr;
+/* grid-template-columns: repeat(2, 1fr);
+grid-template-rows: 1fr 1fr; */
 }
 
-a {
+.navbar a {
+text-decoration: none!important;
+color: var(--soft-white)!important;
+}
+
+.session-card a {
+text-decoration: none!important;
+color: var(--dark-electric-blue)!important;
+}
+
+.climber-profile-card a {
 text-decoration: none!important;
 color: var(--soft-white)!important;
 }
@@ -148,7 +152,7 @@ background-color: transparent!important;
 padding: .2em!important;
 border-radius: 1em!important;
 border-style: none!important;
-font-weight: bolder!important;
+/* font-weight: bold!important; */
 color: var(--soft-white)!important;
 max-width: 50vw;
 }
@@ -172,11 +176,11 @@ background-color: var(--middle-red)!important;
 }
 
 .lighter-div {
-background-color: var(--shadow-blue);
+background-color: var(--queen-blue);
 border-radius: 2em;
 padding: 1em;
 margin: 3em;
-font-weight: bolder;
+/* font-weight: bold; */
 }
 
 .spaced-div {
@@ -215,6 +219,10 @@ border-radius: 1em!important;
 color: var(--react-bg);
 }
 
+/* .update-modal {
+
+} */
+
 .session-card-deets {
 display: grid;
 grid-template-rows: repeat(4, 1fr);
@@ -228,7 +236,14 @@ justify-items: start;
 font-size: calc(7px + 1vmin)!important;
 }
 
-#session-card-footer {
+.session-card-footer {
 justify-content: center;
 align-items: center
 }
+
+.goal-card {
+color: var(--soft-white)!important;
+background-color: var(--yellow-orange)!important;
+opacity: .6;
+}
+

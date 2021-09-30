@@ -72,14 +72,19 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
 
     return (
       <div className="mainDiv">
-        <Container>
-          <h1>Goal Deck</h1>
+        <Container className="lighter-div">
+          <Container className="inner-container">
+          <div className="header-content">
+          <h2>Goal Deck</h2>
+</div>
            <div className="goal-display">
           {this.props.climberGoals.length > 0 ? (
             this.props.climberGoals.map((goal: Goal, index: number) => (
               <Row key={index}>
-                <Col sm="7">
-                  <Card key={goal.id}>
+                <Col sm="8">
+                  <Card
+                    className="goal-card climber-profile-card"
+                    key={goal.id}>
                     <CardHeader> Priority #{goal.goalpriority}</CardHeader>
                     <CardBody>
                       <CardTitle tag="h6">
@@ -88,16 +93,18 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                       </CardTitle>
 
                             </CardBody>
-                            <CardFooter>
-                             <Button
+                            <CardFooter className="session-card-footer">
+                      <Button
+                        style={{margin: "0px"}}
                         color="success"
                         onClick={() => this.deleteGoal(goal)}
                       >
-                       ✅
+                       sent it
                                 </Button>
                                 &nbsp;
-                                 <Button
-                        color="secondary"
+                      <Button
+                        style={{margin: "0px"}}
+                        color="transparent"
                         onClick={() => {
                           this.props.setGoalToUpdate(goal);
                           this.props.openModal();
@@ -118,6 +125,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
           )}
   </div>
         </Container>
+</Container>
       </div>
     );
   }

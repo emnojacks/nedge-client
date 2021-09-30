@@ -105,9 +105,16 @@ class DisplaySessions extends Component<
                       style={{ fontWeight: "bold" }}
                     
                     >
-                      <Link to="/">
+                      <Button
+                        style={{ margin: "0px" }}
+                        size="sm"
+                        outline color="transparent"
+                        onClick={() => {
+                          this.props.setSessionToUpdate(session);
+                          this.props.openModal();
+                        }}>
                       {session.sessiondate}
-                    </Link>
+                    </Button>
                     </CardHeader>
                     
                     <CardBody id="session-card-body">
@@ -137,7 +144,7 @@ class DisplaySessions extends Component<
 </div>
                       </CardText>
                     </CardBody>
-                    <CardFooter id="session-card-footer"
+                    <CardFooter className="session-card-footer"
                    >
                       <Button
                         style={{margin: "0px"}}

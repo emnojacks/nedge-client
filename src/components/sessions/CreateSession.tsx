@@ -301,7 +301,10 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
             </FormGroup>
             <FormGroup>
               {/* SESSIONNOTES OPTIONAL */}
-              <InputGroup>
+                <InputGroup>
+                  <Label className="form-label" htmlFor="sessionnotes">
+                  notes &nbsp;
+                </Label>
                 <Input
                   className="sign-up-input-area"
                   name="sessionnotes"

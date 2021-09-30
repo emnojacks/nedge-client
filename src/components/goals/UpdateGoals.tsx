@@ -89,11 +89,11 @@ class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
                 isOpen={true}
                 toggle={this.toggleModal}>
                 <ModalHeader
-                    className="modalHeader">Prioritize your Goals</ModalHeader>
+                    ><h2>Prioritize your Goals</h2></ModalHeader>
             <ModalBody className="modalBody">
                     <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
-                        <Label className="modalLabel" htmlFor="goaldescription">Goal:</Label>
+                        <Label className="modalLabel" htmlFor="goaldescription">Goal</Label>
                             <Input name="goaldescription"
                                 type="text"
                                 value={this.state.goaldescription} 
@@ -118,11 +118,12 @@ class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
                     <br></br>
                         <Button
                             type="submit"
-                        > Update</Button>
-                        
-                        <Button
                             color="warning"
-                     onClick={this.props.closeModal}>Nvm</Button>
+                        > update</Button>
+                        { " "}
+                        <Button
+                            color="secondary"
+                     onClick={this.props.closeModal}>close</Button>
                 </Form>
             </ModalBody>
         </Modal>

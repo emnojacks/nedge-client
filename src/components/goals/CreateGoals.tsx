@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Button, ButtonGroup, Input, Form, FormGroup} from "reactstrap";
+import {
+  Button,
+  ButtonGroup,
+  Input,
+  Form,
+  FormGroup,
+  Container,
+} from "reactstrap";
 let APIURL = "http://localhost:3000";
 
 interface CreateGoalsProps {
@@ -61,108 +68,127 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
   render() {
     return (
       <div>
-        <h1>Set a Goal</h1>
-        <p>
-          Set a common climbing goal or create you own.
-          P.S. It's not realistic to work on more than 3 goals at a time so don't go
-          crazy, Ondra.{" "}
-        </p>
-        <Form onSubmit={this.handleSubmit}>
-          <FormGroup>
-          <ButtonGroup>
-            <Button
-              className="btn-goal"
-              size="sm"
-              outline
-              active={this.state.goaldescription === "increase endurance"}
-              onClick={() =>
-                this.setState({
-                  goaldescription: "increase endurance",
-                })
-              }
-            >
-              increase endurance
-            </Button>
+        <Container className="lighter-div">
+          <Container className="inner-container">
+            <div className="content-header">
+              <h2>Set a Goal</h2>
 
-            <Button
-              className="btn-goal"
-              size="sm"
-              outline
-              active={this.state.goaldescription === "increase tendon strength"}
-              onClick={() =>
-                this.setState({ goaldescription: "increase tendon strength" })
-              }
-            >
-              increase tendon strength
-            </Button>
+              <p>
+                Set a common climbing goal or create you own. P.S. It's not
+                realistic to work on more than 3 goals at a time so don't go
+                crazy, Ondra.{" "}
+              </p>
+            </div>
+            <Form onSubmit={this.handleSubmit}>
+              <FormGroup>
+                <ButtonGroup>
+                  <Button
+                    color="warning"
+                    className="btn-goal"
+                    size="sm"
+                    outline
+                    active={this.state.goaldescription === "increase endurance"}
+                    onClick={() =>
+                      this.setState({
+                        goaldescription: "increase endurance",
+                      })
+                    }
+                  >
+                    increase endurance
+                  </Button>
 
-            <Button
-              className="btn-goal"
-              size="sm"
-              outline
-              active={this.state.goaldescription === "increase muscle strength"}
-              onClick={() =>
-                this.setState({
-                  goaldescription: "increase muscle strength",
-                })
-              }
-            >
-              increase muscle strength
-            </Button>
+                  <Button
+                    className="btn-goal"
+                    color="warning"
+                    size="sm"
+                    outline
+                    active={
+                      this.state.goaldescription === "increase tendon strength"
+                    }
+                    onClick={() =>
+                      this.setState({
+                        goaldescription: "increase tendon strength",
+                      })
+                    }
+                  >
+                    increase tendon strength
+                  </Button>
 
-            <Button
-              className="btn-goal"
-              size="sm"
-              outline
-              active={this.state.goaldescription === "improve mental game"}
-              onClick={() =>
-                this.setState({
-                  goaldescription: "improve mental game",
-                })
-              }
-            >
-              improve mental game
-            </Button>
-            <Button
-              className="btn-goal"
-              size="sm"
-              outline
-              active={this.state.goaldescription === "work on technique"}
-              onClick={() =>
-                this.setState({
-                  goaldescription: "work on technique",
-                })
-              }
-            >
-              work on technique
-            </Button>
-            <br></br>
-          </ButtonGroup>
-        
-          <Button size="sm" type="submit">
-            Add Goal
-          </Button>
-</FormGroup>
-<FormGroup>
-          <br></br>
-          <Input
-            className="text-input"
-            name="othergoal"
-            placeholder="or add a personal goal"
-            type="text"
-            onBlur={(event) =>
-              this.setState({
-                goaldescription: event.target.value,
-              })
-            }
-          />
-          <br></br>
-          <Button size="sm" type="submit">
-            Add Personal Goal
-          </Button>
-</FormGroup>
-          {/* <p>Goal set to {this.state.goaldescription}</p> */}
-        </Form>
+                  <Button
+                    className="btn-goal"
+                    color="warning"
+                    size="sm"
+                    outline
+                    active={
+                      this.state.goaldescription === "increase muscle strength"
+                    }
+                    onClick={() =>
+                      this.setState({
+                        goaldescription: "increase muscle strength",
+                      })
+                    }
+                  >
+                    increase muscle strength
+                  </Button>
+
+                  <Button
+                    className="btn-goal"
+                    color="warning"
+                    size="sm"
+                    outline
+                    active={
+                      this.state.goaldescription === "improve mental game"
+                    }
+                    onClick={() =>
+                      this.setState({
+                        goaldescription: "improve mental game",
+                      })
+                    }
+                  >
+                    improve mental game
+                  </Button>
+                  <Button
+                    className="btn-goal"
+                    color="warning"
+                    size="sm"
+                    outline
+                    active={this.state.goaldescription === "work on technique"}
+                    onClick={() =>
+                      this.setState({
+                        goaldescription: "work on technique",
+                      })
+                    }
+                  >
+                    work on technique
+                  </Button>
+                  <br></br>
+                </ButtonGroup>
+
+                <Button size="sm" color="warning" type="submit">
+                  ✚ goal
+                </Button>
+              </FormGroup>
+              <FormGroup>
+                <br></br>
+                <Input
+                  className="text-input"
+                  name="othergoal"
+                  placeholder="or add a personal goal"
+                  type="text"
+                  onBlur={(event) =>
+                    this.setState({
+                      goaldescription: event.target.value,
+                    })
+                  }
+                />
+                <Button size="sm" color="warning" type="submit">✚
+                  personal goal
+                </Button>
+              </FormGroup>
+              {/* <p>Goal set to {this.state.goaldescription}</p> */}
+            </Form>
+          </Container>
+        </Container>
       </div>
     );
   }
@@ -171,5 +197,3 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
 //also want to limit it to three goals
 //and want user defined goals
 export default CreateGoals;
-
-
