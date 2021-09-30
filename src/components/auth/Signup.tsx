@@ -101,8 +101,9 @@ class Signup extends Component<SignupProps, SignupState> {
               </Label>
               <Input
                 className="sign-up-input-area"
-                // style={{ backgroundColor: "transparent", color: "white", border: "none", fontWeight: "bold", marginBottom: ".5em" }}
                 name="username"
+                title="Username should be at least 4 characters. Try your name or a nickname!"
+                minLength={4}
                 placeholder="AlexHandhold"
                 type="text"
                 aria-required="true"

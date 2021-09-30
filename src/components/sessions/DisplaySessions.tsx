@@ -83,14 +83,16 @@ class DisplaySessions extends Component<
     console.log(this.props.climberSessions);
 
     return (
-      <div className="mainDiv">
-        <Container>
-          <h1>Sessions</h1>
+      <div>
+        <Container className="lighter-div">
+          <Container className="inner-container">
+          <h1>recent sessions</h1>
           <div className="session-display">
             {this.props.climberSessions.length > 0 ? (
               this.props.climberSessions.map(
                 (session: Session, index: number) => (
                   <Card
+                    className="session-card"
                     key={session.id}
                     style={{
                       backgroundColor: session.sessionsuccessful
@@ -100,25 +102,26 @@ class DisplaySessions extends Component<
                   >
                     <CardHeader tag="h5">{session.sessiondate}</CardHeader>
                     <CardBody>
-                      <CardTitle tag="h6">Deets</CardTitle>
-
                       <CardText>
                         {session.sessionlength} hr
                         <br></br>
                         {session.sessionpartner ? " 👥 " : ""}
                         {session.crosstraining ? " 🏋️" : " "}
                         <br></br>
-                        <small className="text-muted">
-                          Nutrition{" "}
-                          {session.nutritioncondition >= "3" ? "✅" : "❌"}
-                          <br></br>
+                        <div className="session-card-deets">
+                       <div>
+                          Nutrition{session.nutritioncondition >= "3" ? "✅" : "❌"}
+                          </div>
+                          <div>
                           Sleep {session.sleepcondition >= "3" ? "✅" : "❌"}
-                          <br></br>
+                          </div>
+                          <div>
                           Stress {session.stresscondition >= "3" ? "✅" : "❌"}
-                          <br></br>
+                          </div>
+                          <div>
                           Ego {session.egocondition >= "3" ? "✅" : "❌"}
-                          <br></br>
-                        </small>
+                          </div>
+</div>
                         <br></br>
                         {session.sessionnotes}
                       </CardText>
@@ -150,6 +153,7 @@ class DisplaySessions extends Component<
               </p>
             )}
           </div>
+        </Container>
         </Container>
       </div>
     );

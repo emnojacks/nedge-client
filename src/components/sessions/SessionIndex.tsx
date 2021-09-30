@@ -91,17 +91,19 @@ class SessionIndex extends Component<SessionIndexProps, SessionIndexState> {
         return (
             <div>
                 <Container>
+                
+            <CreateSession
+                    sessionToken={this.props.sessionToken}
+                    fetchClimberSessions={this.fetchClimberSessions}
+                />
                 <DisplaySessions
                     openModal={this.openModal}
                     climberSessions={this.state.climberSessions}
                     sessionToken={this.props.sessionToken}
                     fetchClimberSessions={this.fetchClimberSessions}
                     setSessionToUpdate={this.setSessionToUpdate}
-                />
-                   <CreateSession
-                    sessionToken={this.props.sessionToken}
-                    fetchClimberSessions={this.fetchClimberSessions}
-                />
+                    />
+                    
                 {this.state.modalVisible ?
                     <UpdateSession
                         sessionToken={this.props.sessionToken}

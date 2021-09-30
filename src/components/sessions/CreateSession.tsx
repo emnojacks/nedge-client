@@ -106,15 +106,19 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
     return (
       <div>
         <Container className="lighter-div">
-          <h1>Today's Session</h1>
-          <Form onSubmit={this.handleSubmit}>
+          <Container className="inner-container">
+          
+            <Form onSubmit={this.handleSubmit}
+              className="form">
+              <h1>today's sesion</h1>
             {/* SESSION DATE */}
             <FormGroup>
               <InputGroup>
                 <Label className="form-label" htmlFor="sessiondate">
-                  Session Date &nbsp;
+                  session date &nbsp;
                 </Label>
                 <Input
+                  style={{ maxWidth: "150px"}}
                   className="sign-up-input-area"
                   type="date"
                   name="sessiondate"
@@ -132,7 +136,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
             <FormGroup>
               <InputGroup>
                 <Label className="form-label" htmlFor="sessionsuccessful">
-                  Successful? &nbsp;
+                  successful? &nbsp;
                 </Label>
                 &nbsp;
                 <Input
@@ -151,7 +155,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
             <FormGroup>
               <InputGroup>
                 <Label className="form-label" htmlFor="sessionpartner">
-                  Partner &nbsp;
+                  partnered &nbsp;
                 </Label>
                 &nbsp;
                 <Input
@@ -169,7 +173,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
             <FormGroup>
               <InputGroup>
                 <Label className="form-label" htmlFor="crosstraining">
-                  Recently Crosstrained &nbsp;
+                  crosstrained recently &nbsp;
                 </Label>
                 &nbsp;
                 <Input
@@ -185,10 +189,11 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
             <FormGroup>
               <InputGroup>
                 <Label className="form-label" htmlFor="sessionlength">
-                  Length (hrs): &nbsp;
+                  length (hrs): &nbsp;
                 </Label>
                 &nbsp;
                 <Input
+                  style={{ maxWidth: "100px"}}
                   className="sign-up-input-area"
                   placeholder="1"
                   type="number"
@@ -203,13 +208,13 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
             </FormGroup>
             <br></br>
             {/* NUTRITIONCONDITION */}
-            <h2>Conditions</h2>
+            <h2>conditions</h2>
 
             <p> <span style={{ fontWeight: "bolder" }}> 😩 &nbsp;bad → subprime → neutral → good → optimal &nbsp;😄 </span> </p>
             <FormGroup row>
               <InputGroup>
                 <Label className="form-label" htmlFor="nutritioncondition">
-                  Nutrition
+                  nutrition
                 </Label>
                 &nbsp;
                 <Input
@@ -231,7 +236,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
             <FormGroup>
               <InputGroup>
                 <Label className="form-label" htmlFor="sleepcondition">
-                  Sleep
+                  sleep
                 </Label>
                 &nbsp;
                 <Input
@@ -253,7 +258,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
             <FormGroup>
               <InputGroup>
                 <Label className="form-label" htmlFor="stresscondition">
-                  Stress
+                  stress
                 </Label>
                 &nbsp;
                 <Input
@@ -276,7 +281,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
             <FormGroup>
               <InputGroup>
                 <Label className="form-label" htmlFor="egocondition">
-                  Ego
+                  ego
                 </Label>
                 &nbsp;
                 <Input
@@ -311,12 +316,13 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                   }
                 />
               </InputGroup>
-            </FormGroup>
-            <br></br>
-            <Button color="warning" type="submit">
-              ➕
+              </FormGroup>
+                    <Button className="btn-auth" color="warning" type="submit">
+              ✚
             </Button>
-          </Form>
+            </Form>
+          
+</Container>
         </Container>
       </div>
     );

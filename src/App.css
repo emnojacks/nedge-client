@@ -14,11 +14,14 @@
 }
 
 .App {
-/* text-align: center; */
 color: var(--soft-white)!important;
 font-family: 'Fira Sans Condensed', sans-serif;
 background-color: var(--queen-blue)!important;
-font-size: calc(10px + 1.5vmin);
+font-size: calc(10px + 1vmin);
+display: flex;
+flex-direction: column;
+/* align-items: center; */
+justify-content: center;
 }
 
 .App-logo {
@@ -37,6 +40,7 @@ font-size: calc(10px + 1.5vmin);
   font-size: calc(10px + 2vmin);
   color: var(--soft-white);
 }
+
 .appheader {
 font-family:  'Fira Sans Condensed', sans-serif;
 text-transform: capitalize;
@@ -54,16 +58,18 @@ background-color: var(--queen-blue)!important;
 
 .btn-nav {
 margin-left: 1em;
-margin-bottom: .5em;
-background-color: var(--burnt-orange)!important;
+background-color: var(--yellow-orange)!important;
+color: var(--react-bg)!important;
 }
 
-.btn-nav :hover{
-background-color: var(--middle-red)!important;
+
+.btn-nav a{
+color: var(--react-bg)!important;
 }
+
 
 h1{
-padding-top: .7em;
+padding-top: .5em;
 }
 
 .climber-profile-card {
@@ -73,6 +79,8 @@ border-top-left-radius: 1em!important;
 border-top-right-radius: 1em!important;
 border-style: none!important;
 margin: 1em;
+width: auto;
+height: auto;
 background-color: var(--dark-electric-blue)!important;
 color: var(--maize-crayola)
 }
@@ -103,12 +111,12 @@ color: var(--soft-white)!important;
 
 .btn-link-auth-toggle {
 color: var(--yellow-orange)!important;
-font-weight: bolder!important;
 }
 
 .btn-auth {
 background-color: var(--yellow-orange)!important;
-}
+color: var(--soft-white)!important
+};
 
 .sign-up-input-grp {
 border-radius: 1em;
@@ -129,8 +137,7 @@ max-width: 50vw;
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color:var(--soft-white)!important;
-  font-style: italic!important;
-  opacity: 1; /* Firefox */
+  opacity: .6; /* Firefox */
 }
 
 .tagline{
@@ -149,9 +156,41 @@ background-color: var(--middle-red)!important;
 background-color: var(--shadow-blue);
 border-radius: 2em;
 padding: 1em;
+margin: 3em;
 font-weight: bolder;
 }
 
 .form-text {
 color: var(--yellow-orange)!important;
+}
+
+.inner-container {
+padding-left: 5em;
+}
+
+.btn {
+margin: .8em;
+border-radius: 5em!important;
+font-weight: bold!important;
+width: auto;
+height: auto;
+}
+
+.form {
+margin-left: 1em;
+}
+
+.session-card {
+border-radius: 1em!important;
+color: var(--react-bg);
+}
+
+.session-card-deets {
+display: grid;
+grid-template-rows: repeat(4, 1fr);
+grid-template-columns:repeat(1, 1fr);
+font-size: calc(7px + 1vmin);
+row-gap: 0px;
+justify-items: start;
+border: solid 1px red;
 }

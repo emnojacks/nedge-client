@@ -140,6 +140,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                 <CardImg
                   top
                   width="100%"
+                  height="auto"
                   id="profilePic"
                   src={this.state.profilePic}
                   alt="Card image cap"
@@ -175,7 +176,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                          
                         }}
                       >
-                        <Link to="/climber/sessions">edit ✏️</Link>
+                        <Link to="/climber/sessions">edit profile</Link>
                       </Button>
                     </Col>
                     <Col>
@@ -188,7 +189,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                           marginBottom: "2px"
                         }}
                       >
-                        <Link to="/climber/sessions">insights 🔎</Link>
+                        <Link to="/climber/sessions">new sesh</Link>
                       </Button>
                     </Col>
                   </Row>

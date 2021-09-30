@@ -70,7 +70,8 @@ class Navigation extends Component<NavigationProps, NavigationState> {
             {/* SESSIONS LINK */}
 
             <NavItem>
-              <Button className="btn-nav">
+              <Button className="btn-nav"
+          >
                 <Link to="/climber/sessions">Sessions</Link>
               </Button>
             </NavItem>
