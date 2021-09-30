@@ -86,7 +86,7 @@ class DisplaySessions extends Component<
       <div>
         <Container className="lighter-div">
           <Container className="inner-container">
-          <h1>recent sessions</h1>
+          <h2>recent sessions</h2>
           <div className="session-display">
             {this.props.climberSessions.length > 0 ? (
               this.props.climberSessions.map(

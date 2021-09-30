@@ -65,8 +65,10 @@ class Login extends Component<LoginProps, LoginState> {
   render() {
     return (
       <div>
-        <Container>
-        <h1>Climber Log In</h1>
+        <Container className="spaced-div">
+          <div className="content-header">
+        <h2>climber log in</h2>
+</div>
         <Form onSubmit={this.handleSubmit}>
             <FormGroup row>
               <InputGroup className="sign-up-input-grp">

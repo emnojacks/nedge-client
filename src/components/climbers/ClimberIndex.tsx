@@ -128,8 +128,8 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
     return (
       <Container>
         <div>
-          <h1>What's up, {this.state.climberProfile.username}</h1>
-          <h2>You pullin plastic today?</h2>
+          <h2>What's up, {this.state.climberProfile.username}</h2>
+          <h3>You pullin plastic today?</h3>
           <Row>
             <Col
               style={{

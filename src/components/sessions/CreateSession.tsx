@@ -110,7 +110,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
           
             <Form onSubmit={this.handleSubmit}
               className="form">
-              <h1>today's sesion</h1>
+           <h2>today's session</h2>
             {/* SESSION DATE */}
             <FormGroup>
               <InputGroup>
@@ -208,7 +208,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
             </FormGroup>
             <br></br>
             {/* NUTRITIONCONDITION */}
-            <h2>conditions</h2>
+            <h3>conditions</h3>
 
             <p> <span style={{ fontWeight: "bolder" }}> 😩 &nbsp;bad → subprime → neutral → good → optimal &nbsp;😄 </span> </p>
             <FormGroup row>
@@ -305,7 +305,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                 <Input
                   className="sign-up-input-area"
                   name="sessionnotes"
-                  placeholder="add quick deets to help you recall sesh"
+                  placeholder="add deets to help recall sesh"
                   type="text"
                   title="what happened that was memorable? Recording deets will help you remember why this sesh was diff than the rest."
                   maxLength={50}

@@ -8,7 +8,7 @@ import {
   Button,
   FormText,
   Col,
-  Row,
+  Container
 } from "reactstrap";
 let APIURL = "http://localhost:3000";
 
@@ -90,7 +90,10 @@ class Signup extends Component<SignupProps, SignupState> {
   render() {
     return (
       <div>
-        <h1>Climber Signup</h1>
+        <Container className="spaced-div">
+          <div className="content-header">
+        <h2>climber signup</h2>
+</div>
         <Form onSubmit={this.handleSubmit}>
           <FormGroup row>
             
@@ -149,7 +152,7 @@ class Signup extends Component<SignupProps, SignupState> {
           <FormGroup row className="sign-up-input-grp">
             <Col sm={5}>
               <Label className="form-label" htmlFor="gymname">
-                Home Gym&nbsp;&nbsp;
+                home gym&nbsp;&nbsp;
                 <select
                      className="sign-up-input-area"
                   name="gymname"
@@ -213,7 +216,7 @@ class Signup extends Component<SignupProps, SignupState> {
             <InputGroup className="sign-up-input-grp">
               <Col sm={5}>
                 <Label check className="form-label" htmlFor="needpartner">
-                  Need a catch from time to time?
+                  Want a catch from time to time?
                 </Label>
               </Col>
               <Col sm={5}>
@@ -233,7 +236,7 @@ class Signup extends Component<SignupProps, SignupState> {
             <InputGroup className="sign-up-input-grp">
               <Col sm={5}>
                 <Label className="form-label" htmlFor="experiencelevel">
-                  Climbing experience&nbsp;&nbsp;
+                  climbing experience&nbsp;&nbsp;
                   <select
                        className="sign-up-input-area"
                     name="experiencelevel"
@@ -288,7 +291,7 @@ class Signup extends Component<SignupProps, SignupState> {
           <FormGroup row>
             <InputGroup className="sign-up-input-grp">   
                 <Label className="form-label" htmlFor="location">
-                  City&nbsp;&nbsp;
+                  city&nbsp;&nbsp;
                 </Label>
               <Input
                 className="sign-up-input-area"
@@ -309,9 +312,10 @@ class Signup extends Component<SignupProps, SignupState> {
             className="btn-auth"
             type="submit">
             {" "}
-            Signup
+            sign up
           </Button>
         </Form>
+</Container>
       </div>
     );
   }
