@@ -54,6 +54,14 @@ justify-content: center;
  h5{
         font-size:12px!important;
     }
+
+#session-card-body {
+display: none;
+}
+
+#session-card-footer {
+display: none;
+}
 }
 
 .appheader {
@@ -214,4 +222,13 @@ grid-template-columns:repeat(1, 1fr);
 font-size: calc(7px + 1vmin);
 row-gap: 0px;
 justify-items: start;
+}
+
+#session-card-body {
+font-size: calc(7px + 1vmin)!important;
+}
+
+#session-card-footer {
+justify-content: center;
+align-items: center
 }

@@ -9,6 +9,7 @@ import {
   CardText,
   Container,
 } from "reactstrap";
+import { Link } from 'react-router-dom';
 import { Session } from "../../types/Types";
 let APIURL = "http://localhost:3000";
 
@@ -100,47 +101,60 @@ class DisplaySessions extends Component<
                         : "#FFDED2",
                     }}
                   >
-                    <CardHeader tag="h5">{session.sessiondate}</CardHeader>
-                    <CardBody>
+                    <CardHeader tag="h5"
+                      style={{ fontWeight: "bold" }}
+                    
+                    >
+                      <Link to="/">
+                      {session.sessiondate}
+                    </Link>
+                    </CardHeader>
+                    
+                    <CardBody id="session-card-body">
                       <CardText>
+                        <div className="session-card-deets">
+                          <section>
                         {session.sessionlength} hr
-                        <br></br>
+                          </section>
+                          <section>
                         {session.sessionpartner ? " 👥 " : ""}
                         {session.crosstraining ? " 🏋️" : " "}
-                        <br></br>
-                        <div className="session-card-deets">
-                       <div>
+                    </section>
+                      <section>
                           Nutrition{session.nutritioncondition >= "3" ? "✅" : "❌"}
-                          </div>
-                          <div>
+                          </section><section>
                           Sleep {session.sleepcondition >= "3" ? "✅" : "❌"}
-                          </div>
-                          <div>
+                          </section>
+                          <section>
                           Stress {session.stresscondition >= "3" ? "✅" : "❌"}
-                          </div>
-                          <div>
+                          </section>
+                         <section>
                           Ego {session.egocondition >= "3" ? "✅" : "❌"}
-                          </div>
-</div>
-                        <br></br>
+                       </section>
+<section>
                         {session.sessionnotes}
+</section>
+</div>
                       </CardText>
                     </CardBody>
-                    <CardFooter>
+                    <CardFooter id="session-card-footer"
+                   >
                       <Button
-                        color="secondary"
+                        style={{margin: "0px"}}
+                        outline color="transparent"
                         onClick={() => {
                           this.props.setSessionToUpdate(session);
                           this.props.openModal();
                         }}
                       >
                         ✏️
-                      </Button>{" "}
+                      </Button>
                       <Button
-                        color="warning"
+                        style={{margin: "0px"}}
+                        outline color="transparent"
                         onClick={() => this.deleteSession(session)}
                       >
-                        🚫
+                        🗑
                       </Button>
                     </CardFooter>
                   </Card>

@@ -165,14 +165,6 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                     <Col>
                       <Button outline color="warning" size="sm"
                         disabled
-                   
-                        // style={{
-                        //   borderRadius:".5em",
-                        //   backgroundColor: "#BD520F",
-                        //   border: "none",
-                        //   marginBottom: "2px"
-                         
-                        // }}
                       >
                         <Link to="/climber/sessions">edit profile</Link>
                       </Button>
