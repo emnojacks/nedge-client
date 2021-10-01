@@ -93,7 +93,7 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
                     <th>Experience Level</th>
                   </tr>
                 </thead>
-                <tbody>{this.climberProfileMapper}</tbody>
+                <tbody>{this.climberProfileMapper()}</tbody>
               </Table>
             </div>
           </Container>

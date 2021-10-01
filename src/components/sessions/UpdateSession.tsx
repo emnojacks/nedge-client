@@ -93,7 +93,6 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
   };
 
   handleSubmit = async (event: { preventDefault: () => void }) => {
-    console.log(this.props.sessionToUpdate);
     event.preventDefault();
     if (this.state.sessiondate) {
       try {
@@ -129,7 +128,7 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
                 type="date"
                 value={this.state.sessiondate}
                 required
-                onChange={(e) =>
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   this.setState({
                     sessiondate: e.target.value,
                   })
@@ -269,7 +268,7 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
                 value={this.state.sessionnotes}
                 name="sessionnotes"
                 type="text"
-                onBlur={(event: React.ChangeEvent<HTMLInputElement>) =>
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                   this.setState({
                     sessionnotes: event.target.value,
                   })

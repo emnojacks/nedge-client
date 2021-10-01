@@ -99,7 +99,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
       sleepcondition: "",
       stresscondition: "",
       egocondition: "",
-      sessionnotes: " ",
+      sessionnotes: "",
     });
   };
 
@@ -121,7 +121,6 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                     className="sign-up-input-area"
                     type="date"
                     name="sessiondate"
-                    min="2021-01-01"
                     required
                     //change this to be today - stretch
                     value={this.state.sessiondate}
@@ -196,7 +195,6 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                   <Input
                     style={{ maxWidth: "100px" }}
                     className="sign-up-input-area"
-                    placeholder="1"
                     type="number"
                     max={7}
                     min={0.5}
@@ -318,7 +316,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                     type="text"
                     title="what happened that was memorable? Recording deets will help you remember why this sesh was diff than the rest."
                     maxLength={50}
-                    onBlur={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                       this.setState({
                         sessionnotes: event.target.value,
                       })

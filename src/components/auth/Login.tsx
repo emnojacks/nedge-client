@@ -45,6 +45,8 @@ class Login extends Component<LoginProps, LoginState> {
         climber: {
           username: this.state.username,
           password: this.state.password,
+          isAdmin: this.state.isAdmin,
+          //added the above to get rid of object undefined notification
         },
       }),
       headers: new Headers({
@@ -56,14 +58,13 @@ class Login extends Component<LoginProps, LoginState> {
         //takes the session token from the response and passes it to the updatetoken object
         {
           //displays what message the server has programmed
-          console.log(data.message);
+          window.alert(data.message);
           if (data.sessionToken) {
             this.props.updateSessionToken(data.sessionToken);
-          }
-          console.log(data.climber.isAdmin);
-          if (data.climber.isAdmin === true) {
+                 if (data.climber.isAdmin === true) {
             this.props.setIsAdmin(this.state.isAdmin);
             console.log("climber set to admin via login");
+          }
           }
         }
       )

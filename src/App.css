@@ -59,7 +59,7 @@ justify-content: center;
 display: none;
 }
 
-#session-card-footer {
+.session-card-footer {
 display: none;
 }
 }
@@ -101,7 +101,6 @@ border-bottom-left-radius: 0em;
 border-top-left-radius: 1em;
 border-top-right-radius: 1em;
 height: auto;
-width: auto;
 }
 
 .session-display{
@@ -196,10 +195,11 @@ margin-bottom: 1em;
 .form-text {
 color: var(--yellow-orange)!important;
 }
-
-.inner-container {
+/* 
+//removing this styling post deploy bc of heroku display */
+/* .inner-container {
 padding-left: 5em;
-}
+} */
 
 .btn {
 margin-top: .8em;
