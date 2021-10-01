@@ -116,8 +116,8 @@ class App extends Component<AppProps, AppState> {
           <Container>
             <Switch>
               <Route exact path="/about">
-<About sessionToken={this.state.sessionToken} />
-</Route>
+                <About sessionToken={this.state.sessionToken} />
+              </Route>
               <Route exact path="/">
                 {this.climberViews}
               </Route>
@@ -127,7 +127,7 @@ class App extends Component<AppProps, AppState> {
               <Route exact path="/climber/goals">
                 <GoalIndex sessionToken={this.state.sessionToken} />
               </Route>
-               {/* <Route exact path="/climber/sessions/update">
+              {/* <Route exact path="/climber/sessions/update">
                 <UpdateSession sessionToken={this.state.sessionToken} />
               </Route> */}
               <Route exact path="/gym">

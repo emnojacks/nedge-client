@@ -2,8 +2,8 @@ import { Component } from "react";
 import { Container, Table } from "reactstrap";
 import { Redirect } from "react-router-dom";
 import { Climber } from "../../types/Types";
-
-let APIURL = "http://localhost:3000";
+import APIURL from "../../helpers/environment.js";
+// let APIURL = "http://localhost:3000";
 
 interface GymIndexProps {
   sessionToken: string;

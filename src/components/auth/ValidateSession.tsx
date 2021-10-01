@@ -2,7 +2,7 @@ import * as React from "react";
 import { Component } from "react";
 import Login from "./Login";
 import Signup from "./Signup";
-import { Button, Col, Row, Container } from "reactstrap";
+import { Button, Container } from "reactstrap";
 
 interface ValidateSessionProps {
   updateSessionToken: (newToken: string) => void;
@@ -70,11 +70,12 @@ class ValidateSession extends Component<
               color="link"
               className="btn-link-auth-toggle"
               onClick={this.toggleAuthType}
-            >actually I need to login
+            >
+              actually I need to login
             </Button>
           ) : (
-              <Button
-                color="link"
+            <Button
+              color="link"
               className="btn-link-auth-toggle"
               onClick={this.toggleAuthType}
             >

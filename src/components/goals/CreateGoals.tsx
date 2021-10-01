@@ -7,7 +7,8 @@ import {
   FormGroup,
   Container,
 } from "reactstrap";
-let APIURL = "http://localhost:3000";
+import APIURL from "../../helpers/environment.js";
+// let APIURL = "http://localhost:3000";
 
 interface CreateGoalsProps {
   sessionToken: string;
@@ -181,8 +182,8 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                     })
                   }
                 />
-                <Button size="sm" color="warning" type="submit">✚
-                  personal goal
+                <Button size="sm" color="warning" type="submit">
+                  ✚ personal goal
                 </Button>
               </FormGroup>
               {/* <p>Goal set to {this.state.goaldescription}</p> */}

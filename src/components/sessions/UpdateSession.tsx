@@ -10,7 +10,8 @@ import {
   Input,
 } from "reactstrap";
 import { Session } from "../../types/Types";
-let APIURL = "http://localhost:3000";
+import APIURL from "../../helpers/environment.js";
+// let APIURL = "http://localhost:3000";
 
 interface UpdateSessionProps {
   sessionToken: string;
@@ -112,10 +113,10 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
   render() {
     console.log(this.props.sessionToUpdate);
     return (
-      <Modal className="update-modal"
-        isOpen={true} toggle={this.toggleModal}>
+      <Modal className="update-modal" isOpen={true} toggle={this.toggleModal}>
         <ModalHeader>
-          <h2>Your Climbing Sesh</h2></ModalHeader>
+          <h2>Your Climbing Sesh</h2>
+        </ModalHeader>
         <ModalBody className="modalBody">
           <Form onSubmit={this.handleSubmit}>
             {/* SESSION DATE */}
@@ -167,7 +168,6 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
                 }
               />
             </FormGroup>
-
             {/* SESSION PARTNER */}
             <FormGroup>
               <Label className="form-label" htmlFor="sessionpartner">
@@ -196,13 +196,12 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
                 }
               ></Input>
             </FormGroup>
-
             {/* NUTRITIONCONDITION */}
             <FormGroup>
               <Label className="form-label" htmlFor="nutritioncondition">
                 Nutrition Condition
               </Label>
-                <Input
+              <Input
                 value={this.state.nutritioncondition}
                 type="range"
                 max={5}
@@ -218,8 +217,8 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
               <Label className="form-label" htmlFor="sleepcondition">
                 Sleep State
               </Label>
-                        <Input
-                                 value={this.state.sleepcondition}
+              <Input
+                value={this.state.sleepcondition}
                 type="range"
                 max={5}
                 min={0}
@@ -234,7 +233,7 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
               <Label className="form-label" htmlFor="stresscondition">
                 Stress State
               </Label>
-                <Input
+              <Input
                 value={this.state.stresscondition}
                 type="range"
                 max={5}
@@ -250,7 +249,7 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
               <Label className="form-label" htmlFor="egocondition">
                 Ego State
               </Label>
-                <Input
+              <Input
                 value={this.state.egocondition}
                 type="range"
                 max={5}
@@ -263,10 +262,10 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
             </FormGroup>
             <FormGroup>
               {/* SESSIONNOTES OPTIONAL */}
-            <Label className="form-label" htmlFor="sessionnotes">
-                  Notes
-                </Label>
-                 <Input
+              <Label className="form-label" htmlFor="sessionnotes">
+                Notes
+              </Label>
+              <Input
                 value={this.state.sessionnotes}
                 name="sessionnotes"
                 type="text"
@@ -277,19 +276,14 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
                 }
               />
             </FormGroup>
-
             <br></br>
-          
-            <Button
-              color="secondary"
-              onClick={this.props.closeModal}
-            >
+            <Button color="secondary" onClick={this.props.closeModal}>
               close
+            </Button>{" "}
+            <Button color="warning" type="submit">
+              {" "}
+              update
             </Button>
-            {" "}
-            <Button
-              color="warning"
-              type="submit"> update</Button>
           </Form>
         </ModalBody>
       </Modal>

@@ -1,18 +1,12 @@
 import React, { Component } from "react";
-import {
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Button,
-  InputGroup,
-} from "reactstrap";
+import { Form, FormGroup, Label, Input, Button, InputGroup } from "reactstrap";
 import { Climber } from "../../types/Types";
-let APIURL = "http://localhost:3000";
+import APIURL from "../../helpers/environment.js";
+// let APIURL = "http://localhost:3000";
 
 interface UpdateProfileProps {
   sessionToken: string;
-  climberProfile: { [key: string]: any }
+  climberProfile: { [key: string]: any };
   fetchClimberProfile: () => void;
 }
 
@@ -39,14 +33,14 @@ class UpdateProfile extends Component<UpdateProfileProps, UpdateProfileState> {
     };
   }
 
-  handleChange=(event: React.ChangeEvent<HTMLInputElement>): void=>{
+  handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
     this.setState({
       [name]: value,
     } as unknown as Pick<Climber, keyof Climber>);
-  }
+  };
 
   handleSubmit = (event: React.FormEvent): void => {
     event.preventDefault();

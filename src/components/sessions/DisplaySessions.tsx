@@ -5,12 +5,12 @@ import {
   CardBody,
   CardHeader,
   CardFooter,
-  CardTitle,
   CardText,
   Container,
 } from "reactstrap";
 import { Session } from "../../types/Types";
-let APIURL = "http://localhost:3000";
+import APIURL from "../../helpers/environment.js";
+// let APIURL = "http://localhost:3000";
 
 interface DisplaySessionsProps {
   sessionToken: string;
@@ -86,94 +86,94 @@ class DisplaySessions extends Component<
       <div>
         <Container className="lighter-div">
           <Container className="inner-container">
-          <h2>recent sessions</h2>
-          <div className="session-display">
-            {this.props.climberSessions.length > 0 ? (
-              this.props.climberSessions.map(
-                (session: Session, index: number) => (
-                  <Card 
-                    className="session-card"
-                    key={session.id}
-                    style={{
-                      backgroundColor: session.sessionsuccessful
-                        ? "#E8FFB3"
-                        : "#FFDED2",
-                    }}
-                  >
-                    <CardHeader tag="h5"
-                      style={{ fontWeight: "bold" }}
-                    
+            <h2>recent sessions</h2>
+            <div className="session-display">
+              {this.props.climberSessions.length > 0 ? (
+                this.props.climberSessions.map(
+                  (session: Session, index: number) => (
+                    <Card
+                      className="session-card"
+                      key={session.id}
+                      style={{
+                        backgroundColor: session.sessionsuccessful
+                          ? "#E8FFB3"
+                          : "#FFDED2",
+                      }}
                     >
-                      <Button
-                        style={{ margin: "0px" }}
-                        size="sm"
-                        outline color="transparent"
-                        onClick={() => {
-                          this.props.setSessionToUpdate(session);
-                          this.props.openModal();
-                        }}>
-                      {session.sessiondate}
-                    </Button>
-                    </CardHeader>
-                    
-                    <CardBody id="session-card-body">
-                      <CardText>
-                        <div className="session-card-deets">
-                          <section>
-                        {session.sessionlength} hr
-                          </section>
-                          <section>
-                        {session.sessionpartner ? " 👥 " : ""}
-                        {session.crosstraining ? " 🏋️" : " "}
-                    </section>
-                      <section>
-                          Nutrition{session.nutritioncondition >= "3" ? "✅" : "❌"}
-                          </section><section>
-                          Sleep {session.sleepcondition >= "3" ? "✅" : "❌"}
-                          </section>
-                          <section>
-                          Stress {session.stresscondition >= "3" ? "✅" : "❌"}
-                          </section>
-                         <section>
-                          Ego {session.egocondition >= "3" ? "✅" : "❌"}
-                       </section>
-<section>
-                        {session.sessionnotes}
-</section>
-</div>
-                      </CardText>
-                    </CardBody>
-                    <CardFooter className="session-card-footer"
-                   >
-                      <Button
-                        style={{margin: "0px"}}
-                        outline color="transparent"
-                        onClick={() => {
-                          this.props.setSessionToUpdate(session);
-                          this.props.openModal();
-                        }}
-                      >
-                        ✏️
-                      </Button>
-                      <Button
-                        style={{margin: "0px"}}
-                        outline color="transparent"
-                        onClick={() => this.deleteSession(session)}
-                      >
-                        🗑
-                      </Button>
-                    </CardFooter>
-                  </Card>
+                      <CardHeader tag="h5" style={{ fontWeight: "bold" }}>
+                        <Button
+                          style={{ margin: "0px" }}
+                          size="sm"
+                          outline
+                          color="transparent"
+                          onClick={() => {
+                            this.props.setSessionToUpdate(session);
+                            this.props.openModal();
+                          }}
+                        >
+                          {session.sessiondate}
+                        </Button>
+                      </CardHeader>
+
+                      <CardBody id="session-card-body">
+                        <CardText>
+                          <div className="session-card-deets">
+                            <section>{session.sessionlength} hr</section>
+                            <section>
+                              {session.sessionpartner ? " 👥 " : ""}
+                              {session.crosstraining ? " 🏋️" : " "}
+                            </section>
+                            <section>
+                              Nutrition
+                              {session.nutritioncondition >= "3" ? "✅" : "❌"}
+                            </section>
+                            <section>
+                              Sleep{" "}
+                              {session.sleepcondition >= "3" ? "✅" : "❌"}
+                            </section>
+                            <section>
+                              Stress{" "}
+                              {session.stresscondition >= "3" ? "✅" : "❌"}
+                            </section>
+                            <section>
+                              Ego {session.egocondition >= "3" ? "✅" : "❌"}
+                            </section>
+                            <section>{session.sessionnotes}</section>
+                          </div>
+                        </CardText>
+                      </CardBody>
+                      <CardFooter className="session-card-footer">
+                        <Button
+                          style={{ margin: "0px" }}
+                          outline
+                          color="transparent"
+                          onClick={() => {
+                            this.props.setSessionToUpdate(session);
+                            this.props.openModal();
+                          }}
+                        >
+                          ✏️
+                        </Button>
+                        <Button
+                          style={{ margin: "0px" }}
+                          outline
+                          color="transparent"
+                          onClick={() => this.deleteSession(session)}
+                        >
+                          🗑
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  )
                 )
-              )
-            ) : (
-              <p>
-                Your session log is empty. Log your first session to start
-                building your session data.
-              </p>
-            )}
-          </div>
-        </Container>
+              ) : (
+                <p>
+                  Your session log is empty. Log your first session to start
+                  building your session data.
+                </p>
+              )}
+            </div>
+          </Container>
         </Container>
       </div>
     );

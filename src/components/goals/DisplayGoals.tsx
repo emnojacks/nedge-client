@@ -7,11 +7,12 @@ import {
   Row,
   Col,
   CardHeader,
-    Container,
-  CardFooter
+  Container,
+  CardFooter,
 } from "reactstrap";
 import { Goal } from "../../types/Types";
-let APIURL = "http://localhost:3000";
+import APIURL from "../../helpers/environment.js";
+// let APIURL = "http://localhost:3000";
 
 interface DisplayGoalsProps {
   sessionToken: string;
@@ -19,7 +20,6 @@ interface DisplayGoalsProps {
   fetchClimberGoals: CallableFunction;
   openModal: () => void;
   setGoalToUpdate: (goal: Goal) => void;
-  //edit and delete goal funcs
 }
 
 interface DisplayGoalsState {
@@ -74,58 +74,58 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
       <div className="mainDiv">
         <Container className="lighter-div">
           <Container className="inner-container">
-          <div className="header-content">
-          <h2>Goal Deck</h2>
-</div>
-           <div className="goal-display">
-          {this.props.climberGoals.length > 0 ? (
-            this.props.climberGoals.map((goal: Goal, index: number) => (
-              <Row key={index}>
-                <Col sm="8">
-                  <Card
-                    className="goal-card climber-profile-card"
-                    key={goal.id}>
-                    <CardHeader> Priority #{goal.goalpriority}</CardHeader>
-                    <CardBody>
-                      <CardTitle tag="h5">
-                        {/* {index + 1} */}
-                        {goal.goaldescription}
-                      </CardTitle>
-
-                            </CardBody>
-                            <CardFooter className="session-card-footer">
-                      <Button
-                        style={{margin: "0px"}}
-                        color="success"
-                        onClick={() => this.deleteGoal(goal)}
+            <div className="header-content">
+              <h2>Goal Deck</h2>
+            </div>
+            <div className="goal-display">
+              {this.props.climberGoals.length > 0 ? (
+                this.props.climberGoals.map((goal: Goal, index: number) => (
+                  <Row key={index}>
+                    <Col sm="8">
+                      <Card
+                        className="goal-card climber-profile-card"
+                        key={goal.id}
                       >
-                       sent it
-                                </Button>
-                                &nbsp;
-                      <Button
-                        style={{margin: "0px"}}
-                        color="transparent"
-                        onClick={() => {
-                          this.props.setGoalToUpdate(goal);
-                          this.props.openModal();
-                        }}
-                      >
-                         ✏️
-                      </Button>
-                            </CardFooter>
-                  </Card>
-                </Col>
-              </Row>
-            )) 
-          ) : ( 
-            <p>
-              Your goal deck is empty. Set a Goal to start working towards the
-              climber you want to be.
-            </p>
-          )}
-  </div>
+                        <CardHeader> Priority #{goal.goalpriority}</CardHeader>
+                        <CardBody>
+                          <CardTitle tag="h5">
+                            {/* {index + 1} */}
+                            {goal.goaldescription}
+                          </CardTitle>
+                        </CardBody>
+                        <CardFooter className="session-card-footer">
+                          <Button
+                            style={{ margin: "0px" }}
+                            color="success"
+                            onClick={() => this.deleteGoal(goal)}
+                          >
+                            sent it
+                          </Button>
+                          &nbsp;
+                          <Button
+                            style={{ margin: "0px" }}
+                            color="transparent"
+                            onClick={() => {
+                              this.props.setGoalToUpdate(goal);
+                              this.props.openModal();
+                            }}
+                          >
+                            ✏️
+                          </Button>
+                        </CardFooter>
+                      </Card>
+                    </Col>
+                  </Row>
+                ))
+              ) : (
+                <p>
+                  Your goal deck is empty. Set a Goal to start working towards
+                  the climber you want to be.
+                </p>
+              )}
+            </div>
+          </Container>
         </Container>
-</Container>
       </div>
     );
   }
