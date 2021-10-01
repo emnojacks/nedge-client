@@ -91,7 +91,7 @@ border-top-right-radius: 1em!important;
 margin: 1em;
 max-width: 300px;
 height: auto;
-background-color: var(--queen-blue);
+background-color: var(--queen-blue)!important;
 color: var(--maize-crayola)
 }
 
@@ -243,7 +243,8 @@ align-items: center
 
 .goal-card {
 color: var(--soft-white)!important;
+font-weight: bold;
 background-color: var(--yellow-orange)!important;
-opacity: .6;
+opacity: .8;
 }
 

@@ -9,7 +9,6 @@ import {
   CardText,
   Container,
 } from "reactstrap";
-import { Link } from 'react-router-dom';
 import { Session } from "../../types/Types";
 let APIURL = "http://localhost:3000";
 

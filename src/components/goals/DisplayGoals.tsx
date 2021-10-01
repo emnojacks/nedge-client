@@ -87,7 +87,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                     key={goal.id}>
                     <CardHeader> Priority #{goal.goalpriority}</CardHeader>
                     <CardBody>
-                      <CardTitle tag="h6">
+                      <CardTitle tag="h5">
                         {/* {index + 1} */}
                         {goal.goaldescription}
                       </CardTitle>

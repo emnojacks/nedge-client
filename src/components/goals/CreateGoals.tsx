@@ -171,7 +171,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
               <FormGroup>
                 <br></br>
                 <Input
-                  className="text-input"
+                  className="sign-up-input-area"
                   name="othergoal"
                   placeholder="or add a personal goal"
                   type="text"
