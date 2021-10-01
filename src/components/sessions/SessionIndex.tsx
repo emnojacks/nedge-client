@@ -3,7 +3,9 @@ import { Component } from 'react';
 import CreateSession from '../sessions/CreateSession';
 import DisplaySessions from '../sessions/DisplaySessions';
 import UpdateSession from '../sessions/UpdateSession';
+import {Container} from 'reactstrap'
 import { Session } from '../../types/Types';
+import { Redirect } from 'react-router-dom';
 let APIURL = "http://localhost:3000";
 
 
@@ -82,19 +84,26 @@ class SessionIndex extends Component<SessionIndexProps, SessionIndexState> {
     }
     
     render() {
+        
+        if  (!this.props.sessionToken) 
+        return <Redirect to= "/" />
+        
         return (
             <div>
+                <Container>
+                
+            <CreateSession
+                    sessionToken={this.props.sessionToken}
+                    fetchClimberSessions={this.fetchClimberSessions}
+                />
                 <DisplaySessions
                     openModal={this.openModal}
                     climberSessions={this.state.climberSessions}
                     sessionToken={this.props.sessionToken}
                     fetchClimberSessions={this.fetchClimberSessions}
                     setSessionToUpdate={this.setSessionToUpdate}
-                />
-                   <CreateSession
-                    sessionToken={this.props.sessionToken}
-                    fetchClimberSessions={this.fetchClimberSessions}
-                />
+                    />
+                    
                 {this.state.modalVisible ?
                     <UpdateSession
                         sessionToken={this.props.sessionToken}
@@ -104,8 +113,10 @@ class SessionIndex extends Component<SessionIndexProps, SessionIndexState> {
                         closeModal={this.closeModal}
                         openModal={this.openModal}
                         modalVisible={this.state.modalVisible}  /> : <> </>}
-                
-            </div>);
+                </Container>
+            </div>
+
+);
     }
 }
  

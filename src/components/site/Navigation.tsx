@@ -8,7 +8,7 @@ import {
   NavbarBrand,
   Button,
 } from "reactstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 
 interface NavigationProps {
@@ -18,50 +18,71 @@ interface NavigationProps {
 }
 
 interface NavigationState {
-  isOpen: boolean;
+  isCollapsed: boolean;
 }
 
 class Navigation extends Component<NavigationProps, NavigationState> {
   constructor(props: NavigationProps) {
     super(props);
     this.state = {
-      isOpen: false,
+      isCollapsed: false,
     };
   }
   toggleNavbar = () => {
     this.setState({
-      isOpen: !this.state.isOpen,
+      isCollapsed: !this.state.isCollapsed,
     });
   };
 
   render() {
     return (
       //NAV LOGO
-      <Navbar color="light" expand="sm">
+      <Navbar expand="sm" color="faded" light className="navBar">
         <NavbarBrand style={{ marginLeft: "1em" }}>
-          <img src={logo} alt="nedge logo" height="32px" width="32px"></img>
-          &nbsp; NEDGE
+          <Link to="/about">
+            <img src={logo} alt="nedge logo" height="35px" width="35px"></img>
+            &nbsp;
+          </Link>
         </NavbarBrand>
         {/* TOGGLE HAMBURGER */}
-        <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-        <Collapse isOpen={this.state.isOpen} navbar>
+
+        <NavbarToggler
+          style={{ marginRight: "1em" }}
+          onClick={this.toggleNavbar}
+          className="mr-2"
+        />
+
+        <Collapse isOpen={this.state.isCollapsed} navbar>
           {/* GOALS LINK */}
           <Nav navbar>
-              <NavItem>
-              <Link to="/">Home</Link>
-            </NavItem>
             <NavItem>
-              <Link to="/climber/goals">Goals</Link>
+              <Button className="btn-nav">
+                <Link to="/">Home</Link>
+              </Button>
             </NavItem>
+
+            <NavItem>
+              <Button className="btn-nav">
+                <Link to="/climber/goals">Goals</Link>
+              </Button>
+            </NavItem>
+
             {/* SESSIONS LINK */}
+
             <NavItem>
-              <Link to="/climber/sessions">Sessions</Link>
+              <Button className="btn-nav"
+          >
+                <Link to="/climber/sessions">Sessions</Link>
+              </Button>
             </NavItem>
+
             {/* GYM VIEW LINK */}
             <NavItem>
-              <Link to="/gym">Gym View</Link>
+              <Button className="btn-nav">
+                <Link to="/gym">Gym View</Link>
+              </Button>
             </NavItem>
- {/* LOGOUT LINK */}
+            {/* LOGOUT LINK */}
             <NavItem>
               <Button
                 className="btn-nav"
@@ -69,12 +90,6 @@ class Navigation extends Component<NavigationProps, NavigationState> {
               >
                 Logout
               </Button>
-              
-                      <NavLink to='/'
-             
-              >
-                Home
-              </NavLink>
             </NavItem>
           </Nav>
         </Collapse>

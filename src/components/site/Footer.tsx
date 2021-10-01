@@ -1,25 +1,52 @@
-import { Component } from "react";
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Link from '@mui/material/Link';
 
-interface FooterProps {}
-
-interface FooterState {}
-
-class Footer extends Component<FooterProps, FooterState> {
-  constructor(props: FooterProps) {
-    super(props);
-    this.state = {
-      isOpen: false,
-    };
-  }
-  render() {
-    return (
-      <div className="footer">
-        <small className="text-muted">
-          <p> &copy; 2021 | DigitalGhost | privacy policy | contact </p>
-        </small>
-      </div>
-    );
-  }
+function Copyright() {
+  return (
+    <Typography variant="body2" color="white">
+      {'Copyright © '}
+      <Link color="inherit" href="https://www.incirculytics.com/">
+        INcirculytics
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
 }
 
-export default Footer;
+export default function StickyFooter() {
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '80vh',
+      }}
+    >
+      <CssBaseline />
+      <Box
+        component="footer"
+        className="footer"
+        sx={{
+          py: 3,
+          px: 2,
+          mt: 'auto',
+          backgroundColor: (theme) =>
+            theme.palette.mode === 'dark'
+              ? theme.palette.grey[200]
+              : theme.palette.grey[800],
+        }}
+      >
+        <Container maxWidth="sm">
+          <Typography variant="body1">
+            Happy Climbing
+          </Typography>
+          <Copyright />
+        </Container>
+      </Box>
+    </Box>
+  );
+}

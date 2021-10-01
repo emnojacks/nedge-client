@@ -1,34 +1,24 @@
 import { Component } from "react";
-import {
-  Container,
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardHeader,
-  CardFooter,
-  Button,
-} from "reactstrap";
+import { Container, Table } from "reactstrap";
+import { Redirect } from "react-router-dom";
 import { Climber } from "../../types/Types";
 
 let APIURL = "http://localhost:3000";
 
 interface GymIndexProps {
   sessionToken: string;
+  isAdmin: boolean;
+  setIsAdmin: (isAdmin: boolean) => void;
 }
 
 interface GymIndexState {
   climberProfiles: Array<Climber>;
-  //the CardImg won't accept a prop of HTMLImageElement
-  profilePic: string;
 }
 
 class GymIndex extends Component<GymIndexProps, GymIndexState> {
   constructor(props: GymIndexProps) {
     super(props);
     this.state = {
-      profilePic: "",
       climberProfiles: [],
     };
   }
@@ -36,53 +26,6 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
   componentDidMount() {
     this.fetchClimberProfiles();
   }
-
-  // changeProfilePic = () => {
-  //     let climbingtype = this.state.climberProfiles;
-  //     if (climbingtype) {
-  //         switch (climbingtype) {
-  //             case "gym rat":
-  //                 this.setState({
-  //                     profilePic: AdamOndra
-  //                 })
-  //                 break;
-  //             case "boulder bro":
-  //                 this.setState({
-  //                     profilePic: DanielWoods
-  //                 })
-  //                 break;
-  //             case "bolt clipper":
-  //                 this.setState({
-  //                     profilePic: BelaySpecs
-  //                 })
-  //                 break;
-  //             case "trad dad":
-  //                 this.setState({
-  //                     profilePic: RoyalRobbins
-  //                 })
-  //                 break;
-  //             case "ice picker":
-  //                 this.setState({
-  //                     profilePic: IcePicker
-  //                 })
-  //                 break;
-  //             case "alpinist":
-  //                 this.setState({
-  //                     profilePic: Alpinist
-  //                 })
-  //                 break;
-  //             case "soloist":
-  //                 this.setState({
-  //                     profilePic: SadoCracktivist
-  //                 })
-  //                 break;
-  //             default:
-  //                 this.setState({
-  //                     profilePic: AidClimber
-  //                 })
-  //         }
-  //     }
-  // }
 
   fetchClimberProfiles = async () => {
     try {
@@ -99,8 +42,8 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
       this.setState({
         climberProfiles: climberProfiles,
       });
-      // this.changeProfilePic();
       console.log(climberProfiles);
+      // this.climberProfileMapper();
     } catch (error) {
       console.log(error);
       console.log("failed to fetch profiles");
@@ -108,38 +51,54 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
     console.log(this.state.climberProfiles);
   };
 
+  climberProfileMapper = () => {
+    if (this.state.climberProfiles.length > 0) {
+      return this.state.climberProfiles.map((climberProfile, index) => {
+        return (
+          <tr key={this.state.climberProfiles[index].id}>
+            <th scope="row"></th>
+            <td>{this.state.climberProfiles[index].username}</td>
+            <td>{this.state.climberProfiles[index].location}</td>
+            <td>{this.state.climberProfiles[index].gymname}</td>
+            <td>{this.state.climberProfiles[index].needpartner}</td>
+            <td>{this.state.climberProfiles[index].climbingtype}</td>
+            <td>{this.state.climberProfiles[index].experiencelevel}</td>
+          </tr>
+        );
+      });
+    }
+  };
+
   render() {
+    if (!this.props.sessionToken) return <Redirect to="/" />;
+
+    if (!this.props.isAdmin) return <Redirect to="/" />;
+
     return (
-      <Container>
-        <div>
-          <Card className="climber-profile-card">
-            <CardImg
-              // top width="50%"
-              id="profilePic"
-              src={this.state.profilePic}
-              alt="Card image cap"
-            />
-            <CardHeader tag="h4">
-              {/* {this.state.climberProfile.username} */}
-            </CardHeader>
-            <CardBody>
-              <CardTitle tag="h5">
-                {/* {this.state.climberProfile.experiencelevel}{" "}
-                {this.state.climberProfile.climbingtype} */}
-              </CardTitle>
-              <CardSubtitle tag="h6" className="mb-2 text-muted">
-                {/* {this.state.climberProfile.gymname},{" "}
-                {this.state.climberProfile.location}{" "} */}
-              </CardSubtitle>
-            </CardBody>
-            <CardFooter>
-              <Button size="sm" className="btn-profile-edit">
-                Edit
-              </Button>
-            </CardFooter>
-          </Card>
-        </div>
-      </Container>
+      <div>
+        <Container className="lighter-div">
+          <Container className="inner-container">
+            <div className="header-content">
+              <h2>climbers on NEDGE</h2>
+            </div>
+            <div className="climber-display">
+              <Table hover striped>
+                <thead>
+                  <tr>
+                    <th>Climber Name</th>
+                    <th>Location</th>
+                    <th>Home Gym</th>
+                    <th>Need Partner</th>
+                    <th>Climbing Type</th>
+                    <th>Experience Level</th>
+                  </tr>
+                </thead>
+                <tbody>{this.climberProfileMapper}</tbody>
+              </Table>
+            </div>
+          </Container>
+        </Container>
+      </div>
     );
   }
 }

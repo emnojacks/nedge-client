@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Form, FormGroup, Label, Input, Button, Container, InputGroup } from "reactstrap";
 let APIURL = "http://localhost:3000";
 
 interface LoginProps {
@@ -11,7 +11,7 @@ interface LoginProps {
 interface LoginState {
   username: string;
   password: string;
-  //isAdmin?: boolean
+  isAdmin: boolean 
 }
 
 class Login extends Component<LoginProps, LoginState> {
@@ -20,6 +20,7 @@ class Login extends Component<LoginProps, LoginState> {
     this.state = {
       username: "",
       password: "",
+      isAdmin: false,
     };
   }
 
@@ -46,32 +47,41 @@ class Login extends Component<LoginProps, LoginState> {
       //takes the session token from the response and passes it to the updatetoken object
       {
         //displays what message the server has programmed
-        window.alert(data.message);
+        console.log(data.message);
         if (data.sessionToken) {
           this.props.updateSessionToken(data.sessionToken);
         }
-        if (data.isAdmin === true) {
-          this.props.setIsAdmin(data.isAdmin)
+        console.log(data.climber.isAdmin)
+        if (data.climber.isAdmin === true) {
+          this.props.setIsAdmin(this.state.isAdmin)
           console.log("climber set to admin via login")
         }
       })
       .catch((error) => {
-        console.log(error.message);
+        window.alert(error.message);
       });
   };
 
   render() {
     return (
       <div>
-        <h1>Climber Log In</h1>
+        <Container className="spaced-div">
+          <div className="content-header">
+        <h2>climber log in</h2>
+</div>
         <Form onSubmit={this.handleSubmit}>
-          <FormGroup>
-            <Label className="form-label" htmlFor="username">
-              username
-            </Label>
-            <Input
+            <FormGroup row>
+              <InputGroup className="sign-up-input-grp">
+              <Label className="form-label" htmlFor="username" 
+                style={{ marginRight: "1em"}}
+              >
+                username
+              </Label>
+              
+              <Input
+                className="sign-up-input-area"
               name="username"
-              placeholder="alexhandhold"
+              placeholder="AlexHandhold"
               type="text"
               aria-required="true"
               required
@@ -79,18 +89,23 @@ class Login extends Component<LoginProps, LoginState> {
                 this.setState({ username: event.target.value })
               }
               value={this.state.username}
-            />
+            /> 
+</InputGroup>
           </FormGroup>
-
-          <FormGroup>
-            <Label className="form-label" htmlFor="password">
+<br></br>
+            <FormGroup row>
+              <InputGroup className="sign-up-input-grp">
+              <Label className="form-label" htmlFor="password" 
+              style={{marginRight: "1em"}}>
               password
-            </Label>
-            <Input
+              </Label>
+      
+              <Input
+                   className="sign-up-input-area"
               pattern="^(?=.{5,10})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$"
               title="Password must be at least 6 characters, and contain at least 1 uppercase character, a lowercase character, a number, and a special character."
               name="password"
-              placeholder="S3crety!"
+                  placeholder="s3cR3t!"
               aria-required="true"
               type="password"
               required
@@ -100,14 +115,15 @@ class Login extends Component<LoginProps, LoginState> {
               }
               value={this.state.password}
             />
+</InputGroup>
           </FormGroup>
-          <br></br>
-          <Button className="btn-auth" type="submit">
-            {" "}
+            <Button
+              className="btn-auth" type="submit"
+              color="warning">
             Login
           </Button>
         </Form>
-        <br></br>
+</Container>
       </div>
     );
   }

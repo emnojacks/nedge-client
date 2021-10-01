@@ -83,14 +83,16 @@ class DisplaySessions extends Component<
     console.log(this.props.climberSessions);
 
     return (
-      <div className="mainDiv">
-        <Container>
-          <h1>Sessions</h1>
+      <div>
+        <Container className="lighter-div">
+          <Container className="inner-container">
+          <h2>recent sessions</h2>
           <div className="session-display">
             {this.props.climberSessions.length > 0 ? (
               this.props.climberSessions.map(
                 (session: Session, index: number) => (
-                  <Card
+                  <Card 
+                    className="session-card"
                     key={session.id}
                     style={{
                       backgroundColor: session.sessionsuccessful
@@ -98,46 +100,67 @@ class DisplaySessions extends Component<
                         : "#FFDED2",
                     }}
                   >
-                    <CardHeader tag="h5">{session.sessiondate}</CardHeader>
-                    <CardBody>
-                      <CardTitle tag="h6">Deets</CardTitle>
-
+                    <CardHeader tag="h5"
+                      style={{ fontWeight: "bold" }}
+                    
+                    >
+                      <Button
+                        style={{ margin: "0px" }}
+                        size="sm"
+                        outline color="transparent"
+                        onClick={() => {
+                          this.props.setSessionToUpdate(session);
+                          this.props.openModal();
+                        }}>
+                      {session.sessiondate}
+                    </Button>
+                    </CardHeader>
+                    
+                    <CardBody id="session-card-body">
                       <CardText>
+                        <div className="session-card-deets">
+                          <section>
                         {session.sessionlength} hr
-                        <br></br>
+                          </section>
+                          <section>
                         {session.sessionpartner ? " 👥 " : ""}
                         {session.crosstraining ? " 🏋️" : " "}
-                        <br></br>
-                        <small className="text-muted">
-                          Nutrition{" "}
-                          {session.nutritioncondition >= "3" ? "✅" : "❌"}
-                          <br></br>
+                    </section>
+                      <section>
+                          Nutrition{session.nutritioncondition >= "3" ? "✅" : "❌"}
+                          </section><section>
                           Sleep {session.sleepcondition >= "3" ? "✅" : "❌"}
-                          <br></br>
+                          </section>
+                          <section>
                           Stress {session.stresscondition >= "3" ? "✅" : "❌"}
-                          <br></br>
+                          </section>
+                         <section>
                           Ego {session.egocondition >= "3" ? "✅" : "❌"}
-                          <br></br>
-                        </small>
-                        <br></br>
+                       </section>
+<section>
                         {session.sessionnotes}
+</section>
+</div>
                       </CardText>
                     </CardBody>
-                    <CardFooter>
+                    <CardFooter className="session-card-footer"
+                   >
                       <Button
-                        color="secondary"
+                        style={{margin: "0px"}}
+                        outline color="transparent"
                         onClick={() => {
                           this.props.setSessionToUpdate(session);
                           this.props.openModal();
                         }}
                       >
                         ✏️
-                      </Button>{" "}
+                      </Button>
                       <Button
-                        color="warning"
+                        style={{margin: "0px"}}
+                        outline color="transparent"
                         onClick={() => this.deleteSession(session)}
                       >
-                        🚫
+                        🗑
                       </Button>
                     </CardFooter>
                   </Card>
@@ -150,6 +173,7 @@ class DisplaySessions extends Component<
               </p>
             )}
           </div>
+        </Container>
         </Container>
       </div>
     );

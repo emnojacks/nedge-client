@@ -8,7 +8,9 @@ import {
   CardSubtitle,
   CardHeader,
   CardFooter,
-  Button,
+  Col,
+  Row,
+  Button
 } from "reactstrap";
 import AdamOndra from "../../assets/profilepics/AdamOndra.jpeg";
 import AidClimber from "../../assets/profilepics/AidClimber.jpeg";
@@ -18,9 +20,9 @@ import DanielWoods from "../../assets/profilepics/DanielWoods.webp";
 import RoyalRobbins from "../../assets/profilepics/RoyalRobbins.webp";
 import SadoCracktivist from "../../assets/profilepics/SadoCracktivist.jpeg";
 import IcePicker from "../../assets/profilepics/IcePicker.jpg";
-import SessionIndex from "../sessions/SessionIndex";
+import { Avatar } from "@mui/material";
 import { Climber } from "../../types/Types";
-import GoalIndex from "../goals/GoalIndex";
+import { Link } from "react-router-dom";
 let APIURL = "http://localhost:3000";
 
 interface ClimberIndexProps {
@@ -124,42 +126,76 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
 
   render() {
     return (
-      <Container>
-        <div>
-          <Card className="climber-profile-card">
-            <CardImg
-              // top width="50%"
-              id="profilePic"
-              src={this.state.profilePic}
-              alt="Card image cap"
-            />
-            <CardHeader tag="h4">
-              {this.state.climberProfile.username}
-            </CardHeader>
-            <CardBody>
-              <CardTitle tag="h5">
-                {this.state.climberProfile.experiencelevel}{" "}
-                {this.state.climberProfile.climbingtype}
-              </CardTitle>
-              <CardSubtitle tag="h6" className="mb-2 text-muted">
-                {this.state.climberProfile.gymname},{" "}
-                {this.state.climberProfile.location}{" "}
-              </CardSubtitle>
-            </CardBody>
-            <CardFooter>
-              <Button size="sm" className="btn-profile-edit">
-                Edit
-              </Button>
-            </CardFooter>
-          </Card>
+      
+      <div>
+        <Container>
+          <Container className="spaced-div">
+            <div className="content-header">
+          <h2>What's up, {this.state.climberProfile.username}</h2>
+          <h3>You pullin plastic today?</h3>
+</div>
+          <Row>
+            <Col>
+              <Card className="climber-profile-card">
+                <CardImg
+                  id="profilePic"
+                  src={this.state.profilePic}
+                  alt="Card image cap"
+                />
+                <CardHeader tag="h3" style={{ fontWeight: "bolder" }}>
+                  {this.state.climberProfile.username}
+                </CardHeader>
+                <CardBody>
+                  <CardTitle tag="h4">
+                    {this.state.climberProfile.experiencelevel}
+                    {" // "}
+                    {this.state.climberProfile.climbingtype}
+                  </CardTitle>
+                  <CardSubtitle tag="h5" className="mb-2">
+                    {this.state.climberProfile.gymname},{" "}
+                    {this.state.climberProfile.location}{" "}
+                  </CardSubtitle>
+                  <a href=" " target="blank">
+                    @mtprojhndl
+                  </a>
+                </CardBody>
 
-          <SessionIndex sessionToken={this.props.sessionToken} />
-
-          <GoalIndex sessionToken={this.props.sessionToken} />
+                <CardFooter>
+                  <Row>
+                    <Col>
+                      <Button outline color="warning" size="sm"
+                        disabled
+                      >
+                        <Link to="/climber/sessions">edit profile</Link>
+                      </Button>
+                    </Col>
+                    <Col>
+                      <Button
+                        
+                        style={{
+                          backgroundColor: "#df9627"
+                        }}
+                        size="sm"
+                        color="warning"
+                      >
+                        <Link to="/climber/sessions"> new sesh</Link>
+                      </Button>
+                    </Col>
+                  </Row>
+                </CardFooter>
+              </Card>
+</Col>
+          </Row>
+</Container>
+         </Container>
         </div>
-      </Container>
+     
     );
   }
 }
 
 export default ClimberIndex;
+
+
+  
+                        

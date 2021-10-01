@@ -1,5 +1,3 @@
-//yes touch this
-
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
@@ -11,13 +9,11 @@ import ClimberIndex from "./components/climbers/ClimberIndex";
 import SessionIndex from "./components/sessions/SessionIndex";
 import GoalIndex from "./components/goals/GoalIndex";
 import GymIndex from "./components/gyms/GymIndex";
-import NotFound from './components/site/NotFound'
-import { BrowserRouter as Switch, Route } from "react-router-dom";
+import About from "./components/site/About";
+import { Container } from "reactstrap";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-interface AppProps {
-  // sessionToken: string,
-  // isAdmin: boolean
-}
+interface AppProps {}
 
 interface AppState {
   sessionToken: string;
@@ -84,24 +80,18 @@ class App extends Component<AppProps, AppState> {
       />
     );
   };
-  
-  // gymViews = (): JSX.Element => {
-  //   return this.state.sessionToken === localStorage.getItem("token") ?
-  //     (<GymIndex
-  //       sessionToken={this.state.sessionToken} />)
-  //     : (<ValidateSessionAdmin
-  //       updateSessionToken = {this.updateSessionToken}/>)
-  // }
 
-  // gymViews = (): JSX.Element => {
-  //  return localStorage.getItem('isAdmin') === 'true' ?
-  //    (<GymIndex
-  //       setIsAdmin={this.setIsAdmin}
-  //       sessionToken={this.state.sessionToken} />)
-  //    : (<ValidateSession
-  //       setIsAdmin={this.setIsAdmin}
-  //       updateSessionToken = {this.updateSessionToken}/>)
-  // }
+  gymViews = (): JSX.Element => {
+    return this.state.isAdmin === true ? (
+      <GymIndex
+        setIsAdmin={this.setIsAdmin}
+        isAdmin={this.state.isAdmin}
+        sessionToken={this.state.sessionToken}
+      />
+    ) : (
+      <></>
+    );
+  };
 
   //use token to determine which views are appropriate
   //query after they have signed in - what is the user role
@@ -113,9 +103,9 @@ class App extends Component<AppProps, AppState> {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="appheader">NEDGE</h1>
+          <small className="tagline">for the common climber</small>
         </header>
-        <div>
-       
+        <Router>
           {this.state.sessionToken && (
             <Navigation
               clearSessionToken={this.clearSessionToken}
@@ -123,33 +113,35 @@ class App extends Component<AppProps, AppState> {
               updateSessionToken={this.updateSessionToken}
             />
           )}
-          <Switch>
-            <Route exact path="/">
-              {this.climberViews}
-            </Route>
-            <Route path="/climber/sessions">
-              <SessionIndex sessionToken={this.state.sessionToken} />
-            </Route>
-            <Route exact path="/climber/goals">
-              <GoalIndex sessionToken={this.state.sessionToken} />
-            </Route>
-            <Route exact path="/gym">
-              <GymIndex sessionToken={this.state.sessionToken}
-              />
-            </Route>
-             {this.state.isAdmin && (
-            <Route exact path="/gym">
-              <GymIndex sessionToken={this.state.sessionToken}
-              />
+          <Container>
+            <Switch>
+              <Route exact path="/about">
+<About sessionToken={this.state.sessionToken} />
+</Route>
+              <Route exact path="/">
+                {this.climberViews}
               </Route>
-            )}
-            <Route path="*">
-<NotFound 
- sessionToken={this.state.sessionToken} />
-            </Route>
-          </Switch>
-          <Footer />
-        </div>
+              <Route exact path="/climber/sessions">
+                <SessionIndex sessionToken={this.state.sessionToken} />
+              </Route>
+              <Route exact path="/climber/goals">
+                <GoalIndex sessionToken={this.state.sessionToken} />
+              </Route>
+               {/* <Route exact path="/climber/sessions/update">
+                <UpdateSession sessionToken={this.state.sessionToken} />
+              </Route> */}
+              <Route exact path="/gym">
+                {/* <GymIndex
+                setIsAdmin={this.setIsAdmin}
+                sessionToken={this.state.sessionToken}
+                isAdmin = {this.state.isAdmin}
+                /> */}
+                {this.gymViews}
+              </Route>
+            </Switch>
+          </Container>
+        </Router>
+        <Footer />
       </div>
     );
   }

@@ -112,8 +112,10 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
   render() {
     console.log(this.props.sessionToUpdate);
     return (
-      <Modal isOpen={true} toggle={this.toggleModal}>
-        <ModalHeader className="modalHeader">Update your Session</ModalHeader>
+      <Modal className="update-modal"
+        isOpen={true} toggle={this.toggleModal}>
+        <ModalHeader>
+          <h2>Your Climbing Sesh</h2></ModalHeader>
         <ModalBody className="modalBody">
           <Form onSubmit={this.handleSubmit}>
             {/* SESSION DATE */}
@@ -169,7 +171,7 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
             {/* SESSION PARTNER */}
             <FormGroup>
               <Label className="form-label" htmlFor="sessionpartner">
-                Partner
+                Partnered
               </Label>
               <Input
                 type="checkbox"
@@ -261,8 +263,10 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
             </FormGroup>
             <FormGroup>
               {/* SESSIONNOTES OPTIONAL */}
+            <Label className="form-label" htmlFor="sessionnotes">
+                  Notes
+                </Label>
                  <Input
-                className="text-input"
                 value={this.state.sessionnotes}
                 name="sessionnotes"
                 type="text"
@@ -275,15 +279,17 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
             </FormGroup>
 
             <br></br>
-            <Button type="submit"> Update</Button>
-
+          
             <Button
-              style={{ backgroundColor: "#AC663E" }}
-              color="warning"
+              color="secondary"
               onClick={this.props.closeModal}
             >
-              Nevermind
+              close
             </Button>
+            {" "}
+            <Button
+              color="warning"
+              type="submit"> update</Button>
           </Form>
         </ModalBody>
       </Modal>
