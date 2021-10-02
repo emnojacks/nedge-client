@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Button, Input, Form, Label, FormGroup } from "reactstrap";
 import { Container, InputGroup } from "reactstrap";
-// import InputRange from 'react-input-range'
 import "react-input-range/lib/css/index.css";
 import APIURL from "../../helpers/environment.js";
 // let APIURL = "http://localhost:3000";
@@ -37,10 +36,12 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
       sleepcondition: "",
       stresscondition: "",
       egocondition: "",
-      sessionnotes: " ",
+      sessionnotes: "",
     };
   }
 
+//
+  
   handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     fetch(`${APIURL}/session/create`, {
@@ -103,6 +104,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
     });
   };
 
+  
   render() {
     return (
       <div>
@@ -124,7 +126,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                     required
                     //change this to be today - stretch
                     value={this.state.sessiondate}
-                    onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    onChange={(event) =>
                       this.setState({ sessiondate: event.target.value })
                     }
                   ></Input>
@@ -336,3 +338,4 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
 }
 
 export default CreateSession;
+

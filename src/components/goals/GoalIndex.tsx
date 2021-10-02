@@ -65,11 +65,12 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
     }
   };
   
-  sortClimberGoals = () => {
+  //this won't work when i specify that it will intake an array of goals
+  //says that the "this" keyword could possibly be undefined & 
+  //that a and b dont exist of type Goal.
+  sortClimberGoals = () =>  {
     if (this.state.climberGoals.length > 0) {
       this.state.climberGoals.sort(function (a, b) {
-        console.log('sorting goals')
-        console.log(a.goalpriority)
         if (a.goalpriority < b.goalpriority) {
           return -1;
         }
