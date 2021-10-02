@@ -219,10 +219,6 @@ border-radius: 1em!important;
 color: var(--react-bg);
 }
 
-/* .update-modal {
-
-} */
-
 .session-card-deets {
 display: grid;
 grid-template-rows: repeat(4, 1fr);
@@ -248,3 +244,15 @@ background-color: var(--yellow-orange)!important;
 opacity: .8;
 }
 
+.modalHeader {
+  background-color: var(--dark-electric-blue)!important;
+font-weight: bolder;
+}
+
+.modalLabel {
+color: var(--react-bg)!important;
+}
+
+.modalBody {
+ background-color: var(--shadow-blue)!important;
+}

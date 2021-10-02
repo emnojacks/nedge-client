@@ -176,7 +176,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                   name="othergoal"
                   placeholder="or add a personal goal"
                   type="text"
-                  onBlur={(event) =>
+                  onBlur={(event: React.ChangeEvent<HTMLInputElement>) =>
                     this.setState({
                       goaldescription: event.target.value,
                     })

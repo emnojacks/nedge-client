@@ -8,6 +8,7 @@ import {
   ModalHeader,
   Label,
   Input,
+  ButtonGroup
 } from "reactstrap";
 import { Session } from "../../types/Types";
 import APIURL from "../../helpers/environment.js";
@@ -113,8 +114,8 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
     console.log(this.props.sessionToUpdate);
     return (
       <Modal className="update-modal" isOpen={true} toggle={this.toggleModal}>
-        <ModalHeader>
-          <h2>Your Climbing Sesh</h2>
+        <ModalHeader className="modalHeader">
+          Your Climbing Sesh
         </ModalHeader>
         <ModalBody className="modalBody">
           <Form onSubmit={this.handleSubmit}>
@@ -123,6 +124,7 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
               <Label className="modalLabel" htmlFor="sessiondate">
                 Session Date
               </Label>
+              {" "}
               <Input
                 name="sessiondate"
                 type="date"
@@ -137,9 +139,10 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
             </FormGroup>
             {/* SESSION LENGTH */}
             <FormGroup>
-              <Label className="form-label" htmlFor="sessionlength">
+              <Label className="modalLabel" htmlFor="sessionlength">
                 Session length (hrs)
               </Label>
+               {" "}
               <Input
                 type="number"
                 max={7}
@@ -156,11 +159,12 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
               <Label className="modalLabel" htmlFor="sessionsuccessful">
                 Session Successful?
               </Label>
+               {" "}
               <Input
                 type="checkbox"
                 name="sessionsuccessful"
                 checked={this.state.sessionsuccessful}
-                onChange={(e) =>
+                onChange={() =>
                   this.setState({
                     sessionsuccessful: !this.state.sessionsuccessful,
                   })
@@ -169,9 +173,10 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
             </FormGroup>
             {/* SESSION PARTNER */}
             <FormGroup>
-              <Label className="form-label" htmlFor="sessionpartner">
+              <Label className="modalLabel" htmlFor="sessionpartner">
                 Partnered
               </Label>
+                {" "}
               <Input
                 type="checkbox"
                 name="sessionpartner"
@@ -183,9 +188,10 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
             </FormGroup>
             {/* X TRAINING OPTIONAL */}
             <FormGroup>
-              <Label className="form-label" htmlFor="crosstraining">
+              <Label className="modalLabel"  htmlFor="crosstraining">
                 Recently Crosstrained
               </Label>
+              {" "}
               <Input
                 type="checkbox"
                 check={this.state.crosstraining}
@@ -197,9 +203,10 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
             </FormGroup>
             {/* NUTRITIONCONDITION */}
             <FormGroup>
-              <Label className="form-label" htmlFor="nutritioncondition">
+              <Label className="modalLabel" htmlFor="nutritioncondition">
                 Nutrition Condition
               </Label>
+                {" "}
               <Input
                 value={this.state.nutritioncondition}
                 type="range"
@@ -213,9 +220,10 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
             </FormGroup>
             {/* SLEEPCONDITION */}
             <FormGroup>
-              <Label className="form-label" htmlFor="sleepcondition">
+              <Label className="modalLabel" htmlFor="sleepcondition">
                 Sleep State
               </Label>
+                {" "}
               <Input
                 value={this.state.sleepcondition}
                 type="range"
@@ -229,9 +237,10 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
             </FormGroup>
             {/* STRESS CONDITION */}
             <FormGroup>
-              <Label className="form-label" htmlFor="stresscondition">
+              <Label className="modalLabel" htmlFor="stresscondition">
                 Stress State
               </Label>
+                {" "}
               <Input
                 value={this.state.stresscondition}
                 type="range"
@@ -245,9 +254,10 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
             </FormGroup>
             {/* EGO CONDITION */}
             <FormGroup>
-              <Label className="form-label" htmlFor="egocondition">
+              <Label className="modalLabel"  htmlFor="egocondition">
                 Ego State
               </Label>
+                {" "}
               <Input
                 value={this.state.egocondition}
                 type="range"
@@ -261,9 +271,10 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
             </FormGroup>
             <FormGroup>
               {/* SESSIONNOTES OPTIONAL */}
-              <Label className="form-label" htmlFor="sessionnotes">
+              <Label className="modalLabel" htmlFor="sessionnotes">
                 Notes
               </Label>
+                {" "}
               <Input
                 value={this.state.sessionnotes}
                 name="sessionnotes"
@@ -276,13 +287,16 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
               />
             </FormGroup>
             <br></br>
+            <ButtonGroup>
+              <Button color="warning" type="submit">
+              update
+              </Button>
+               {" "}
             <Button color="secondary" onClick={this.props.closeModal}>
               close
-            </Button>{" "}
-            <Button color="warning" type="submit">
-              {" "}
-              update
             </Button>
+           
+</ButtonGroup>
           </Form>
         </ModalBody>
       </Modal>

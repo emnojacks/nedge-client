@@ -109,7 +109,7 @@ class Signup extends Component<SignupProps, SignupState> {
                   type="text"
                   aria-required="true"
                   required
-                  onChange={(event) =>
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     this.setState({ username: event.target.value })
                   }
                   value={this.state.username}
@@ -138,7 +138,7 @@ class Signup extends Component<SignupProps, SignupState> {
                   aria-required="true"
                   required
                   minLength={6}
-                  onChange={(event) =>
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     this.setState({ password: event.target.value })
                   }
                   value={this.state.password}
@@ -223,7 +223,7 @@ class Signup extends Component<SignupProps, SignupState> {
                   <Input
                     name="needpartner"
                     type="checkbox"
-                    onChange={(event) =>
+                    onChange={() =>
                       this.setState({ needpartner: !this.state.needpartner })
                     }
                   />
@@ -298,7 +298,7 @@ class Signup extends Component<SignupProps, SignupState> {
                   name="location"
                   placeholder="'Indianapolis'"
                   type="text"
-                  onChange={(event) =>
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     this.setState({ location: event.target.value })
                   }
                   value={this.state.location}

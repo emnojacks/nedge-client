@@ -124,7 +124,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                     required
                     //change this to be today - stretch
                     value={this.state.sessiondate}
-                    onChange={(event) =>
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                       this.setState({ sessiondate: event.target.value })
                     }
                   ></Input>

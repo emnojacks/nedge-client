@@ -16,6 +16,9 @@ interface GoalIndexState {
   climberGoals: Array<Goal>;
   modalVisible: boolean;
   goalToUpdate: Goal;
+  goalA: number;
+  goalB: number;
+  goal: Goal;
 }
 
 class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
@@ -30,13 +33,21 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
         goalpriority: 0,
         goalachieved: false,
       },
+      //added all three below
+       goal: {
+        id: 0,
+        goaldescription: "",
+        goalpriority: 0,
+        goalachieved: false,
+      },
+      goalA: 1,
+      goalB: 1
     };
   }
 
   fetchClimberGoals = async () => {
     try {
       console.log("fetching climber goals");
-      console.log(this.props.sessionToken);
       const res = await fetch(`${APIURL}/goal/mine`, {
         method: "GET",
         headers: new Headers({
@@ -47,12 +58,28 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
       const json = await res.json();
       this.setState({
         climberGoals: json.existingGoals,
-      });
-      console.log(this.state.climberGoals);
+      })
+      this.sortClimberGoals();
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
+  
+  sortClimberGoals = () => {
+    if (this.state.climberGoals.length > 0) {
+      this.state.climberGoals.sort(function (a, b) {
+        console.log('sorting goals')
+        console.log(a.goalpriority)
+        if (a.goalpriority < b.goalpriority) {
+          return -1;
+        }
+        if (a.goalpriority > b.goalpriority) {
+          return 1;
+        }
+        return 0;
+      })
+    }
+  }
 
   componentDidMount() {
     this.fetchClimberGoals();
@@ -86,6 +113,7 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
             sessionToken={this.props.sessionToken}
             fetchClimberGoals={this.fetchClimberGoals}
             setGoalToUpdate={this.setGoaltoUpdate}
+            sortClimberGoals={this.sortClimberGoals}
           />
           <CreateGoals
             sessionToken={this.props.sessionToken}

@@ -98,7 +98,7 @@ class Login extends Component<LoginProps, LoginState> {
                   type="text"
                   aria-required="true"
                   required
-                  onChange={(event) =>
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     this.setState({ username: event.target.value })
                   }
                   value={this.state.username}
@@ -126,7 +126,7 @@ class Login extends Component<LoginProps, LoginState> {
                   type="password"
                   required
                   minLength={6}
-                  onChange={(event) =>
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     this.setState({ password: event.target.value })
                   }
                   value={this.state.password}

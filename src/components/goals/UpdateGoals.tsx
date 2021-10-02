@@ -90,8 +90,8 @@ class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
     console.log(this.props.goalToUpdate);
     return (
       <Modal isOpen={true} toggle={this.toggleModal}>
-        <ModalHeader>
-          <h2>Prioritize your Goals</h2>
+        <ModalHeader className="modalHeader">
+          Prioritize your Goals
         </ModalHeader>
         <ModalBody className="modalBody">
           <Form onSubmit={this.handleSubmit}>
