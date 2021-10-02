@@ -48,26 +48,27 @@ class Signup extends Component<SignupProps, SignupState> {
 
   handleSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
-    fetch(`${APIURL}/climber/create`, {
-      method: "POST",
-      body: JSON.stringify({
-        climber: {
-          username: this.state.username,
-          password: this.state.password,
-          gymname: this.state.gymname,
-          needpartner: this.state.needpartner,
-          experiencelevel: this.state.experiencelevel,
-          climbingtype: this.state.climbingtype,
-          location: this.state.location,
-          isAdmin: this.state.isAdmin,
-        },
-      }),
-      headers: new Headers({
-        "Content-Type": "application/json",
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) =>
+    try {
+      fetch(`${APIURL}/climber/create`, {
+        method: "POST",
+        body: JSON.stringify({
+          climber: {
+            username: this.state.username,
+            password: this.state.password,
+            gymname: this.state.gymname,
+            needpartner: this.state.needpartner,
+            experiencelevel: this.state.experiencelevel,
+            climbingtype: this.state.climbingtype,
+            location: this.state.location,
+            isAdmin: this.state.isAdmin,
+          },
+        }),
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) =>
         //takes the session token from the response and passes it to the updatetoken object
         {
           //displays what message the server has programmed
@@ -81,10 +82,12 @@ class Signup extends Component<SignupProps, SignupState> {
             }
           }
         }
-      )
-      .catch((error) => {
-        console.log(error.message);
-      });
+        )
+    }
+    catch (error) {
+      window.alert(error)
+      console.log(error);
+      };
   };
 
   render() {

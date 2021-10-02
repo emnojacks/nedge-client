@@ -144,6 +144,7 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
               </Label>
                {" "}
               <Input
+                required
                 type="number"
                 max={7}
                 min={0.5}
@@ -291,7 +292,7 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
               <Button color="warning" type="submit">
               update
               </Button>
-               {" "}
+               {" "}&nbsp;&nbsp;
             <Button color="secondary" onClick={this.props.closeModal}>
               close
             </Button>

@@ -246,7 +246,7 @@ opacity: .8;
 
 .modalHeader {
   background-color: var(--dark-electric-blue)!important;
-font-weight: bolder;
+color: var(--soft-white);
 }
 
 .modalLabel {

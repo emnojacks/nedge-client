@@ -44,49 +44,38 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
   
   handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    fetch(`${APIURL}/session/create`, {
-      method: "POST",
-      body: JSON.stringify({
-        session: {
-          sessiondate: this.state.sessiondate,
-          sessionsuccessful: this.state.sessionsuccessful,
-          sessionlength: this.state.sessionlength,
-          sessionpartner: this.state.sessionpartner,
-          crosstraining: this.state.crosstraining,
-          nutritioncondition: this.state.nutritioncondition,
-          sleepcondition: this.state.sleepcondition,
-          stresscondition: this.state.stresscondition,
-          egocondition: this.state.egocondition,
-          sessionnotes: this.state.sessionnotes,
-        },
-      }),
-      headers: new Headers({
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${this.props.sessionToken}`,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("session logged");
-        // this.setState({
-        //   sessiondate: "",
-        //   sessionsuccessful: false,
-        //   sessionlength: "",
-        //   sessionpartner: false,
-        //   crosstraining: false,
-        //   nutritioncondition: "",
-        //   sleepcondition: "",
-        //   stresscondition: "",
-        //   egocondition: "",
-        //   sessionnotes: " ",
-        // });
-        // this.clearInputs();
-        this.props.fetchClimberSessions();
+    try {
+      fetch(`${APIURL}/session/create`, {
+        method: "POST",
+        body: JSON.stringify({
+          session: {
+            sessiondate: this.state.sessiondate,
+            sessionsuccessful: this.state.sessionsuccessful,
+            sessionlength: this.state.sessionlength,
+            sessionpartner: this.state.sessionpartner,
+            crosstraining: this.state.crosstraining,
+            nutritioncondition: this.state.nutritioncondition,
+            sleepcondition: this.state.sleepcondition,
+            stresscondition: this.state.stresscondition,
+            egocondition: this.state.egocondition,
+            sessionnotes: this.state.sessionnotes,
+          },
+        }),
+        headers: new Headers({
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.props.sessionToken}`,
+        }),
       })
-      .catch((error) => {
-        console.log(error.message);
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("session logged");
+          this.props.fetchClimberSessions();
+        })
+    }
+    catch (err) {
+        console.log(err);
         window.alert("failed to log session");
-      });
+      };
   };
 
   clearInputs = () => {
@@ -195,6 +184,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                   </Label>
                   &nbsp;
                   <Input
+                    required
                     style={{ maxWidth: "100px" }}
                     className="sign-up-input-area"
                     type="number"
