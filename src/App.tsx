@@ -57,7 +57,6 @@ class App extends Component<AppProps, AppState> {
     this.setState({
       sessionToken: newToken,
     });
-    // console.log(this.state.sessionToken);
   };
 
   //clear token at end of session
@@ -81,6 +80,7 @@ class App extends Component<AppProps, AppState> {
     );
   };
 
+  //keeping this in in case I decide to refactor
   // gymViews = (): JSX.Element => {
   //   return this.state.isAdmin === true ? (
   //     <GymIndex

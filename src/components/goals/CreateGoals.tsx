@@ -82,7 +82,6 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
             </div>
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
-              
                 <ButtonGroup>
                   <Button
                     color="warning"
@@ -169,7 +168,6 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                 <Button size="sm" color="warning" type="submit">
                   ✚ goal
                 </Button>
-
               </FormGroup>
 
               <FormGroup>
@@ -189,7 +187,6 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                   ✚ personal goal
                 </Button>
               </FormGroup>
-              {/* <p>Goal set to {this.state.goaldescription}</p> */}
             </Form>
           </Container>
         </Container>
@@ -198,6 +195,6 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
   }
 }
 //eventually want to make this a bulk post request that creates distinct records
-//also want to limit it to three goals
+//also want to limit it to 3 goals
 //and want user defined goals
 export default CreateGoals;

@@ -40,7 +40,6 @@ class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
       goalpriority: this.props.goalToUpdate.goalpriority,
       goalachieved: this.props.goalToUpdate.goalachieved,
       modalVisible: true,
-      //may not need modalvisible
     };
   }
 
@@ -90,9 +89,7 @@ class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
     console.log(this.props.goalToUpdate);
     return (
       <Modal isOpen={true} toggle={this.toggleModal}>
-        <ModalHeader className="modalHeader">
-          Prioritize your Goals
-        </ModalHeader>
+        <ModalHeader className="modalHeader">Prioritize your Goals</ModalHeader>
         <ModalBody className="modalBody">
           <Form onSubmit={this.handleSubmit}>
             <FormGroup>
@@ -141,30 +138,3 @@ class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
 }
 
 export default UpdateGoals;
-
-// updateGoal = async(goal: Goal) => {
-//         console.log(goal)
-//         try {
-//             const goalToUpdate = await fetch(`${APIURL}/goal/update/${goal.id}`, {
-//                 method: "PUT",
-//                 body: JSON.stringify(
-//                     {
-//                         goal: {
-//                             goaldescription: this.state.goaldescription,
-//                             goalpriority: this.state.goalpriority,
-//                             goalachieved: false
-//                         }
-//                     }),
-//                 headers: new Headers({
-//                     "Content-Type": "application/json",
-//                     'Authorization': `Bearer ${this.props.sessionToken}`
-//                 })
-//             })
-//             await goalToUpdate.json();
-//             console.log(`${goalToUpdate} updated`)
-//         } catch {
-//             window.alert("couldn't update goal")
-//         }
-//         this.props.fetchClimberGoals()
-//         this.props.closeModal();
-//     };

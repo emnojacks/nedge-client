@@ -33,15 +33,15 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
         goalpriority: 0,
         goalachieved: false,
       },
-      //added all three below
-       goal: {
+      //below incl for the map
+      goal: {
         id: 0,
         goaldescription: "",
         goalpriority: 0,
         goalachieved: false,
       },
       goalA: 1,
-      goalB: 1
+      goalB: 1,
     };
   }
 
@@ -58,17 +58,17 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
       const json = await res.json();
       this.setState({
         climberGoals: json.existingGoals,
-      })
+      });
       this.sortClimberGoals();
     } catch (error) {
       alert(error);
     }
   };
-  
-  //this won't work when i specify that it will intake an array of goals
-  //says that the "this" keyword could possibly be undefined & 
+
+  //this won't work specify it will intake an array of goals
+  //says that the "this" keyword could possibly be undefined &
   //that a and b dont exist of type Goal.
-  sortClimberGoals = () =>  {
+  sortClimberGoals = () => {
     if (this.state.climberGoals.length > 0) {
       this.state.climberGoals.sort(function (a, b) {
         if (a.goalpriority < b.goalpriority) {
@@ -78,9 +78,9 @@ class GoalIndex extends Component<GoalIndexProps, GoalIndexState> {
           return 1;
         }
         return 0;
-      })
+      });
     }
-  }
+  };
 
   componentDidMount() {
     this.fetchClimberGoals();
