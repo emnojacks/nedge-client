@@ -51,23 +51,23 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
     console.log(this.state.climberProfiles);
   };
 
-  climberProfileMapper = () => {
-    if (this.state.climberProfiles.length > 0) {
-      return this.state.climberProfiles.map((climberProfile, index) => {
-        return (
-          <tr key={this.state.climberProfiles[index].id}>
-            <th scope="row"></th>
-            <td>{this.state.climberProfiles[index].username}</td>
-            <td>{this.state.climberProfiles[index].location}</td>
-            <td>{this.state.climberProfiles[index].gymname}</td>
-            <td>{this.state.climberProfiles[index].needpartner}</td>
-            <td>{this.state.climberProfiles[index].climbingtype}</td>
-            <td>{this.state.climberProfiles[index].experiencelevel}</td>
-          </tr>
-        );
-      });
-    }
-  };
+  // climberProfileMapper = () => {
+  //   if (this.state.climberProfiles.length > 0) {
+  //     return this.state.climberProfiles.map((climberProfile, index) => {
+  //       return (
+  //         <tr key={this.state.climberProfiles[index].id}>
+  //           <th scope="row"></th>
+  //           <td>{this.state.climberProfiles[index].username}</td>
+  //           <td>{this.state.climberProfiles[index].location}</td>
+  //           <td>{this.state.climberProfiles[index].gymname}</td>
+  //           <td>{this.state.climberProfiles[index].needpartner}</td>
+  //           <td>{this.state.climberProfiles[index].climbingtype}</td>
+  //           <td>{this.state.climberProfiles[index].experiencelevel}</td>
+  //         </tr>
+  //       );
+  //     });
+  //   }
+  // };
 
   render() {
     if (!this.props.sessionToken) return <Redirect to="/" />;
@@ -93,7 +93,32 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
                     <th>Experience Level</th>
                   </tr>
                 </thead>
-                <tbody>{this.climberProfileMapper()}</tbody>
+                <tbody>
+                  {this.state.climberProfiles.length > 0 ? (
+                    this.state.climberProfiles.map(
+                      (climberProfile: Climber, index: number) => (
+                        <tr key={index}>
+                          <th scope="row"></th>
+                          <td>{this.state.climberProfiles[index].username}</td>
+                          <td>{this.state.climberProfiles[index].location}</td>
+                          <td>{this.state.climberProfiles[index].gymname}</td>
+                          <td>
+                            {this.state.climberProfiles[index].needpartner}
+                          </td>
+                          <td>
+                            {this.state.climberProfiles[index].climbingtype}
+                          </td>
+                          <td>
+                            {this.state.climberProfiles[index].experiencelevel}
+                          </td>
+                        </tr>
+                      )
+                    )
+                  ) : (
+                    <>no climbers to display</>
+                  )}
+                </tbody>
+                {/* <tbody>{this.climberProfileMapper()}</tbody> */}
               </Table>
             </div>
           </Container>
