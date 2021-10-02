@@ -13,7 +13,7 @@ Nedge is an application for rock climbers of all skill levels and experience tha
 
 ### Languages & Libraries
 
-This project was created with [Create React App](https://github.com/facebook/create-react-app) template Typescript. 
+This project was created with [Create React App](https://github.com/facebook/create-react-app) template TypeScript. 
 
 #### Lanuages: 
 - JavaScript 
@@ -25,7 +25,7 @@ This project was created with [Create React App](https://github.com/facebook/cre
 - bootstrap
 - reactstrap
 
-Routing:
+#### Routing:
 - react-router-dom
 
 ## Running the App
@@ -50,3 +50,11 @@ It correctly bundles React in production mode and optimizes the build for the be
 ## Deployed App
 
 See NEDGE climbing app in it's Beta version [on heroku](https://nedge-crimbing.herokuapp.com/).
+
+## Server Side
+
+See NEDGE server side [Github repo](https://github.com.emnojacks/nedge-server/).
+
+### Purpose
+
+This project was created for [Eleven Fifty Academy's](https://elevenfifty.org/) Red Badge Web Development Bootcamp.  
