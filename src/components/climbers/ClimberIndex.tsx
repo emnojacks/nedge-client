@@ -115,12 +115,11 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
         climberProfile: climberProfile,
       });
       this.changeProfilePic();
-      console.log(climberProfile);
+      // console.log(climberProfile);
     } catch (error) {
-      console.log(error);
-      console.log("failed to fetch profile");
+      console.log(error, "failed to fetch profile");
     }
-    console.log(this.state.climberProfile);
+    // console.log(this.state.climberProfile);
   };
 
   render() {

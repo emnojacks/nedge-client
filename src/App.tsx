@@ -48,7 +48,7 @@ class App extends Component<AppProps, AppState> {
     this.setState({
       isAdmin: true,
     });
-    console.log("climber set to admin");
+    // console.log("climber set to admin");
   };
 
   //sets current token to new token
@@ -57,7 +57,7 @@ class App extends Component<AppProps, AppState> {
     this.setState({
       sessionToken: newToken,
     });
-    console.log(this.state.sessionToken);
+    // console.log(this.state.sessionToken);
   };
 
   //clear token at end of session
