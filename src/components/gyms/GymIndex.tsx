@@ -25,6 +25,7 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
 
   componentDidMount() {
     this.fetchClimberProfiles();
+    console.log('mounted');
   }
 
   fetchClimberProfiles = async () => {
@@ -52,6 +53,7 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
   };
 
   // climberProfileMapper = () => {
+  //
   //   if (this.state.climberProfiles.length > 0) {
   //     return this.state.climberProfiles.map((climberProfile, index) => {
   //       return (
@@ -72,7 +74,7 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
   render() {
     if (!this.props.sessionToken) return <Redirect to="/" />;
 
-    if (!this.props.isAdmin) return <Redirect to="/" />;
+    // if (!this.props.isAdmin) return <Redirect to="/" />;
 
     return (
       <div>
@@ -99,17 +101,17 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
                       (climberProfile: Climber, index: number) => (
                         <tr key={index}>
                           <th scope="row"></th>
-                          <td>{this.state.climberProfiles[index].username}</td>
-                          <td>{this.state.climberProfiles[index].location}</td>
-                          <td>{this.state.climberProfiles[index].gymname}</td>
+                          <td>{climberProfile.username}</td>
+                          <td>{climberProfile.location}</td>
+                          <td>{climberProfile.gymname}</td>
                           <td>
-                            {this.state.climberProfiles[index].needpartner}
+                            {climberProfile.needpartner}
                           </td>
                           <td>
-                            {this.state.climberProfiles[index].climbingtype}
+                            {climberProfile.climbingtype}
                           </td>
                           <td>
-                            {this.state.climberProfiles[index].experiencelevel}
+                            {climberProfile.experiencelevel}
                           </td>
                         </tr>
                       )

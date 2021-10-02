@@ -11,7 +11,7 @@ import GoalIndex from "./components/goals/GoalIndex";
 import GymIndex from "./components/gyms/GymIndex";
 import About from "./components/site/About";
 import { Container } from "reactstrap";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 interface AppProps {}
 
@@ -81,21 +81,20 @@ class App extends Component<AppProps, AppState> {
     );
   };
 
-  gymViews = (): JSX.Element => {
-    return this.state.isAdmin === true ? (
-      <GymIndex
-        setIsAdmin={this.setIsAdmin}
-        isAdmin={this.state.isAdmin}
-        sessionToken={this.state.sessionToken}
-      />
-    ) : (
-      <></>
-    );
-  };
-
-  //use token to determine which views are appropriate
-  //query after they have signed in - what is the user role
-  //render view based on that
+  // gymViews = (): JSX.Element => {
+  //   return this.state.isAdmin === true ? (
+  //     <GymIndex
+  //       setIsAdmin={this.setIsAdmin}
+  //       isAdmin={this.state.isAdmin}
+  //       sessionToken={this.state.sessionToken}
+  //     />
+  //   ) : (
+  //    <ValidateSession
+  //       setIsAdmin={this.setIsAdmin}
+  //       updateSessionToken={this.updateSessionToken}
+  //     />
+  //   );
+  // };
 
   render() {
     return (
@@ -127,16 +126,13 @@ class App extends Component<AppProps, AppState> {
               <Route exact path="/climber/goals">
                 <GoalIndex sessionToken={this.state.sessionToken} />
               </Route>
-              {/* <Route exact path="/climber/sessions/update">
-                <UpdateSession sessionToken={this.state.sessionToken} />
-              </Route> */}
               <Route exact path="/gym">
-                {/* <GymIndex
-                setIsAdmin={this.setIsAdmin}
-                sessionToken={this.state.sessionToken}
-                isAdmin = {this.state.isAdmin}
-                /> */}
-                {this.gymViews}
+                {this.state.isAdmin === true ? (
+                  <GymIndex
+                    setIsAdmin={this.setIsAdmin}
+                    isAdmin={this.state.isAdmin}
+                    sessionToken={this.state.sessionToken}
+                  />) : (<Redirect to="/" />)}
               </Route>
             </Switch>
           </Container>
