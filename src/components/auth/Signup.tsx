@@ -8,6 +8,7 @@ import {
   Button,
   Col,
   Container,
+  FormText,
 } from "reactstrap";
 import APIURL from "../../helpers/environment.js";
 // let APIURL = "http://localhost:3000";
@@ -15,7 +16,6 @@ import APIURL from "../../helpers/environment.js";
 interface SignupProps {
   updateSessionToken: (newToken: string) => void;
   setIsAdmin: (isAdmin: boolean) => void;
-  //  updateSessionToken: (newToken: string, isAdmin: boolean) => void;
 }
 
 interface SignupState {
@@ -117,12 +117,12 @@ class Signup extends Component<SignupProps, SignupState> {
                   }
                   value={this.state.username}
                 />
+                
               </InputGroup>
-              {/* <FormText
-              style={{
-                color: "red"
-              }}
-            >use your name or nickname so people can find you!</FormText> */}
+
+              <FormText
+              color="white"
+            >hint: use your name or nickname so climbers can find you</FormText>
             </FormGroup>
             <br></br>
             <FormGroup row>
@@ -189,7 +189,7 @@ class Signup extends Component<SignupProps, SignupState> {
                 </Label>
               </Col>
             </FormGroup>
-            {/* stretch goal <datalist id="experiencelevel">
+            {/* stretch goal: <datalist id="experiencelevel">
                 {this.state.options.map((option, index) => (
                   <option key={index}>{option}</option>
                 ))}

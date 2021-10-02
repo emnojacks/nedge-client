@@ -14,7 +14,6 @@ import APIURL from "../../helpers/environment.js";
 interface LoginProps {
   updateSessionToken: (newToken: string) => void;
   setIsAdmin: (isAdmin: boolean) => void;
-  // setClimberProfile: (climber: Climber) => void
 }
 
 interface LoginState {
@@ -32,10 +31,6 @@ class Login extends Component<LoginProps, LoginState> {
       isAdmin: false,
     };
   }
-
-  // setClimberProfile = (climber: Climber) => {
-  //     this.setState({ climberProfile: climber })
-  //   };
 
   handleSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
@@ -61,10 +56,10 @@ class Login extends Component<LoginProps, LoginState> {
           window.alert(data.message);
           if (data.sessionToken) {
             this.props.updateSessionToken(data.sessionToken);
-                 if (data.climber.isAdmin === true) {
-            this.props.setIsAdmin(this.state.isAdmin);
-            console.log("climber set to admin via login");
-          }
+            if (data.climber.isAdmin === true) {
+              this.props.setIsAdmin(this.state.isAdmin);
+              console.log("climber set to admin via login");
+            }
           }
         }
       )
@@ -134,7 +129,7 @@ class Login extends Component<LoginProps, LoginState> {
               </InputGroup>
             </FormGroup>
             <Button className="btn-auth" type="submit" color="warning">
-              Login
+              login
             </Button>
           </Form>
         </Container>

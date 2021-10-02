@@ -53,7 +53,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
     this.fetchClimberProfile();
   }
 
-  changeProfilePic = () => {
+  changeProfilePic = ():void => {
     let climbingtype = this.state.climberProfile.climbingtype;
     if (climbingtype) {
       switch (climbingtype) {

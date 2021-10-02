@@ -70,7 +70,7 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
   render() {
     if (!this.props.sessionToken) return <Redirect to="/" />;
     this.sortClimberProfiles();
-    // if (!this.props.isAdmin) return <Redirect to="/" />;
+    if (!this.props.isAdmin) return <Redirect to="/" />;
 
     return (
       <div>

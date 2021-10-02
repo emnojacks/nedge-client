@@ -13,7 +13,6 @@ interface ValidateSessionState {
   username: string;
   password: string;
   showsignup: boolean;
-  // climberProfile: Climber
 }
 
 class ValidateSession extends Component<
@@ -23,10 +22,6 @@ class ValidateSession extends Component<
   constructor(props: ValidateSessionProps) {
     super(props);
     this.state = {
-      // climberProfile: {
-      //   id: 0,
-      //   username: " ",
-      //   password: " "},
       username: "",
       password: "",
       showsignup: false,
@@ -41,24 +36,19 @@ class ValidateSession extends Component<
     });
   };
 
-  loginOrSignUpDisplay = () => {
+  loginOrSignUpDisplay = (): JSX.Element => {
     return this.state.showsignup ? (
       <Signup
         updateSessionToken={this.props.updateSessionToken}
         setIsAdmin={this.props.setIsAdmin}
-        // setClimberProfile={this.setClimberProfile}
       />
     ) : (
       <Login
         updateSessionToken={this.props.updateSessionToken}
         setIsAdmin={this.props.setIsAdmin}
-        // setClimberProfile={this.setClimberProfile}
       />
     );
   };
-  // setClimberProfile = (climber: Climber) => {
-  //   this.setState({ climberProfile: climber })
-  // };
 
   render() {
     return (
@@ -79,7 +69,7 @@ class ValidateSession extends Component<
               className="btn-link-auth-toggle"
               onClick={this.toggleAuthType}
             >
-              or create an account
+              actually I need to create an account
             </Button>
           )}
         </Container>
