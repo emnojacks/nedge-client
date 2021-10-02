@@ -39,11 +39,9 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
         }),
       });
       const json = await res.json();
-      // console.log(climberProfiles)
       this.setState({
         climberProfiles: json.climberProfiles,
       });
-      // this.climberProfileMapper();
     } catch (error) {
       console.log(error,
       "failed to fetch profiles");
@@ -52,9 +50,26 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
     console.log(this.state.climberProfiles.length);
   };
 
+  //this won't work when i specify that it will intake an array of climbers
+  //says that the "this" keyword could possibly be undefined & 
+  //that a and b dont exist on type climber
+  sortClimberProfiles = () =>  {
+    if (this.state.climberProfiles.length > 0) {
+      this.state.climberProfiles.sort(function (a, b) {
+        if (a.username < b.username) {
+          return -1;
+        }
+        if (a.username > b.username) {
+          return 1;
+        }
+        return 0;
+      })
+    }
+  }
+
   render() {
     if (!this.props.sessionToken) return <Redirect to="/" />;
-
+    this.sortClimberProfiles();
     // if (!this.props.isAdmin) return <Redirect to="/" />;
 
     return (
@@ -65,7 +80,9 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
               <h2>climbers on NEDGE</h2>
             </div>
             <div className="climber-display">
-              <Table hover striped>
+              <Table hover striped
+              
+              >
                 <thead>
                   <tr>
                     <th>Username</th>

@@ -18,6 +18,7 @@ interface DisplaySessionsProps {
   fetchClimberSessions: CallableFunction;
   openModal: () => void;
   setSessionToUpdate: (session: Session) => void;
+  sortClimberSessions: () => void;
 }
 
 interface DisplaySessionsState {
@@ -80,7 +81,7 @@ class DisplaySessions extends Component<
   };
 
   render() {
-    console.log(this.props.climberSessions);
+    this.props.sortClimberSessions();
 
     return (
       <div>
@@ -96,8 +97,8 @@ class DisplaySessions extends Component<
                       key={session.id}
                       style={{
                         backgroundColor: session.sessionsuccessful
-                          ? "#E8FFB3"
-                          : "#FFDED2",
+                          ? "#9ACCB1"
+                          : "#f9b09e",
                       }}
                     >
                       <CardHeader tag="h5" style={{ fontWeight: "bold" }}>

@@ -35,7 +35,7 @@ class SessionIndex extends Component<SessionIndexProps, SessionIndexState> {
         sleepcondition: "",
         stresscondition: "",
         egocondition: "",
-        sessionnotes: " ",
+        sessionnotes: "",
       },
     };
   }
@@ -56,12 +56,27 @@ class SessionIndex extends Component<SessionIndexProps, SessionIndexState> {
       this.setState({
         climberSessions: json.existingSessions,
       });
+      this.sortClimberSessions();
       console.log(this.state.climberSessions);
     } catch (error) {
       console.log(error);
     }
   };
 
+  sortClimberSessions = () =>  {
+    if (this.state.climberSessions.length > 0) {
+      this.state.climberSessions.sort(function (a, b) {
+        if (a.sessiondate < b.sessiondate) {
+          return -1;
+        }
+        if (a.sessiondate > b.sessiondate) {
+          return 1;
+        }
+        return 0;
+      })
+    }
+  }
+  
   componentDidMount() {
     this.fetchClimberSessions();
   }
@@ -93,6 +108,7 @@ class SessionIndex extends Component<SessionIndexProps, SessionIndexState> {
             fetchClimberSessions={this.fetchClimberSessions}
           />
           <DisplaySessions
+            sortClimberSessions={this.sortClimberSessions}
             openModal={this.openModal}
             climberSessions={this.state.climberSessions}
             sessionToken={this.props.sessionToken}

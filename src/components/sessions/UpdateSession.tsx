@@ -8,7 +8,8 @@ import {
   ModalHeader,
   Label,
   Input,
-  ButtonGroup
+  ButtonGroup,
+  FormText,
 } from "reactstrap";
 import { Session } from "../../types/Types";
 import APIURL from "../../helpers/environment.js";
@@ -121,11 +122,13 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
           <Form onSubmit={this.handleSubmit}>
             {/* SESSION DATE */}
             <FormGroup>
-              <Label className="modalLabel" htmlFor="sessiondate">
+              <Label
+                className="modalLabel" htmlFor="sessiondate">
                 Session Date
               </Label>
               {" "}
               <Input
+                disabled
                 name="sessiondate"
                 type="date"
                 value={this.state.sessiondate}
@@ -136,6 +139,8 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
                   })
                 }
               />
+              <FormText color="white"
+              >session dates cannot be changed</FormText>
             </FormGroup>
             {/* SESSION LENGTH */}
             <FormGroup>

@@ -3,11 +3,14 @@
 --soft-white: #FFFAF6;
 --mango-tango: #F08A4B;
 --middle-red: #d78a76;
+--middle-red-light: #f9b09e;
 --yellow-orange: #f2a541;
 --maize-crayola: #F3CA40;
 --queen-blue: #577590;
+--queen-blue-light: #839eb6;
 --burnt-orange: #BD520F;
 --shadow-blue: #6787A2;
+--shadow-blue-light: #87b0d2;
 --dark-electric-blue: #465F72;
 --logo-orange: #df9627;
 --react-bg: #282c34;
@@ -52,7 +55,7 @@ justify-content: center;
         font-size:15px!important;
     }
  h5{
-        font-size:12px!important;
+        font-size:15px!important;
     }
 
 #session-card-body {
@@ -171,7 +174,7 @@ margin-bottom: 1em;
 }
 
 .footer {
-background-color: var(--middle-red)!important;
+background-color: var(--yellow-orange)!important;
 }
 
 .lighter-div {
@@ -241,18 +244,21 @@ align-items: center
 color: var(--soft-white)!important;
 font-weight: bold;
 background-color: var(--yellow-orange)!important;
-opacity: .8;
+opacity: .9;
 }
 
 .modalHeader {
-  background-color: var(--dark-electric-blue)!important;
-color: var(--soft-white);
-}
-
-.modalLabel {
-color: var(--react-bg)!important;
+  background-color: var(--yellow-orange)!important;
 }
 
 .modalBody {
- background-color: var(--shadow-blue)!important;
+ background-color: var(--middle-red)!important;
+}
+
+/* .goal-btn-group {
+background-color: white!important;
+} */
+
+.climber-display td, th {
+color: var(--soft-white)!important;
 }
