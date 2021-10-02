@@ -38,38 +38,19 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
           Authorization: `Bearer ${this.props.sessionToken}`,
         }),
       });
-      const climberProfiles = await res.json();
+      const json = await res.json();
       // console.log(climberProfiles)
       this.setState({
-        climberProfiles: climberProfiles,
+        climberProfiles: json.climberProfiles,
       });
-      console.log(climberProfiles);
       // this.climberProfileMapper();
     } catch (error) {
-      console.log(error);
-      console.log("failed to fetch profiles");
+      console.log(error,
+      "failed to fetch profiles");
     }
-    console.log(this.state.climberProfiles);
+     console.log(this.state.climberProfiles);
+    console.log(this.state.climberProfiles.length);
   };
-
-  // climberProfileMapper = () => {
-  //
-  //   if (this.state.climberProfiles.length > 0) {
-  //     return this.state.climberProfiles.map((climberProfile, index) => {
-  //       return (
-  //         <tr key={this.state.climberProfiles[index].id}>
-  //           <th scope="row"></th>
-  //           <td>{this.state.climberProfiles[index].username}</td>
-  //           <td>{this.state.climberProfiles[index].location}</td>
-  //           <td>{this.state.climberProfiles[index].gymname}</td>
-  //           <td>{this.state.climberProfiles[index].needpartner}</td>
-  //           <td>{this.state.climberProfiles[index].climbingtype}</td>
-  //           <td>{this.state.climberProfiles[index].experiencelevel}</td>
-  //         </tr>
-  //       );
-  //     });
-  //   }
-  // };
 
   render() {
     if (!this.props.sessionToken) return <Redirect to="/" />;
@@ -87,12 +68,11 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
               <Table hover striped>
                 <thead>
                   <tr>
-                    <th>Climber Name</th>
+                    <th>Username</th>
                     <th>Location</th>
                     <th>Home Gym</th>
-                    <th>Need Partner</th>
-                    <th>Climbing Type</th>
-                    <th>Experience Level</th>
+                    <th>Style</th>
+                    <th>Experience</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -100,13 +80,9 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
                     this.state.climberProfiles.map(
                       (climberProfile: Climber, index: number) => (
                         <tr key={index}>
-                          <th scope="row"></th>
                           <td>{climberProfile.username}</td>
                           <td>{climberProfile.location}</td>
                           <td>{climberProfile.gymname}</td>
-                          <td>
-                            {climberProfile.needpartner}
-                          </td>
                           <td>
                             {climberProfile.climbingtype}
                           </td>
@@ -117,10 +93,9 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
                       )
                     )
                   ) : (
-                    <>no climbers to display</>
+                    <>No climbers to display</>
                   )}
                 </tbody>
-                {/* <tbody>{this.climberProfileMapper()}</tbody> */}
               </Table>
             </div>
           </Container>
