@@ -48,26 +48,27 @@ class Signup extends Component<SignupProps, SignupState> {
 
   handleSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
-    fetch(`${APIURL}/climber/create`, {
-      method: "POST",
-      body: JSON.stringify({
-        climber: {
-          username: this.state.username,
-          password: this.state.password,
-          gymname: this.state.gymname,
-          needpartner: this.state.needpartner,
-          experiencelevel: this.state.experiencelevel,
-          climbingtype: this.state.climbingtype,
-          location: this.state.location,
-          isAdmin: this.state.isAdmin,
-        },
-      }),
-      headers: new Headers({
-        "Content-Type": "application/json",
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) =>
+    try {
+      fetch(`${APIURL}/climber/create`, {
+        method: "POST",
+        body: JSON.stringify({
+          climber: {
+            username: this.state.username,
+            password: this.state.password,
+            gymname: this.state.gymname,
+            needpartner: this.state.needpartner,
+            experiencelevel: this.state.experiencelevel,
+            climbingtype: this.state.climbingtype,
+            location: this.state.location,
+            isAdmin: this.state.isAdmin,
+          },
+        }),
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) =>
         //takes the session token from the response and passes it to the updatetoken object
         {
           //displays what message the server has programmed
@@ -81,10 +82,12 @@ class Signup extends Component<SignupProps, SignupState> {
             }
           }
         }
-      )
-      .catch((error) => {
-        console.log(error.message);
-      });
+        )
+    }
+    catch (error) {
+      window.alert(error)
+      console.log(error);
+      };
   };
 
   render() {
@@ -109,7 +112,7 @@ class Signup extends Component<SignupProps, SignupState> {
                   type="text"
                   aria-required="true"
                   required
-                  onChange={(event) =>
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     this.setState({ username: event.target.value })
                   }
                   value={this.state.username}
@@ -138,7 +141,7 @@ class Signup extends Component<SignupProps, SignupState> {
                   aria-required="true"
                   required
                   minLength={6}
-                  onChange={(event) =>
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     this.setState({ password: event.target.value })
                   }
                   value={this.state.password}
@@ -223,7 +226,7 @@ class Signup extends Component<SignupProps, SignupState> {
                   <Input
                     name="needpartner"
                     type="checkbox"
-                    onChange={(event) =>
+                    onChange={() =>
                       this.setState({ needpartner: !this.state.needpartner })
                     }
                   />
@@ -298,7 +301,7 @@ class Signup extends Component<SignupProps, SignupState> {
                   name="location"
                   placeholder="'Indianapolis'"
                   type="text"
-                  onChange={(event) =>
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     this.setState({ location: event.target.value })
                   }
                   value={this.state.location}

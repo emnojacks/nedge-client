@@ -111,7 +111,6 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
         }),
       });
       const climberProfile = await res.json();
-      // console.log(climberProfile)
       this.setState({
         climberProfile: climberProfile,
       });

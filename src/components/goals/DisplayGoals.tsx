@@ -20,6 +20,7 @@ interface DisplayGoalsProps {
   fetchClimberGoals: CallableFunction;
   openModal: () => void;
   setGoalToUpdate: (goal: Goal) => void;
+  sortClimberGoals: () => void;
 }
 
 interface DisplayGoalsState {
@@ -40,14 +41,9 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
     };
   }
 
-  componentDidMount() {
-    // console.log("display comp mounted");
-    // this.props.fetchClimberGoals();
-  }
-
   componentDidUpdate() {
-    // console.log(this.props.climberGoals);
-    // this.props.fetchClimberGoals();
+    // console.log('comp updated');
+    // this.props.sortClimberGoals();
   }
 
   deleteGoal = async (goal: Goal) => {
@@ -68,9 +64,9 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
   };
 
   render() {
-    console.log(this.props.climberGoals);
-
-    return (
+    this.props.sortClimberGoals()
+    
+        return (
       <div className="mainDiv">
         <Container className="lighter-div">
           <Container className="inner-container">
@@ -78,10 +74,10 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
               <h2>Goal Deck</h2>
             </div>
             <div className="goal-display">
-              {this.props.climberGoals.length > 0 ? (
+                  {this.props.climberGoals.length > 0 ? (
                 this.props.climberGoals.map((goal: Goal, index: number) => (
                   <Row key={index}>
-                    <Col sm="8">
+                    <Col sm="10">
                       <Card
                         className="goal-card climber-profile-card"
                         key={goal.id}
@@ -89,7 +85,6 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                         <CardHeader> Priority #{goal.goalpriority}</CardHeader>
                         <CardBody>
                           <CardTitle tag="h5">
-                            {/* {index + 1} */}
                             {goal.goaldescription}
                           </CardTitle>
                         </CardBody>
@@ -97,7 +92,9 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                           <Button
                             style={{ margin: "0px" }}
                             color="success"
-                            onClick={() => this.deleteGoal(goal)}
+                            onClick={() => {
+                              this.deleteGoal(goal)
+                            }}
                           >
                             sent it
                           </Button>
@@ -119,8 +116,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                 ))
               ) : (
                 <p>
-                  Your goal deck is empty. Set a Goal to start working towards
-                  the climber you want to be.
+                  Your goal deck is empty. Set a Goal to start working towards the climber you want to be.
                 </p>
               )}
             </div>

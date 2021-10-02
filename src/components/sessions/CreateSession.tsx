@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Button, Input, Form, Label, FormGroup } from "reactstrap";
 import { Container, InputGroup } from "reactstrap";
-// import InputRange from 'react-input-range'
 import "react-input-range/lib/css/index.css";
 import APIURL from "../../helpers/environment.js";
 // let APIURL = "http://localhost:3000";
@@ -37,55 +36,46 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
       sleepcondition: "",
       stresscondition: "",
       egocondition: "",
-      sessionnotes: " ",
+      sessionnotes: "",
     };
   }
 
+//
+  
   handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    fetch(`${APIURL}/session/create`, {
-      method: "POST",
-      body: JSON.stringify({
-        session: {
-          sessiondate: this.state.sessiondate,
-          sessionsuccessful: this.state.sessionsuccessful,
-          sessionlength: this.state.sessionlength,
-          sessionpartner: this.state.sessionpartner,
-          crosstraining: this.state.crosstraining,
-          nutritioncondition: this.state.nutritioncondition,
-          sleepcondition: this.state.sleepcondition,
-          stresscondition: this.state.stresscondition,
-          egocondition: this.state.egocondition,
-          sessionnotes: this.state.sessionnotes,
-        },
-      }),
-      headers: new Headers({
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${this.props.sessionToken}`,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("session logged");
-        // this.setState({
-        //   sessiondate: "",
-        //   sessionsuccessful: false,
-        //   sessionlength: "",
-        //   sessionpartner: false,
-        //   crosstraining: false,
-        //   nutritioncondition: "",
-        //   sleepcondition: "",
-        //   stresscondition: "",
-        //   egocondition: "",
-        //   sessionnotes: " ",
-        // });
-        // this.clearInputs();
-        this.props.fetchClimberSessions();
+    try {
+      fetch(`${APIURL}/session/create`, {
+        method: "POST",
+        body: JSON.stringify({
+          session: {
+            sessiondate: this.state.sessiondate,
+            sessionsuccessful: this.state.sessionsuccessful,
+            sessionlength: this.state.sessionlength,
+            sessionpartner: this.state.sessionpartner,
+            crosstraining: this.state.crosstraining,
+            nutritioncondition: this.state.nutritioncondition,
+            sleepcondition: this.state.sleepcondition,
+            stresscondition: this.state.stresscondition,
+            egocondition: this.state.egocondition,
+            sessionnotes: this.state.sessionnotes,
+          },
+        }),
+        headers: new Headers({
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.props.sessionToken}`,
+        }),
       })
-      .catch((error) => {
-        console.log(error.message);
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("session logged");
+          this.props.fetchClimberSessions();
+        })
+    }
+    catch (err) {
+        console.log(err);
         window.alert("failed to log session");
-      });
+      };
   };
 
   clearInputs = () => {
@@ -99,10 +89,11 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
       sleepcondition: "",
       stresscondition: "",
       egocondition: "",
-      sessionnotes: " ",
+      sessionnotes: "",
     });
   };
 
+  
   render() {
     return (
       <div>
@@ -121,7 +112,6 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                     className="sign-up-input-area"
                     type="date"
                     name="sessiondate"
-                    min="2021-01-01"
                     required
                     //change this to be today - stretch
                     value={this.state.sessiondate}
@@ -194,9 +184,9 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                   </Label>
                   &nbsp;
                   <Input
+                    required
                     style={{ maxWidth: "100px" }}
                     className="sign-up-input-area"
-                    placeholder="1"
                     type="number"
                     max={7}
                     min={0.5}
@@ -318,7 +308,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                     type="text"
                     title="what happened that was memorable? Recording deets will help you remember why this sesh was diff than the rest."
                     maxLength={50}
-                    onBlur={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                       this.setState({
                         sessionnotes: event.target.value,
                       })
@@ -338,3 +328,4 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
 }
 
 export default CreateSession;
+

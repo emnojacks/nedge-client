@@ -25,6 +25,7 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
 
   componentDidMount() {
     this.fetchClimberProfiles();
+    console.log('mounted');
   }
 
   fetchClimberProfiles = async () => {
@@ -37,42 +38,39 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
           Authorization: `Bearer ${this.props.sessionToken}`,
         }),
       });
-      const climberProfiles = await res.json();
-      // console.log(climberProfiles)
+      const json = await res.json();
       this.setState({
-        climberProfiles: climberProfiles,
+        climberProfiles: json.climberProfiles,
       });
-      console.log(climberProfiles);
-      // this.climberProfileMapper();
     } catch (error) {
-      console.log(error);
-      console.log("failed to fetch profiles");
+      console.log(error,
+      "failed to fetch profiles");
     }
-    console.log(this.state.climberProfiles);
+     console.log(this.state.climberProfiles);
+    console.log(this.state.climberProfiles.length);
   };
 
-  climberProfileMapper = () => {
+  //this won't work when i specify that it will intake an array of climbers
+  //says that the "this" keyword could possibly be undefined & 
+  //that a and b dont exist on type climber
+  sortClimberProfiles = () =>  {
     if (this.state.climberProfiles.length > 0) {
-      return this.state.climberProfiles.map((climberProfile, index) => {
-        return (
-          <tr key={this.state.climberProfiles[index].id}>
-            <th scope="row"></th>
-            <td>{this.state.climberProfiles[index].username}</td>
-            <td>{this.state.climberProfiles[index].location}</td>
-            <td>{this.state.climberProfiles[index].gymname}</td>
-            <td>{this.state.climberProfiles[index].needpartner}</td>
-            <td>{this.state.climberProfiles[index].climbingtype}</td>
-            <td>{this.state.climberProfiles[index].experiencelevel}</td>
-          </tr>
-        );
-      });
+      this.state.climberProfiles.sort(function (a, b) {
+        if (a.username < b.username) {
+          return -1;
+        }
+        if (a.username > b.username) {
+          return 1;
+        }
+        return 0;
+      })
     }
-  };
+  }
 
   render() {
     if (!this.props.sessionToken) return <Redirect to="/" />;
-
-    if (!this.props.isAdmin) return <Redirect to="/" />;
+    this.sortClimberProfiles();
+    // if (!this.props.isAdmin) return <Redirect to="/" />;
 
     return (
       <div>
@@ -82,18 +80,39 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
               <h2>climbers on NEDGE</h2>
             </div>
             <div className="climber-display">
-              <Table hover striped>
+              <Table hover striped
+              
+              >
                 <thead>
                   <tr>
-                    <th>Climber Name</th>
+                    <th>Username</th>
                     <th>Location</th>
                     <th>Home Gym</th>
-                    <th>Need Partner</th>
-                    <th>Climbing Type</th>
-                    <th>Experience Level</th>
+                    <th>Style</th>
+                    <th>Experience</th>
                   </tr>
                 </thead>
-                <tbody>{this.climberProfileMapper}</tbody>
+                <tbody>
+                  {this.state.climberProfiles.length > 0 ? (
+                    this.state.climberProfiles.map(
+                      (climberProfile: Climber, index: number) => (
+                        <tr key={index}>
+                          <td>{climberProfile.username}</td>
+                          <td>{climberProfile.location}</td>
+                          <td>{climberProfile.gymname}</td>
+                          <td>
+                            {climberProfile.climbingtype}
+                          </td>
+                          <td>
+                            {climberProfile.experiencelevel}
+                          </td>
+                        </tr>
+                      )
+                    )
+                  ) : (
+                    <>No climbers to display</>
+                  )}
+                </tbody>
               </Table>
             </div>
           </Container>

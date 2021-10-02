@@ -82,6 +82,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
             </div>
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
+              
                 <ButtonGroup>
                   <Button
                     color="warning"
@@ -168,7 +169,9 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                 <Button size="sm" color="warning" type="submit">
                   ✚ goal
                 </Button>
+
               </FormGroup>
+
               <FormGroup>
                 <br></br>
                 <Input
@@ -176,7 +179,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                   name="othergoal"
                   placeholder="or add a personal goal"
                   type="text"
-                  onBlur={(event) =>
+                  onBlur={(event: React.ChangeEvent<HTMLInputElement>) =>
                     this.setState({
                       goaldescription: event.target.value,
                     })
@@ -194,7 +197,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
     );
   }
 }
-//eventually want to make this a bulk post request that creates distint records
+//eventually want to make this a bulk post request that creates distinct records
 //also want to limit it to three goals
 //and want user defined goals
 export default CreateGoals;

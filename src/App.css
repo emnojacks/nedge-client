@@ -3,11 +3,14 @@
 --soft-white: #FFFAF6;
 --mango-tango: #F08A4B;
 --middle-red: #d78a76;
+--middle-red-light: #f9b09e;
 --yellow-orange: #f2a541;
 --maize-crayola: #F3CA40;
 --queen-blue: #577590;
+--queen-blue-light: #839eb6;
 --burnt-orange: #BD520F;
 --shadow-blue: #6787A2;
+--shadow-blue-light: #87b0d2;
 --dark-electric-blue: #465F72;
 --logo-orange: #df9627;
 --react-bg: #282c34;
@@ -52,14 +55,14 @@ justify-content: center;
         font-size:15px!important;
     }
  h5{
-        font-size:12px!important;
+        font-size:15px!important;
     }
 
 #session-card-body {
 display: none;
 }
 
-#session-card-footer {
+.session-card-footer {
 display: none;
 }
 }
@@ -101,7 +104,6 @@ border-bottom-left-radius: 0em;
 border-top-left-radius: 1em;
 border-top-right-radius: 1em;
 height: auto;
-width: auto;
 }
 
 .session-display{
@@ -165,14 +167,14 @@ font-size: calc(9px + 1vmin);
 
 .tagline{
 font-style: italic;
- font-size: calc(7px + 1vmin);
+font-size: calc(7px + 1vmin);
 color: var(--soft-white);
 padding-left: 1em;
 margin-bottom: 1em;
 }
 
 .footer {
-background-color: var(--middle-red)!important;
+background-color: var(--yellow-orange)!important;
 }
 
 .lighter-div {
@@ -196,10 +198,11 @@ margin-bottom: 1em;
 .form-text {
 color: var(--yellow-orange)!important;
 }
-
-.inner-container {
+/* 
+//removing this styling post deploy bc of heroku display */
+/* .inner-container {
 padding-left: 5em;
-}
+} */
 
 .btn {
 margin-top: .8em;
@@ -218,10 +221,6 @@ margin-left: 1em;
 border-radius: 1em!important;
 color: var(--react-bg);
 }
-
-/* .update-modal {
-
-} */
 
 .session-card-deets {
 display: grid;
@@ -245,6 +244,32 @@ align-items: center
 color: var(--soft-white)!important;
 font-weight: bold;
 background-color: var(--yellow-orange)!important;
-opacity: .8;
+opacity: .9;
 }
 
+.modalHeader {
+  background-color: var(--yellow-orange)!important;
+}
+
+.modalBody {
+ background-color: var(--middle-red)!important;
+}
+
+/* .goal-btn-group {
+background-color: white!important;
+} */
+
+.climber-display td, th {
+color: var(--soft-white)!important;
+}
+
+.tagline-div{
+margin-top: 15px;
+}
+
+.user-story-card-text{
+padding: .7em;
+}
+.user-story-card-header{
+font-weight: bolder;
+}
