@@ -167,7 +167,7 @@ font-size: calc(9px + 1vmin);
 
 .tagline{
 font-style: italic;
- font-size: calc(7px + 1vmin);
+font-size: calc(7px + 1vmin);
 color: var(--soft-white);
 padding-left: 1em;
 margin-bottom: 1em;
@@ -261,4 +261,15 @@ background-color: white!important;
 
 .climber-display td, th {
 color: var(--soft-white)!important;
+}
+
+.tagline-div{
+margin-top: 15px;
+}
+
+.user-story-card-text{
+padding: .7em;
+}
+.user-story-card-header{
+font-weight: bolder;
 }

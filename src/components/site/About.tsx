@@ -17,19 +17,22 @@ class About extends Component<AboutProps, AboutState> {
     return (
       <>
         <Container>
-          <h1>Nedge: for the common climber</h1>
-          <h3>
-            {" "}
+          <br></br>
+          <h2>NEDGE: for the common climber</h2>
+          <div className="tagline-div">
+            <p><mark className="mark-text">
             Nudging users closer to the edge of their climbing ability by
-            catalyzing healthier mental pathways and physical conditions.
-          </h3>
+              catalyzing healthier mental pathways and physical conditions.</mark>
+            </p>
+</div>
           <p>
             As climbers, we’ve all experienced the plateau. Most of us reach it
             before we are internally satisfied with our performance. While in
             the dreaded plateau, we either give up our conscious or unconscious
             goals, carry on for years wondering why we never advance, or give up
-            climbing entirely out of growing resentment. Nedge is an application
-            for rock climbers of all skill levels and experience that allows
+            climbing entirely out of growing resentment.</p>
+            <p><mark>Nedge is an application
+            for rock climbers of all skill levels and experience</mark> that allows
             users to observe and become aware of their climbing patterns and the
             habits that may directly affect their performance. We are climbers
             but first and foremost we are humans therefore respond to proven
@@ -37,10 +40,10 @@ class About extends Component<AboutProps, AboutState> {
           </p>
           <Row xs="2">
             <Col>
-              <h3>User Stories</h3>
+              <h2>User Stories</h2>
               <Card className="climber-profile-card">
-                <CardHeader>The Weekend Warrior</CardHeader>
-                <CardText>
+                <CardHeader className="user-story-card-header">The Weekend Warrior // </CardHeader>
+                <CardText className="user-story-card-text">
                   <small>
                     You are likely an engineer, a lawyer, or coder. You’re
                     highly motivated in all pursuits you undertake and you
@@ -58,8 +61,8 @@ class About extends Component<AboutProps, AboutState> {
             </Col>
             <Col>
               <Card className="climber-profile-card">
-                <CardHeader>The Psyched Nube</CardHeader>
-                <CardText>
+                <CardHeader className="user-story-card-header">The Psyched Nube // </CardHeader>
+               <CardText className="user-story-card-text">
                   <small>
                     You're brand new to the sport and your psych level is high.
                     You are a white male, 20-24 years old. You come from other
@@ -82,8 +85,8 @@ class About extends Component<AboutProps, AboutState> {
             </Col>
             <Col>
               <Card className="climber-profile-card">
-                <CardHeader>The Hipster</CardHeader>
-                <CardText>
+                <CardHeader className="user-story-card-header">The Hipster // </CardHeader>
+              <CardText className="user-story-card-text">
                   <small>
                     Climbing is part of your unique identity. You want to be set
                     apart from everyone else. You are artsy, have many tattoos
@@ -101,8 +104,8 @@ class About extends Component<AboutProps, AboutState> {
 
             <Col>
               <Card className="climber-profile-card">
-                <CardHeader>The Dusty Veteran</CardHeader>
-                <CardText>
+                <CardHeader className="user-story-card-header">The Dusty Veteran // </CardHeader>
+              <CardText className="user-story-card-text">
                   <small>
                     You’ve been climbing for years and have identified at
                     certain points with all the other stereotypes. You had your
