@@ -65,6 +65,9 @@
   .session-card-footer {
     display: none;
   }
+.climber-display td {
+font-size: smaller;
+}
 }
 
 .appheader {

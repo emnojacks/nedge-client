@@ -75,7 +75,7 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
     return (
       <div>
         <Container className="lighter-div">
-          <Container className="inner-container">
+          <Container>
             <div className="header-content">
               <h2>climbers on NEDGE</h2>
             </div>
