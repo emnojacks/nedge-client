@@ -126,7 +126,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
     return (
       <div>
         <Container>
-          <Container className="spaced-div">
+          <Container className="spaced-div-auto">
             <div className="content-header">
               <h2>What's up, {this.state.climberProfile.username}</h2>
               <h3>You pullin plastic today?</h3>

@@ -64,7 +64,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
     this.props.sortClimberGoals();
 
     return (
-      <div className="mainDiv">
+      <div>
         <Container className="lighter-div">
           <Container className="inner-container">
             <div className="header-content">

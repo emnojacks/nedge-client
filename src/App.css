@@ -184,7 +184,15 @@ grid-template-rows: 1fr 1fr; */
   background-color: var(--queen-blue);
   border-radius: 2em;
   padding: 1em;
-  margin: 2em;
+  margin-top: 2em;
+  /* font-weight: bold; */
+}
+
+.climber-profile-div {
+  background-color: var(--queen-blue);
+  border-radius: 2em;
+  padding: 1em;
+  margin-top: 2em;
   /* font-weight: bold; */
 }
 
@@ -192,6 +200,12 @@ grid-template-rows: 1fr 1fr; */
   border-radius: 2em;
   padding: 1em;
   margin: 1em;
+}
+
+.spaced-div-auto {
+  border-radius: 2em;
+  padding: 1em;
+  margin-top: 1em;
 }
 
 .content-header {
@@ -206,7 +220,6 @@ padding-left: 5em;
 
 .btn {
   margin-top: 0.8em;
-  /* potentially change the margin on btns */
   border-radius: 5em !important;
   font-weight: bold !important;
   width: auto;
