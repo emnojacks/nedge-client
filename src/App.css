@@ -166,7 +166,7 @@ grid-template-rows: 1fr 1fr; */
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: var(--soft-white) !important;
+  color: var(--yellow-orange) !important;
   opacity: 0.6; /* Firefox */
   font-size: calc(9px + 1vmin);
 }

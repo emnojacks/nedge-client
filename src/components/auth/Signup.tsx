@@ -302,7 +302,6 @@ class Signup extends Component<SignupProps, SignupState> {
                 <Input
                   className="sign-up-input-area"
                   name="location"
-                  placeholder="'Indianapolis'"
                   type="text"
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     this.setState({ location: event.target.value })

@@ -100,9 +100,10 @@ class App extends Component<AppProps, AppState> {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <a href="https://nedge-crimbing.herokuapp.com/about">
+          <img src={logo} className="App-logo" alt="logo"/> </a>
           <h1 className="appheader">NEDGE</h1>
-          <small className="tagline">for the common climber</small>
+          <small className="tagline">goal-based sessioning for the common climber</small>
         </header>
         <Router>
           {this.state.sessionToken && (

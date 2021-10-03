@@ -89,7 +89,6 @@ class Login extends Component<LoginProps, LoginState> {
                 <Input
                   className="sign-up-input-area"
                   name="username"
-                  placeholder="AlexHandhold"
                   type="text"
                   aria-required="true"
                   required
@@ -116,7 +115,6 @@ class Login extends Component<LoginProps, LoginState> {
                   pattern="^(?=.{5,10})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$"
                   title="Password must be at least 6 characters, and contain at least 1 uppercase character, a lowercase character, a number, and a special character."
                   name="password"
-                  placeholder="s3cR3t!"
                   aria-required="true"
                   type="password"
                   required
