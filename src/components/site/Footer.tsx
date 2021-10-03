@@ -32,7 +32,7 @@ export default function StickyFooter() {
         className="footer"
         sx={{
           py: 3,
-          px: 2,
+          width: '100vw',
           mt: "auto",
           backgroundColor: (theme) =>
             theme.palette.mode === "dark"
@@ -41,7 +41,7 @@ export default function StickyFooter() {
         }}
       >
         <Container maxWidth="sm">
-          <Typography variant="body1">Happy Climbing</Typography>
+          <Typography variant="body1">Happy Crimbing</Typography>
           <Copyright />
         </Container>
       </Box>

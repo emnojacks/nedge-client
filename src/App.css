@@ -23,7 +23,7 @@
   font-size: calc(10px + 1vmin);
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  align-items: center;
   justify-content: center;
 }
 
@@ -75,6 +75,8 @@
 
 .navBar {
   background-color: var(--dark-electric-blue);
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-nav {
@@ -182,7 +184,7 @@ grid-template-rows: 1fr 1fr; */
   background-color: var(--queen-blue);
   border-radius: 2em;
   padding: 1em;
-  margin: 3em;
+  margin: 2em;
   /* font-weight: bold; */
 }
 
@@ -196,9 +198,6 @@ grid-template-rows: 1fr 1fr; */
   margin-bottom: 1em;
 }
 
-.form-text {
-  color: var(--yellow-orange) !important;
-}
 /* 
 //removing this styling post deploy bc of heroku display */
 /* .inner-container {
@@ -250,10 +249,15 @@ padding-left: 5em;
 
 .modalHeader {
   background-color: var(--yellow-orange) !important;
+color: var(--soft-white);
 }
 
 .modalBody {
-  background-color: var(--middle-red) !important;
+  background-color: var(--mango-tango) !important;
+}
+
+.modalLabel{
+color:var(--soft-white);
 }
 
 .climber-display td,

@@ -38,9 +38,9 @@ class About extends Component<AboutProps, AboutState> {
             but first and foremost we are humans therefore respond to proven
             behavior change interventions at the core of this app.
           </p>
+          <h2>User Stories</h2>
           <Row xs="2">
             <Col>
-              <h2>User Stories</h2>
               <Card className="climber-profile-card">
                 <CardHeader className="user-story-card-header">The Weekend Warrior // </CardHeader>
                 <CardText className="user-story-card-text">
@@ -64,20 +64,16 @@ class About extends Component<AboutProps, AboutState> {
                 <CardHeader className="user-story-card-header">The Psyched Nube // </CardHeader>
                <CardText className="user-story-card-text">
                   <small>
-                    You're brand new to the sport and your psych level is high.
+                    You're new to the sport and your psych level is high.
                     You are a white male, 20-24 years old. You come from other
-                    highly physical sports (football, lacrosse, hockey) and have
+                    highly physical sports and have
                     fallen in love with climbing and it’s changed your life. You
-                    are interested in gains and new gear - which you don’t
-                    always research to the best of your ability before
-                    purchasing. You lack technical know-how and nuanced
+                    are interested in gains and new gear. You lack some technical know-how and
                     technique but you have muscled your way up several grades
-                    very quickly and you are mentally a strong climber (thanks
-                    to a good upbringing, privilege, and excelling at previous
-                    physical endeavors) but you can fall into the trap of grade
+                    very quickly. You are a mentally strong climber but you can fall into the trap of grade
                     chasing and may ignore lessons that lower grade climbs can
-                    teach. It’s likely within two years you will be crushing and
-                    outfitting a van to and go dirtbag in and end up somewhere
+                    teach. Within two years you could be a crusher
+                    outfitting a van to dirtbag
                     in Wyoming.
                   </small>
                 </CardText>
@@ -91,9 +87,8 @@ class About extends Component<AboutProps, AboutState> {
                     Climbing is part of your unique identity. You want to be set
                     apart from everyone else. You are artsy, have many tattoos
                     and homemade jewelry. You have an alternative haircut and if
-                    you are a female you likely identify as a Tom Boy and if you
-                    are a boy - you likely identify with your feminine side. You
-                    don’t climb too hard but you love to get outside and want to
+                    you are a female you likely identify as a Tom Boy. You
+                    don’t climb crazy hard but you love to get outside and want to
                     climb hard enough that those experiences are positive and
                     you can keep climbing as part of your identity that you
                     share with your friends.
@@ -111,12 +106,12 @@ class About extends Component<AboutProps, AboutState> {
                     certain points with all the other stereotypes. You had your
                     psych phase, your crushing phase, your weekend warrior
                     phase, perhaps a noncommittal dirtbagging trip or two, and
-                    now you’ve settled into a gym routine which heretofore you
+                    you’ve settled into a gym routine which heretofore you
                     thought only suitable for gym rats. You’re adulting but
                     you’re trying not to give up on your climbing goals because
                     you still hold climbing as part of your identity. You have
                     been in the plateau for years but you want to crush again
-                    without having to pack up your life and dirtbag.
+                    without having to pack up your comfy life to dirtbag.
                   </small>
                 </CardText>
               </Card>

@@ -155,6 +155,7 @@ class DisplaySessions extends Component<
                         >
                           ✏️
                         </Button>
+                        {" "}
                         <Button
                           style={{ margin: "0px" }}
                           outline

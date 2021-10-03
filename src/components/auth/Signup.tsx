@@ -147,6 +147,9 @@ class Signup extends Component<SignupProps, SignupState> {
                   value={this.state.password}
                 />
               </InputGroup>
+                <FormText
+              color="white"
+            >hint: strong, spicy, special, & six chars</FormText>
             </FormGroup>
             <br></br>
             {/* GYMNAME*/}
