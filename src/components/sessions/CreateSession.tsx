@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Button, Input, Form, Label, FormGroup, Container, InputGroup, FormText } from "reactstrap";
 import "react-input-range/lib/css/index.css";
 import APIURL from "../../helpers/environment.js";
+import bad from "../../assets/bad.png";
+import good from "../../assets/good.png";
 // let APIURL = "http://localhost:3000";
 
 interface CreateSessionProps {
@@ -201,13 +203,13 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
               <h5>
                 
                   <img
-                    src="https://dw-iconusers.flaticon.com/39649/39649476/1633323735983.svg?token=exp=1633324956~hmac=71b55091e206ba0d92c4d943388524a1"
+                    src={bad}
                     width="20px"
-                    alt="thumbs up"
+                    alt="thumbs down"
                   />
                   &nbsp; BAD → MEH → NEUTRAL → GOOD → OPTIMAL  &nbsp; 
                   <img
-                    src="https://dw-iconusers.flaticon.com/39649/39649476/1633323905036.svg?token=exp=1633324956~hmac=21f458e3b9fe8bbd8973f6e13b2980d1"
+                    src={good}
                     width="20px"
                     alt="thumbs up"
                   />

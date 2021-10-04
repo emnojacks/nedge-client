@@ -11,6 +11,8 @@ import {
   CardFooter,
 } from "reactstrap";
 import { Goal } from "../../types/Types";
+import pen from "../../assets/pen-white.png";
+import trash from "../../assets/trash-white.png";
 import APIURL from "../../helpers/environment.js";
 // let APIURL = "http://localhost:3000";
 
@@ -84,7 +86,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                         backgroundColor: goal.goalpriority === 1 ? "#d78a76"  : goal.goalpriority === 2 ? "#f2a541" : "#f3ca40"
                         }}
                       >
-                        <CardHeader> Goal {goal.goalpriority} | {goal.goalpriority === 1 ? "working on it" : goal.goalpriority === 2 ? "next up" : "backlog"}</CardHeader>
+                        <CardHeader> goal {goal.goalpriority} | {goal.goalpriority === 1 ? "working on it" : goal.goalpriority === 2 ? "next up" : "backlog"}</CardHeader>
                         <CardBody>
                           <CardTitle tag="h5">{goal.goaldescription}
                           </CardTitle>
@@ -98,7 +100,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                               this.props.openModal();
                             }}
                           >
-                            ✏️
+                           <img src={pen} width="15px" alt="pencil icon"/>
                           </Button>
                           <Button
                             style={{ margin: "0px" }}
@@ -116,7 +118,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                               this.deleteGoal(goal);
                             }}
                           >
-                            🗑
+                          <img src={trash} width="15px" alt="trash icon"/>
                           </Button>
                         </CardFooter>
                       </Card>

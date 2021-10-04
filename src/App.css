@@ -44,10 +44,6 @@
   color: var(--soft-white);
 }
 
-/*if screen smaller than 300px*/
-/* @media screen and (min-width: 300px){
-} */
-
 /*if screen smaller than 600px*/
 /* @media screen and (min-width: 600px){
 } */
@@ -59,6 +55,11 @@
   .session-card-footer {
     display: none !important;
   }
+.session-date-btn{
+margin-left: 1px!important;
+padding: 0px!important;
+font-size: 10px!important;
+}
 }
 
 @media screen and (max-width: 768px) {
@@ -108,25 +109,12 @@
   }
 }
 
-@media screen and (min-width: 900px) {
-  .sign-up-input-grp {
-    max-width: 50vw !important;
-  }
-  .sign-up-input-area {
-    max-width: 50vw !important;
-  }
-}
-
 @media screen and (min-width: 1000px) {
   .sign-up-input-grp {
     max-width: 40vw !important;
   }
   .sign-up-input-area {
     max-width: 40vw !important;
-  }
-  .goal-display {
-    display: flex !important;
-    flex-direction: row !important;
   }
 }
 
@@ -185,7 +173,7 @@ h1 {
 
 .goal-display {
   display: grid;
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
 }
 
@@ -373,3 +361,8 @@ th {
   opacity: 0.8;
 }
 
+.session-date-btn{
+margin-left: 3px;
+padding: 0px;
+font-size: 10px
+}

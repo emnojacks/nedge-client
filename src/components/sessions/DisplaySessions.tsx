@@ -9,8 +9,11 @@ import {
   Container,
 } from "reactstrap";
 import partner32 from '../../assets/partner32.png'
+import pen from "../../assets/pen-blck.png";
+import trash from "../../assets/trash-blck.png";
 import { Session } from "../../types/Types";
 import APIURL from "../../helpers/environment.js";
+import { textAlign } from "@mui/system";
 // let APIURL = "http://localhost:3000";
 
 interface DisplaySessionsProps {
@@ -102,9 +105,9 @@ class DisplaySessions extends Component<
                           : "#f9b09e",
                       }}
                     >
-                      <CardHeader tag="h5" style={{ fontWeight: "bold" }}>
+                      <CardHeader style={{padding: "0px"}}>
                         <Button
-                          style={{ margin: "0px" }}
+                          className="session-date-btn"
                           size="sm"
                           outline
                           color="transparent"
@@ -112,7 +115,7 @@ class DisplaySessions extends Component<
                             this.props.setSessionToUpdate(session);
                             this.props.openModal();
                           }}
-                        >
+                        > 
                           {session.sessiondate}
                         </Button>
                       </CardHeader>
@@ -158,7 +161,7 @@ class DisplaySessions extends Component<
                             this.props.openModal();
                           }}
                         >
-                          <img src="https://cdn-icons-png.flaticon.com/512/1250/1250615.png" width="15px" alt="pencil icon"/>
+                          <img src={pen} width="15px" alt="pencil icon"/>
                         </Button>
                         <Button
                           style={{ margin: "0px" }}
@@ -166,7 +169,7 @@ class DisplaySessions extends Component<
                           color="transparent"
                           onClick={() => this.deleteSession(session)}
                         >
-                          <img src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png" width="15px" alt="trash icon"/>
+                          <img src={trash} width="15px" alt="trash icon"/>
                         </Button>
                       </CardFooter>
                     </Card>
