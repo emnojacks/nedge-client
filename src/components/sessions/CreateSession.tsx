@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Button, Input, Form, Label, FormGroup } from "reactstrap";
-import { Container, InputGroup } from "reactstrap";
+import { Button, Input, Form, Label, FormGroup, Container, InputGroup, FormText } from "reactstrap";
 import "react-input-range/lib/css/index.css";
 import APIURL from "../../helpers/environment.js";
 // let APIURL = "http://localhost:3000";
@@ -40,8 +39,8 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
     };
   }
 
-//
-  
+  //
+
   handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     try {
@@ -70,12 +69,11 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
         .then((data) => {
           console.log("session logged");
           this.props.fetchClimberSessions();
-        })
+        });
+    } catch (err) {
+      console.log(err);
+      window.alert("failed to log session");
     }
-    catch (err) {
-        console.log(err);
-        window.alert("failed to log session");
-      };
   };
 
   clearInputs = () => {
@@ -93,7 +91,6 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
     });
   };
 
-  
   render() {
     return (
       <div>
@@ -201,13 +198,20 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
               {/* NUTRITIONCONDITION */}
               <h3>conditions</h3>
 
-              <p>
-                {" "}
-                <span style={{ fontWeight: "bolder" }}>
-                  {" "}
-                  😩 &nbsp;bad → subprime → neutral → good → optimal &nbsp;😄{" "}
-                </span>{" "}
-              </p>
+              <h5>
+                
+                  <img
+                    src="https://dw-iconusers.flaticon.com/39649/39649476/1633323735983.svg?token=exp=1633324956~hmac=71b55091e206ba0d92c4d943388524a1"
+                    width="20px"
+                    alt="thumbs up"
+                  />
+                  &nbsp; BAD → MEH → NEUTRAL → GOOD → OPTIMAL  &nbsp; 
+                  <img
+                    src="https://dw-iconusers.flaticon.com/39649/39649476/1633323905036.svg?token=exp=1633324956~hmac=21f458e3b9fe8bbd8973f6e13b2980d1"
+                    width="20px"
+                    alt="thumbs up"
+                  />
+              </h5>
               <FormGroup row>
                 <InputGroup>
                   <Label className="form-label" htmlFor="nutritioncondition">
@@ -223,10 +227,10 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                       this.setState({ nutritioncondition: event.target.value })
                     }
                   ></Input>
-                  <small className="tagline">
-                    you hydrated? complex carbs? macros met?{" "}
-                  </small>
                   &nbsp;
+                  <FormText color="white">
+                    you hydrated? complex carbs? macros met?{" "}
+                  </FormText>
                 </InputGroup>
               </FormGroup>
               {/* SLEEPCONDITION */}
@@ -245,9 +249,10 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                       this.setState({ sleepcondition: event.target.value })
                     }
                   ></Input>
-                  <small className="tagline">
-                    sleep deprivation is worse than alcohol
-                  </small>
+                  &nbsp;
+                   <FormText color="white">
+                    sleep deprivation is worse than alcohol{" "}
+                  </FormText>
                 </InputGroup>
               </FormGroup>
               {/* STRESS CONDITION */}
@@ -266,11 +271,10 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                       this.setState({ stresscondition: event.target.value })
                     }
                   ></Input>
-                  <br></br>
-                  <small className="tagline">
-                    stress releases cortisol which causes fatique
-                  </small>
                   &nbsp;
+                   <FormText color="white">
+                    stress releases cortisol and causes fatigue
+                  </FormText>
                 </InputGroup>
               </FormGroup>
               {/* EGO CONDITION */}
@@ -289,9 +293,10 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                       this.setState({ egocondition: event.target.value })
                     }
                   ></Input>
-                  <small className="tagline">
-                    climbing is 90% mental - any negative thought loops?
-                  </small>
+                    &nbsp;
+                   <FormText color="white">
+                 running negative thought loops?
+                  </FormText>
                   &nbsp;
                 </InputGroup>
               </FormGroup>
@@ -304,7 +309,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                   <Input
                     className="sign-up-input-area"
                     name="sessionnotes"
-                    placeholder="add deets to help recall sesh"
+                    placeholder="add deets to recall sesh"
                     type="text"
                     title="what happened that was memorable? Recording deets will help you remember why this sesh was diff than the rest."
                     maxLength={50}
@@ -328,4 +333,3 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
 }
 
 export default CreateSession;
-

@@ -8,6 +8,7 @@ import {
   CardText,
   Container,
 } from "reactstrap";
+import partner32 from '../../assets/partner32.png'
 import { Session } from "../../types/Types";
 import APIURL from "../../helpers/environment.js";
 // let APIURL = "http://localhost:3000";
@@ -121,25 +122,29 @@ class DisplaySessions extends Component<
                           <div className="session-card-deets">
                             <section>{session.sessionlength} hr</section>
                             <section>
-                              {session.sessionpartner ? " 👥 " : ""}
-                              {session.crosstraining ? " 🏋️" : " "}
+                              {session.sessionpartner ? <img src="https://cdn-icons-png.flaticon.com/512/4726/4726440.png" width="20px" alt="two people"/> : ""}
+                              {session.crosstraining ? <img src="https://cdn-icons-png.flaticon.com/512/1000/1000008.png" width="20px" alt="barbell"/> : " "}
                             </section>
-                            <section>
-                              Nutrition
-                              {session.nutritioncondition >= "3" ? "✅" : "❌"}
+                            <section className="session-card-insights"
+                              style={{ color: session.nutritioncondition>="4" ? "green" : session.nutritioncondition<="1" ? "red" : "#282c34" }}>
+                              nutrition
+                              {session.nutritioncondition > "3" ? "" : ""}
                             </section>
-                            <section>
-                              Sleep{" "}
-                              {session.sleepcondition >= "3" ? "✅" : "❌"}
+                            <section
+                            className="session-card-insights"
+                              style={{ color: session.sleepcondition>="4" ? "green" : session.sleepcondition<="1" ? "red" : "#282c34" }}>
+                              sleep{" "}
                             </section>
-                            <section>
-                              Stress{" "}
-                              {session.stresscondition >= "3" ? "✅" : "❌"}
+                            <section className="session-card-insights"
+                              style={{ color: session.stresscondition>="4" ? "green" : session.stresscondition<="1" ? "red" : "#282c34" }}>
+                              stress{" "}
                             </section>
-                            <section>
-                              Ego {session.egocondition >= "3" ? "✅" : "❌"}
+                            <section
+                            className="session-card-insights"
+                              style={{ color: session.egocondition>="4" ? "green" : session.egocondition<="1" ? "red" : "#282c34" }}>
+                              ego
                             </section>
-                            <section>{session.sessionnotes}</section>
+                            <section style={{ fontStyle:"italic"}}>{session.sessionnotes}</section>
                           </div>
                         </CardText>
                       </CardBody>
@@ -153,16 +158,15 @@ class DisplaySessions extends Component<
                             this.props.openModal();
                           }}
                         >
-                          ✏️
+                          <img src="https://cdn-icons-png.flaticon.com/512/1250/1250615.png" width="15px" alt="pencil icon"/>
                         </Button>
-                        {" "}
                         <Button
                           style={{ margin: "0px" }}
                           outline
                           color="transparent"
                           onClick={() => this.deleteSession(session)}
                         >
-                          🗑
+                          <img src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png" width="15px" alt="trash icon"/>
                         </Button>
                       </CardFooter>
                     </Card>
@@ -170,8 +174,8 @@ class DisplaySessions extends Component<
                 )
               ) : (
                 <p>
-                  Your session log is empty. Log your first session to start
-                  building your session data.
+                  Your session log is empty. Log one to start
+                  building your session insights.
                 </p>
               )}
             </div>

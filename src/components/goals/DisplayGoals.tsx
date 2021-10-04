@@ -76,12 +76,15 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
               {this.props.climberGoals.length > 0 ? (
                 this.props.climberGoals.map((goal: Goal, index: number) => (
                   <Row key={index}>
-                    <Col sm="12">
+                    <Col sm="8">
                       <Card
-                        className="goal-card climber-profile-card"
+                        className="goal-card"
                         key={goal.id}
+                        style={{
+                        backgroundColor: goal.goalpriority === 1 ? "#d78a76"  : goal.goalpriority === 2 ? "#f2a541" : "#f3ca40"
+                        }}
                       >
-                        <CardHeader> Priority {goal.goalpriority}</CardHeader>
+                        <CardHeader> Goal {goal.goalpriority} | {goal.goalpriority === 1 ? "working on it" : goal.goalpriority === 2 ? "next up" : "backlog"}</CardHeader>
                         <CardBody>
                           <CardTitle tag="h5">{goal.goaldescription}
                           </CardTitle>
