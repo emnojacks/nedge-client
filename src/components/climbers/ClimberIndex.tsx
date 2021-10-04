@@ -167,7 +167,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                       {this.state.climberProfile.gymname},{" "}
                       {this.state.climberProfile.location}{" "}
                     </CardSubtitle>
-                    <a href=" " target="blank">
+                    <a href="https://www.mountainproject.com/" target="blank">
                       @mtprojhndl
                     </a>
                   </CardBody>
