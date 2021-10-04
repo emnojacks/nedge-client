@@ -69,7 +69,9 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
           <Container className="inner-container">
             <div className="header-content">
               <h2>Goal Deck</h2>
+              <p>These are your priorities this month. Make sure you orient your sessions around these goals.</p>
             </div>
+            
             <div className="goal-display">
               {this.props.climberGoals.length > 0 ? (
                 this.props.climberGoals.map((goal: Goal, index: number) => (
@@ -79,21 +81,12 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                         className="goal-card climber-profile-card"
                         key={goal.id}
                       >
-                        <CardHeader> Priority #{goal.goalpriority}</CardHeader>
+                        <CardHeader> Priority {goal.goalpriority}</CardHeader>
                         <CardBody>
-                          <CardTitle tag="h5">{goal.goaldescription}</CardTitle>
+                          <CardTitle tag="h5">{goal.goaldescription}
+                          </CardTitle>
                         </CardBody>
-                        <CardFooter className="session-card-footer">
-                          <Button
-                            style={{ margin: "0px" }}
-                            color="success"
-                            onClick={() => {
-                              this.deleteGoal(goal);
-                            }}
-                          >
-                            sent it
-                          </Button>
-                          &nbsp;
+                        <CardFooter className="goal-card-footer">
                           <Button
                             style={{ margin: "0px" }}
                             color="transparent"
@@ -103,6 +96,24 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                             }}
                           >
                             ✏️
+                          </Button>
+                          <Button
+                            style={{ margin: "0px" }}
+                            color="success"
+                            onClick={() => {
+                              this.deleteGoal(goal);
+                            }}
+                          >
+                            sent it
+                          </Button>
+                          <Button
+                            style={{ margin: "0px" }}
+                           color="transparent"
+                            onClick={() => {
+                              this.deleteGoal(goal);
+                            }}
+                          >
+                            🗑
                           </Button>
                         </CardFooter>
                       </Card>

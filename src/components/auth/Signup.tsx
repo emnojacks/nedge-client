@@ -222,7 +222,7 @@ class Signup extends Component<SignupProps, SignupState> {
               <InputGroup className="sign-up-input-grp">
                 <Col sm={5}>
                   <Label check className="form-label" htmlFor="needpartner">
-                    Want a catch from time to time?
+                    Want a catch from time to time? &nbsp;
                   </Label>
                 </Col>
                 <Col sm={5}>

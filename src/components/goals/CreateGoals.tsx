@@ -72,17 +72,16 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
         <Container className="lighter-div">
           <Container className="inner-container">
             <div className="content-header">
-              <h2>Set a Goal</h2>
+              <h2>Set a New Goal</h2>
 
               <p>
-                Set a common climbing goal or create you own. P.S. It's not
-                realistic to work on more than 3 goals at a time so don't go
-                crazy, Ondra.{" "}
+                Set a common climbing goal or create you own. It's not realistic
+                to work on more than <span style={{ backgroundColor: "#f2a54180", fontWeight: "bolder" }}>3 goals at a time</span>.{" "}
+                <br></br>
               </p>
             </div>
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
-                <ButtonGroup>
                   <Button
                     color="warning"
                     className="btn-goal"
@@ -97,7 +96,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                   >
                     increase endurance
                   </Button>
-
+                  &nbsp;
                   <Button
                     className="btn-goal"
                     color="warning"
@@ -114,7 +113,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                   >
                     increase tendon strength
                   </Button>
-
+                  &nbsp;
                   <Button
                     className="btn-goal"
                     color="warning"
@@ -131,7 +130,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                   >
                     increase muscle strength
                   </Button>
-
+                  &nbsp;
                   <Button
                     className="btn-goal"
                     color="warning"
@@ -148,6 +147,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                   >
                     improve mental game
                   </Button>
+                  &nbsp;
                   <Button
                     className="btn-goal"
                     color="warning"
@@ -163,10 +163,9 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                     work on technique
                   </Button>
                   <br></br>
-                </ButtonGroup>
-
+                &nbsp;
                 <Button size="sm" color="warning" type="submit">
-                  ✚ goal
+                  ✚ common goal
                 </Button>
               </FormGroup>
 
@@ -187,6 +186,8 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                   ✚ personal goal
                 </Button>
               </FormGroup>
+              <br></br>
+                <small>Now go prioritize your new goals.</small>
             </Form>
           </Container>
         </Container>

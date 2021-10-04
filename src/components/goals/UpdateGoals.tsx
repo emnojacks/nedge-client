@@ -8,6 +8,7 @@ import {
   ModalHeader,
   Label,
   Input,
+  FormText
 } from "reactstrap";
 import { Goal } from "../../types/Types";
 import APIURL from "../../helpers/environment.js";
@@ -111,8 +112,18 @@ class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
               <Label className="modalLabel" htmlFor="goalpriority">
                 Priority
               </Label>
+              <br></br>
+              <FormText color="white">
+                <ol>
+                  <li>working on it now</li>
+               <li>next up</li>
+                  <li>backlog </li>
+                  <li>c'mon now we said 3 goals, Ondra. </li>
+                </ol>
+              </FormText>
               <Input
                 type="number"
+                max={4}
                 name="goalpriority"
                 value={this.state.goalpriority}
                 onChange={(e) =>
