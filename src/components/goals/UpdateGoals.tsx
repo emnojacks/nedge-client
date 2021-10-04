@@ -124,6 +124,7 @@ class UpdateGoals extends Component<UpdateGoalsProps, UpdateGoalsState> {
               <Input
                 type="number"
                 max={4}
+                min={1}
                 name="goalpriority"
                 value={this.state.goalpriority}
                 onChange={(e) =>
