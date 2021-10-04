@@ -53,7 +53,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
     this.fetchClimberProfile();
   }
 
-  changeProfilePic = ():void => {
+  changeProfilePic = (): void => {
     let climbingtype = this.state.climberProfile.climbingtype;
     if (climbingtype) {
       switch (climbingtype) {
@@ -130,6 +130,21 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
             <div className="content-header">
               <h2>What's up, {this.state.climberProfile.username}</h2>
               <h3>You pullin plastic today?</h3>
+              <Button
+                style={{
+                  backgroundColor: "#df9627",
+                }}
+                size="sm"
+                color="warning"
+              >
+                <Link
+                  style={{ color: "white", textDecoration: "none" }}
+                  to="/climber/sessions"
+                >
+                  {" "}
+                  new sesh
+                </Link>
+              </Button>
             </div>
             <Row>
               <Col>
@@ -164,17 +179,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                           <Link to="/climber/sessions">edit profile</Link>
                         </Button>
                       </Col>
-                      <Col>
-                        <Button
-                          style={{
-                            backgroundColor: "#df9627",
-                          }}
-                          size="sm"
-                          color="warning"
-                        >
-                          <Link to="/climber/sessions"> new sesh</Link>
-                        </Button>
-                      </Col>
+                      <Col></Col>
                     </Row>
                   </CardFooter>
                 </Card>

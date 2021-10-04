@@ -44,9 +44,16 @@
   color: var(--soft-white);
 }
 
-/*if screen smaller than 600px*/
-/* @media screen and (min-width: 600px){
-} */
+
+@media screen and (max-width: 330px){
+#gym-table-style-col {
+display: none!important;
+}
+#gym-table-style-header {
+display: none!important;
+}
+
+}
 
 @media screen and (max-width: 499px) {
   #session-card-body {
@@ -55,10 +62,16 @@
   .session-card-footer {
     display: none !important;
   }
-.session-date-btn{
-margin-left: 1px!important;
-padding: 0px!important;
-font-size: 10px!important;
+  .session-date-btn {
+    margin-left: 1px !important;
+    padding: 0px !important;
+    font-size: 10px !important;
+  }
+#gym-table-experience-col {
+display: none!important;
+}
+#gym-table-experience-header {
+display: none!important;
 }
 }
 
@@ -361,8 +374,8 @@ th {
   opacity: 0.8;
 }
 
-.session-date-btn{
-margin-left: 3px;
-padding: 0px;
-font-size: 10px
+.session-date-btn {
+  margin-left: 3px;
+  padding: 0px;
+  font-size: 10px;
 }

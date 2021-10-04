@@ -116,7 +116,7 @@ class App extends Component<AppProps, AppState> {
           <Container>
             <Switch>
               <Route exact path="/about">
-                <About sessionToken={this.state.sessionToken} />
+                <About sessionToken={this.state.sessionToken}/>
               </Route>
               <Route exact path="/">
                 {this.climberViews}

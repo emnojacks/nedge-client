@@ -80,7 +80,7 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
               <h2>climbers on NEDGE</h2>
             </div>
             <div className="climber-display">
-              <Table hover striped
+              <Table hover striped className="gym-table"
               
               >
                 <thead>
@@ -88,8 +88,8 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
                     <th>Username</th>
                     <th>Location</th>
                     <th>Home Gym</th>
-                    <th>Style</th>
-                    <th>Experience</th>
+                    <th id="gym-table-style-header">Style</th>
+                    <th id="gym-table-experience-header">Experience</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -100,10 +100,10 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
                           <td>{climberProfile.username}</td>
                           <td>{climberProfile.location}</td>
                           <td>{climberProfile.gymname}</td>
-                          <td>
+                          <td id="gym-table-style-col">
                             {climberProfile.climbingtype}
                           </td>
-                          <td>
+                          <td id="gym-table-experience-col">
                             {climberProfile.experiencelevel}
                           </td>
                         </tr>

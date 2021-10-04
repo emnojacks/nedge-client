@@ -13,7 +13,6 @@ import pen from "../../assets/pen-blck.png";
 import trash from "../../assets/trash-blck.png";
 import { Session } from "../../types/Types";
 import APIURL from "../../helpers/environment.js";
-import { textAlign } from "@mui/system";
 // let APIURL = "http://localhost:3000";
 
 interface DisplaySessionsProps {
@@ -83,7 +82,7 @@ class DisplaySessions extends Component<
     }
     this.props.fetchClimberSessions();
   };
-
+  
   render() {
     this.props.sortClimberSessions();
 
@@ -92,6 +91,10 @@ class DisplaySessions extends Component<
         <Container className="lighter-div">
           <Container className="inner-container">
             <h2>recent sessions</h2>
+            <p>You've logged {this.props.climberSessions.length} climbing sessions.
+              {this.props.climberSessions.length <= 10 ? " That's not very many! Log more sessions to get to the edge of your ability." : this.props.climberSessions.length
+                <20 ? " That's a good amount. Keep recording your sessions to help you get to the edge of your ability." : "Wow, you are on a roll. Have you noticed any patterns?"}
+            </p>
             <div className="session-display">
               {this.props.climberSessions.length > 0 ? (
                 this.props.climberSessions.map(
@@ -115,8 +118,8 @@ class DisplaySessions extends Component<
                             this.props.setSessionToUpdate(session);
                             this.props.openModal();
                           }}
-                        > 
-                          {session.sessiondate}
+                        >
+                          {session.sessiondate.slice(5)}
                         </Button>
                       </CardHeader>
 

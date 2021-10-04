@@ -41,8 +41,8 @@ class SessionIndex extends Component<SessionIndexProps, SessionIndexState> {
   }
 
   fetchClimberSessions = async () => {
+    //array len presumes climbing 5x week for 1 yr
     this.state.climberSessions.length = 260;
-    console.log(this.state.climberSessions);
     try {
       console.log("fetching climber sessions");
       const res = await fetch(`${APIURL}/session/mine`, {
@@ -58,11 +58,12 @@ class SessionIndex extends Component<SessionIndexProps, SessionIndexState> {
       });
       this.sortClimberSessions();
       console.log(this.state.climberSessions);
+      console.log(this.state.climberSessions.length)
     } catch (error) {
       console.log(error);
     }
   };
-
+  
   sortClimberSessions = () =>  {
     if (this.state.climberSessions.length > 0) {
       this.state.climberSessions.sort(function (a, b) {
@@ -114,6 +115,7 @@ class SessionIndex extends Component<SessionIndexProps, SessionIndexState> {
             sessionToken={this.props.sessionToken}
             fetchClimberSessions={this.fetchClimberSessions}
             setSessionToUpdate={this.setSessionToUpdate}
+            
           />
 
           {this.state.modalVisible ? (
