@@ -76,7 +76,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
 
               <p>
                 Set a common climbing goal or create you own. It's not realistic
-                to work on more than <span style={{ backgroundColor: "#f2a54180", fontWeight: "bolder" }}>3 goals at a time</span>.{" "}
+                to work on more than <span style={{ backgroundColor: "#f2a54180", fontWeight: "bolder" }}>&nbsp;3 goals at a time.&nbsp;</span>{" "}
                 <br></br>
               </p>
             </div>

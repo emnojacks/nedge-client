@@ -69,14 +69,14 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
           <Container className="inner-container">
             <div className="header-content">
               <h2>Goal Deck</h2>
-              <p>These are your priorities this month. Make sure you orient your sessions around these goals.</p>
+              <p>These are your priorities this month. Make sure you <span style={{ backgroundColor: "#f2a54180", fontWeight: "bolder" }}>&nbsp;orient your sessions around these goals.&nbsp;</span></p>
             </div>
             
             <div className="goal-display">
               {this.props.climberGoals.length > 0 ? (
                 this.props.climberGoals.map((goal: Goal, index: number) => (
                   <Row key={index}>
-                    <Col sm="10">
+                    <Col sm="12">
                       <Card
                         className="goal-card climber-profile-card"
                         key={goal.id}
@@ -122,7 +122,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                 ))
               ) : (
                 <p>
-                  Your goal deck is empty. Set a Goal to start working towards
+                  Aw your goal deck is empty. Set a goal to start working towards
                   the climber you want to be.
                 </p>
               )}

@@ -31,14 +31,14 @@ class About extends Component<AboutProps, AboutState> {
             the dreaded plateau, we either give up our conscious or unconscious
             goals, carry on for years wondering why we never advance, or give up
             climbing entirely out of growing resentment.</p>
-            <p><mark>Nedge is an application
+            <p><mark className="mark-text">Nedge is an application
             for rock climbers of all skill levels and experience</mark> that allows
             users to observe and become aware of their climbing patterns and the
             habits that may directly affect their performance. We are climbers
             but first and foremost we are humans therefore respond to proven
             behavior change interventions at the core of this app.
           </p>
-          <h2>User Stories</h2>
+          <h2>user stories</h2>
           <Row xs="2">
             <Col>
               <Card className="climber-profile-card">

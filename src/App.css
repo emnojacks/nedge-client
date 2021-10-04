@@ -78,12 +78,52 @@
 
 /* If screen size is more than 500px wide set the input areas to half the size of the screen
 */
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 600px) {
+  .sign-up-input-grp {
+    max-width: 70vw !important;
+  }
+  .sign-up-input-area {
+    max-width: 70vw !important;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .sign-up-input-grp {
+    max-width: 60vw !important;
+  }
+  .sign-up-input-area {
+    max-width: 60vw !important;
+  }
+}
+
+@media screen and (min-width: 900px) {
   .sign-up-input-grp {
     max-width: 50vw !important;
   }
   .sign-up-input-area {
     max-width: 50vw !important;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .sign-up-input-grp {
+    max-width: 50vw !important;
+  }
+  .sign-up-input-area {
+    max-width: 50vw !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .sign-up-input-grp {
+    max-width: 40vw !important;
+  }
+  .sign-up-input-area {
+    max-width: 40vw !important;
+  }
+  .goal-display {
+    display: flex!important;
+    flex-direction: row !important;
   }
 }
 
@@ -141,9 +181,9 @@ h1 {
 }
 
 .goal-display {
-  display: grid;
-  /* grid-template-columns: repeat(2, 1fr);
-grid-template-rows: 1fr 1fr; */
+  display: grid; 
+  /* display: flex; */
+ flex-direction: column;
 }
 
 .navbar a {
@@ -174,7 +214,6 @@ grid-template-rows: 1fr 1fr; */
   border-radius: 1em;
   border: 0.2em solid var(--shadow-blue);
   padding-bottom: 0.3em;
-  /* max-width: 50vw removed for mobile */
 }
 
 .sign-up-input-area {
@@ -202,6 +241,7 @@ grid-template-rows: 1fr 1fr; */
 
 .footer {
   background-color: var(--yellow-orange) !important;
+opacity: .85;
 }
 
 .lighter-div {
@@ -233,12 +273,6 @@ grid-template-rows: 1fr 1fr; */
 .content-header {
   margin-bottom: 1em;
 }
-
-/* 
-//removing this styling post deploy bc of heroku display */
-/* .inner-container {
-padding-left: 5em;
-} */
 
 .btn {
   margin-top: 0.8em;
@@ -323,4 +357,8 @@ th {
 .btn-grp-goal {
   display: flex !important;
   flex-direction: row !important;
+}
+
+.mark-text{
+opacity: .8;
 }
