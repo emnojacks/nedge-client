@@ -11,16 +11,20 @@ import GoalIndex from "./components/goals/GoalIndex";
 import GymIndex from "./components/gyms/GymIndex";
 import About from "./components/site/About";
 import { Container } from "reactstrap";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 interface AppProps {}
 
 interface AppState {
   sessionToken: string;
-  isAdmin: boolean;
+  isAdmin: boolean | string;
 }
 
-//putting the token in the state not in the props bc props is readonly?
 class App extends Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
@@ -38,9 +42,9 @@ class App extends Component<AppProps, AppState> {
         sessionToken: localStorage.getItem("token")!, //non-null assertion expression operator
       });
     }
-    //     if (localStorage.getItem('isAdmin')){
-    // this.setState({isAdmin: localStorage.getItem(true)!})
-    //     }
+    if (localStorage.getItem("isAdmin")) {
+      this.setState({ isAdmin: localStorage.getItem("isAdmin")! });
+    }
   }
 
   //double duty in addition to form & jwt
@@ -50,6 +54,11 @@ class App extends Component<AppProps, AppState> {
     });
     // console.log("climber set to admin");
   };
+
+  updateIsAdmin = (newGymAdmin: string) => {
+  localStorage.setItem('isAdmin', newGymAdmin)
+    this.setState({ isAdmin: newGymAdmin })
+  }
 
   //sets current token to new token
   updateSessionToken = (newToken: string): void => {
@@ -95,15 +104,33 @@ class App extends Component<AppProps, AppState> {
   //     />
   //   );
   // };
+  
+    gymViews = (): JSX.Element => {
+    return localStorage.getItem('isAdmin') ? (
+      <GymIndex
+        setIsAdmin={this.setIsAdmin}
+        isAdmin={this.state.isAdmin}
+        sessionToken={this.state.sessionToken}
+      />
+    ) : (
+     <ValidateSession
+        setIsAdmin={this.setIsAdmin}
+        updateSessionToken={this.updateSessionToken}
+      />
+    );
+  };
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <a href="https://nedge-crimbing.herokuapp.com/about">
-          <img src={logo} className="App-logo" alt="logo"/> </a>
+            <img src={logo} className="App-logo" alt="logo" />{" "}
+          </a>
           <h1 className="appheader">NEDGE</h1>
-          <small className="tagline">goal-based sessioning for the common climber</small>
+          <small className="tagline">
+            goal-based sessioning for the common climber
+          </small>
         </header>
         <Router>
           {this.state.sessionToken && (
@@ -116,7 +143,7 @@ class App extends Component<AppProps, AppState> {
           <Container>
             <Switch>
               <Route exact path="/about">
-                <About sessionToken={this.state.sessionToken}/>
+                <About sessionToken={this.state.sessionToken} />
               </Route>
               <Route exact path="/">
                 {this.climberViews}
@@ -133,7 +160,10 @@ class App extends Component<AppProps, AppState> {
                     setIsAdmin={this.setIsAdmin}
                     isAdmin={this.state.isAdmin}
                     sessionToken={this.state.sessionToken}
-                  />) : (<Redirect to="/" />)}
+                  />
+                ) : (
+                  <Redirect to="/" />
+                )}
               </Route>
             </Switch>
           </Container>
