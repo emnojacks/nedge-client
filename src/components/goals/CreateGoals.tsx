@@ -163,7 +163,8 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                   </Button>
                   <br></br>
                 &nbsp;
-                <Button size="sm" color="warning" type="submit">
+                <Button className="btn-auth"
+                  size="sm" type="submit">
                   ✚ common goal
                 </Button>
               </FormGroup>
@@ -181,7 +182,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                     })
                   }
                 />
-                <Button size="sm" color="warning" type="submit">
+                <Button size="sm" className="btn-auth" type="submit">
                   ✚ personal goal
                 </Button>
               </FormGroup>

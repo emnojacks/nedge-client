@@ -21,6 +21,7 @@ import RoyalRobbins from "../../assets/profilepics/RoyalRobbins.webp";
 import SadoCracktivist from "../../assets/profilepics/SadoCracktivist.jpeg";
 import IcePicker from "../../assets/profilepics/IcePicker.jpg";
 import { Climber } from "../../types/Types";
+import { Goal } from "../../types/Types";
 import { Link } from "react-router-dom";
 import APIURL from "../../helpers/environment.js";
 // let APIURL = "http://localhost:3000";
@@ -34,6 +35,9 @@ interface ClimberIndexState {
   climberProfile: Climber;
   //the CardImg won't accept a prop of HTMLImageElement
   profilePic: string;
+  climberGoals: Array<Goal>;
+  topGoal: Goal;
+  goal: Goal;
 }
 
 class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
@@ -46,11 +50,25 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
         username: "",
         password: " ",
       },
+      goal: {
+        id: 0,
+        goaldescription: "",
+        goalpriority: 0,
+        goalachieved: false,
+      },
+      topGoal:  {
+        id: 0,
+        goaldescription: "",
+        goalpriority: 0,
+        goalachieved: false,
+      },
+      climberGoals: [],
     };
   }
 
   componentDidMount() {
     this.fetchClimberProfile();
+    this.fetchClimberGoals();
   }
 
   changeProfilePic = (): void => {
@@ -115,38 +133,81 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
         climberProfile: climberProfile,
       });
       this.changeProfilePic();
-      // console.log(climberProfile);
     } catch (error) {
       console.log(error, "failed to fetch profile");
     }
-    // console.log(this.state.climberProfile);
+  };
+
+  fetchClimberGoals = async () => {
+    try {
+      console.log("fetching climber goals");
+      const res = await fetch(`${APIURL}/goal/mine`, {
+        method: "GET",
+        headers: new Headers({
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.props.sessionToken}`,
+        }),
+      });
+      const json = await res.json();
+      this.setState({
+        climberGoals: json.existingGoals,
+      });
+      this.findTopGoal();
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  findTopGoal = async () => {
+    if (this.state.climberGoals.length > 0) {
+      const topGoal = this.state.climberGoals.find(
+        (goal) => goal.goalpriority === 1
+      );
+      this.setState({
+        topGoal: topGoal!,
+      });
+      return topGoal;
+    } else {
+      console.log("no top goals");
+    }
   };
 
   render() {
+    console.log(this.state.topGoal)
+
     return (
       <div>
         <Container>
           <Container className="spaced-div-auto">
             <div className="content-header">
-              <h2>What's up, {this.state.climberProfile.username}</h2>
-              <h3>You pullin plastic today?</h3>
+              <h2>Hey, {this.state.climberProfile.username}</h2>
+              <h3>Hopefully your climbing sessions are going well!</h3>
+              <h4 style={{ paddingTop: "10px"}}>{this.state.topGoal.goaldescription !== "" ? <span className="highlighted">&nbsp;Remember, your primary goal right now is to<strong> {this.state.topGoal.goaldescription}</strong>.&nbsp;</span>: "You don't have any goals set to 'working on' Go do that."}</h4>
               <Button
-                style={{
-                  backgroundColor: "#df9627",
-                }}
-                size="sm"
-                color="warning"
+            className="btn-auth"
               >
                 <Link
-                  style={{ color: "white", textDecoration: "none" }}
+                  style={{ color: "white", textDecoration: "none"}}
                   to="/climber/sessions"
                 >
                   {" "}
-                  new sesh
+                  log new sesh
+                </Link>
+              </Button>
+              &nbsp;
+                  <Button className="btn-auth"
+              >
+                <Link
+                  style={{ color: "white", textDecoration: "none"}}
+                  to="/climber/goals"
+                >
+                  {" "}
+                  prioritize my goals
                 </Link>
               </Button>
             </div>
             <Row>
+
               <Col>
                 <Card className="climber-profile-card">
                   <CardImg

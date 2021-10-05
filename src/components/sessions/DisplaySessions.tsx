@@ -91,7 +91,7 @@ class DisplaySessions extends Component<
         <Container className="lighter-div">
           <Container className="inner-container">
             <h2>recent sessions</h2>
-            <p>You've logged {this.props.climberSessions.length} climbing sessions.
+            <p>You've logged <span className="highlighted">&nbsp;{this.props.climberSessions.length} climbing sessions.</span><br></br>
               {this.props.climberSessions.length <= 10 ? " That's not very many! Log more sessions to get to the edge of your ability." : this.props.climberSessions.length
                 <20 ? " That's a good amount. Keep recording your sessions to help you get to the edge of your ability." : "Wow, you are on a roll. Have you noticed any patterns?"}
             </p>

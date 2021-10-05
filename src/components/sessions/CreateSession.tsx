@@ -323,7 +323,7 @@ class CreateSession extends Component<CreateSessionProps, CreateSessionState> {
                   />
                 </InputGroup>
               </FormGroup>
-              <Button className="btn-auth" color="warning" type="submit">
+              <Button className="btn-auth" color="transparent" type="submit">
                 ✚
               </Button>
             </Form>

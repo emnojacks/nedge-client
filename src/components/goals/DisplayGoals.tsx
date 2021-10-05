@@ -103,7 +103,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                            <img src={pen} width="15px" alt="pencil icon"/>
                           </Button>
                           <Button
-                            style={{ margin: "0px" }}
+                            style={{ margin: "0px", opacity: ".8" }}
                             color="success"
                             onClick={() => {
                               this.deleteGoal(goal);
@@ -112,7 +112,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                             sent it
                           </Button>
                           <Button
-                            style={{ margin: "0px" }}
+                            style={{ margin: "0px"}}
                            color="transparent"
                             onClick={() => {
                               this.deleteGoal(goal);

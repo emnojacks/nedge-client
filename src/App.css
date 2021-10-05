@@ -44,15 +44,13 @@
   color: var(--soft-white);
 }
 
-
-@media screen and (max-width: 330px){
-#gym-table-style-col {
-display: none!important;
-}
-#gym-table-style-header {
-display: none!important;
-}
-
+@media screen and (max-width: 330px) {
+  #gym-table-style-col {
+    display: none !important;
+  }
+  #gym-table-style-header {
+    display: none !important;
+  }
 }
 
 @media screen and (max-width: 499px) {
@@ -67,20 +65,20 @@ display: none!important;
     padding: 0px !important;
     font-size: 10px !important;
   }
-#gym-table-experience-col {
-display: none!important;
-}
-#gym-table-experience-header {
-display: none!important;
-}
+  #gym-table-experience-col {
+    display: none !important;
+  }
+  #gym-table-experience-header {
+    display: none !important;
+  }
 }
 
 @media screen and (max-width: 768px) {
   h2 {
-    font-size: 22px !important;
+    font-size: 20px !important;
   }
   h3 {
-    font-size: 20px !important;
+    font-size: 18px !important;
   }
   h4 {
     font-size: 15px !important;
@@ -146,6 +144,7 @@ display: none!important;
 .btn-nav {
   margin-left: 1em;
   background-color: var(--yellow-orange) !important;
+  opacity: 0.8;
 }
 
 h1 {
@@ -212,6 +211,8 @@ h1 {
 .btn-auth {
   background-color: var(--yellow-orange) !important;
   color: var(--soft-white) !important;
+  opacity: 0.8;
+  border-color: var(--yellow-orange) !important;
 }
 
 .sign-up-input-grp {
@@ -378,4 +379,9 @@ th {
   margin-left: 3px;
   padding: 0px;
   font-size: 10px;
+}
+
+.highlighted {
+  background-color: var(--yellow-orange);
+  opacity: 0.8;
 }
