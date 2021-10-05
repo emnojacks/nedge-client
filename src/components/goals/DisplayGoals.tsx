@@ -71,7 +71,7 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
           <Container className="inner-container">
             <div className="header-content">
               <h2>Goal Deck</h2>
-              <p>These are your priorities this month. Make sure you <span style={{ backgroundColor: "#f2a54180", fontWeight: "bolder" }}>&nbsp;orient your sessions around these goals.&nbsp;</span></p>
+              <p>These are your priorities this month. Make sure you <span style={{ backgroundColor: "#f2a54180", fontWeight: "bolder" }}>&nbsp;orient your sessions around these goals: &nbsp;</span></p>
             </div>
             
             <div className="goal-display">
@@ -127,8 +127,8 @@ class DisplayGoals extends Component<DisplayGoalsProps, DisplayGoalsState> {
                 ))
               ) : (
                 <p>
-                  Aw your goal deck is empty. Set a goal to start working towards
-                  the climber you want to be.
+                  Bummer, your goal deck is empty. Set a goal to start working towards
+                  the climber you want to be!
                 </p>
               )}
             </div>

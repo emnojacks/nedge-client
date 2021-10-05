@@ -298,10 +298,9 @@ class UpdateSession extends Component<UpdateSessionProps, UpdateSessionState> {
               update
               </Button>
                {" "}&nbsp;&nbsp;
-            <Button color="secondary" onClick={this.props.closeModal}>
+                <Button color="secondary" onClick={this.props.closeModal}>
               close
             </Button>
-           
 </ButtonGroup>
           </Form>
         </ModalBody>

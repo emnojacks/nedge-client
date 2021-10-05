@@ -8,7 +8,6 @@ import {
   CardText,
   Container,
 } from "reactstrap";
-import partner32 from '../../assets/partner32.png'
 import pen from "../../assets/pen-blck.png";
 import trash from "../../assets/trash-blck.png";
 import { Session } from "../../types/Types";
@@ -91,9 +90,10 @@ class DisplaySessions extends Component<
         <Container className="lighter-div">
           <Container className="inner-container">
             <h2>recent sessions</h2>
-            <p>You've logged <span className="highlighted">&nbsp;{this.props.climberSessions.length} climbing sessions.</span><br></br>
+            <p>Your sessions and climbing conditions will be green if successful and red if not. Click into each day to update or expand! 
+              <br></br>You've logged <span className="highlighted">&nbsp;{this.props.climberSessions.length} climbing sessions&nbsp;</span> recently.
               {this.props.climberSessions.length <= 10 ? " That's not very many! Log more sessions to get to the edge of your ability." : this.props.climberSessions.length
-                <20 ? " That's a good amount. Keep recording your sessions to help you get to the edge of your ability." : "Wow, you are on a roll. Have you noticed any patterns?"}
+                <20 ? " That's a good amount. Keep recording your sessions to help you get to the edge of your ability." : " Wow, you are on a roll. Have you noticed any patterns?"}
             </p>
             <div className="session-display">
               {this.props.climberSessions.length > 0 ? (

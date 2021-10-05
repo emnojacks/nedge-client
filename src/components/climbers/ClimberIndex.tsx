@@ -182,7 +182,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
             <div className="content-header">
               <h2>Hey, {this.state.climberProfile.username}</h2>
               <h3>Hopefully your climbing sessions are going well!</h3>
-              <h4 style={{ paddingTop: "10px"}}>{this.state.topGoal.goaldescription !== "" ? <span className="highlighted">&nbsp;Remember, your primary goal right now is to<strong> {this.state.topGoal.goaldescription}</strong>.&nbsp;</span>: "You don't have any goals set to 'working on' Go do that."}</h4>
+              <h4 style={{ paddingTop: "10px"}}>{this.state.topGoal.goaldescription !== "" ? <span className="highlighted">&nbsp;Remember, your primary goal right now is to<strong> {this.state.topGoal.goaldescription}</strong>.&nbsp;</span>: "Looks like you don't have any goals set as your top priority. Head over to the Goal Deck and set some up!"}</h4>
               <Button
             className="btn-auth"
               >
@@ -194,7 +194,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                   log new sesh
                 </Link>
               </Button>
-              &nbsp;
+              &nbsp; &nbsp;
                   <Button className="btn-auth"
               >
                 <Link
