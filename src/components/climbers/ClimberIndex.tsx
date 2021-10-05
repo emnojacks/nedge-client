@@ -40,7 +40,7 @@ interface ClimberIndexState {
   topGoal: Goal;
   goal: Goal;
   topGoalDescription: string;
-  tipToDisplay: JSX.Element
+  tipToDisplay: JSX.Element;
 }
 
 class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
@@ -67,7 +67,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
       },
       climberGoals: [],
       topGoalDescription: "",
-      tipToDisplay: <ul>Try these tips on your next session</ul>
+      tipToDisplay: <ul>Try these tips on your next session</ul>,
     };
   }
 
@@ -172,7 +172,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
         topGoal: topGoal!,
         // topGoalDescription: this.state.topGoal.goaldescription
       });
-      console.log(this.state.topGoal.goaldescription)
+      console.log(this.state.topGoal.goaldescription);
       this.determineTrainingTip();
     } else {
       console.log("no top goals");
@@ -180,56 +180,85 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
   };
 
   determineTrainingTip = () => {
-    console.log(this.state.topGoal.goaldescription)
+    console.log(this.state.topGoal.goaldescription);
     if (this.state.topGoal.goaldescription === "increase endurance") {
       this.setState({
-        tipToDisplay: <ul>
-          <li> do 2 full circuits of easy routes on the boulder wall</li>
-          <li> double up on rope climbs</li>
-          <li>traverse the boulder wall or roped areas during gym slow time</li>
-        </ul>
+        tipToDisplay: (
+          <ul>
+            <li> do 2 full circuits of easy routes on the boulder wall</li>
+            <li> double up on rope climbs</li>
+            <li>
+              traverse the boulder wall or roped areas during gym slow time
+            </li>
+          </ul>
+        ),
       });
-    } else if (this.state.topGoal.goaldescription === "increase tendon strength") {
+    } else if (
+      this.state.topGoal.goaldescription === "increase tendon strength"
+    ) {
       this.setState({
-        tipToDisplay: <ul>
-          <li>do up and downs on the tension board at 50% lift</li>
-          <li>do a short hangboard warmup before you start your session</li>
-          <li>do a longer hangboard interval session after you climb</li>
-           <li>remember proper form is to engage your core and shoulders</li>
-        </ul>
-      })
-    } else if (this.state.topGoal.goaldescription === "increase muscle strength") {
+        tipToDisplay: (
+          <ul>
+            <li>do up and downs on the tension board at 50% lift</li>
+            <li>do a short hangboard warmup before you start your session</li>
+            <li>do a longer hangboard interval session after you climb</li>
+            <li>remember proper form is to engage your core and shoulders</li>
+          </ul>
+        ),
+      });
+    } else if (
+      this.state.topGoal.goaldescription === "increase muscle strength"
+    ) {
       this.setState({
-        tipToDisplay: <ul>
-          <li>cross train at least once a week</li>
-          <li>do 10 lat pull downs</li>
-          <li>squat the bar, then add weight slowly</li>
-          <li>start deadlifting with a primary goal of 100% of your bodyweight, then 1.5x - 2x your body weight</li>
-        </ul>
-      })
+        tipToDisplay: (
+          <ul>
+            <li>cross train at least once a week</li>
+            <li>do 10 lat pull downs</li>
+            <li>squat the bar, then add weight slowly</li>
+            <li>
+              start deadlifting with a primary goal of 100% of your bodyweight,
+              then 1.5x - 2x your body weight
+            </li>
+          </ul>
+        ),
+      });
     } else if (this.state.topGoal.goaldescription === "improve mental game") {
       this.setState({
-        tipToDisplay: <ul>
-          <li>Read Maxiumum Climbing or Climbing Warrior</li>
-          <li>Meditate for 5 minutes in your car before you get in the gym</li>
-          <li>Consciously relax each part of your body before you get on the wall</li>
-        </ul>
-      })
+        tipToDisplay: (
+          <ul>
+            <li>Read Maxiumum Climbing or Climbing Warrior</li>
+            <li>
+              Meditate for 5 minutes in your car before you get in the gym
+            </li>
+            <li>
+              Consciously relax each part of your body before you get on the
+              wall
+            </li>
+          </ul>
+        ),
+      });
     } else if (this.state.topGoal.goaldescription === "work on technique") {
       this.setState({
-        tipToDisplay: <ul>
-          <li>Focus on a singler chosen technique for the whole session</li>
-          <li>When you top out or clip the chains, ask yourself if you focused on that technique for that climb or how you did</li>
-          <li>Here are some to get you started: breathwork, locking off, hanging low on slopers, not climbing square to the wall </li>
-        </ul>
-      })
+        tipToDisplay: (
+          <ul>
+            <li>Focus on a singler chosen technique for the whole session</li>
+            <li>
+              When you top out or clip the chains, ask yourself if you focused
+              on that technique for that climb or how you did
+            </li>
+            <li>
+              Here are some to get you started: breathwork, locking off, hanging
+              low on slopers, and not climbing square to the wall{" "}
+            </li>
+          </ul>
+        ),
+      });
     } else {
       <></>;
     }
   };
 
   render() {
-
     return (
       <div>
         <Container>
@@ -248,9 +277,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                   "Looks like you don't have any goals set as your top priority. Head over to the Goal Deck and set some up!"
                 )}
               </h4>
-              <div id="tip-display">
-           {this.state.tipToDisplay}
-              </div>
+              <div id="tip-display">{this.state.tipToDisplay}</div>
               <Button className="btn-auth">
                 <Link
                   style={{ color: "white", textDecoration: "none" }}
