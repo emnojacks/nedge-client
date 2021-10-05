@@ -24,6 +24,7 @@ import { Climber } from "../../types/Types";
 import { Goal } from "../../types/Types";
 import { Link } from "react-router-dom";
 import APIURL from "../../helpers/environment.js";
+import { JsxElement } from "typescript";
 // let APIURL = "http://localhost:3000";
 
 interface ClimberIndexProps {
@@ -38,6 +39,8 @@ interface ClimberIndexState {
   climberGoals: Array<Goal>;
   topGoal: Goal;
   goal: Goal;
+  topGoalDescription: string;
+  tipToDisplay: JSX.Element
 }
 
 class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
@@ -56,13 +59,15 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
         goalpriority: 0,
         goalachieved: false,
       },
-      topGoal:  {
+      topGoal: {
         id: 0,
         goaldescription: "",
         goalpriority: 0,
         goalachieved: false,
       },
       climberGoals: [],
+      topGoalDescription: "",
+      tipToDisplay: <ul>Try these tips on your next session</ul>
     };
   }
 
@@ -165,15 +170,65 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
       );
       this.setState({
         topGoal: topGoal!,
+        // topGoalDescription: this.state.topGoal.goaldescription
       });
-      return topGoal;
+      console.log(this.state.topGoal.goaldescription)
+      this.determineTrainingTip();
     } else {
       console.log("no top goals");
     }
   };
 
+  determineTrainingTip = () => {
+    console.log(this.state.topGoal.goaldescription)
+    if (this.state.topGoal.goaldescription === "increase endurance") {
+      this.setState({
+        tipToDisplay: <ul>
+          <li> do 2 full circuits of easy routes on the boulder wall</li>
+          <li> double up on rope climbs</li>
+          <li>traverse the boulder wall or roped areas during gym slow time</li>
+        </ul>
+      });
+    } else if (this.state.topGoal.goaldescription === "increase tendon strength") {
+      this.setState({
+        tipToDisplay: <ul>
+          <li>do up and downs on the tension board at 50% lift</li>
+          <li>do a short hangboard warmup before you start your session</li>
+          <li>do a longer hangboard interval session after you climb</li>
+           <li>remember proper form is to engage your core and shoulders</li>
+        </ul>
+      })
+    } else if (this.state.topGoal.goaldescription === "increase muscle strength") {
+      this.setState({
+        tipToDisplay: <ul>
+          <li>cross train at least once a week</li>
+          <li>do 10 lat pull downs</li>
+          <li>squat the bar, then add weight slowly</li>
+          <li>start deadlifting with a primary goal of 100% of your bodyweight, then 1.5x - 2x your body weight</li>
+        </ul>
+      })
+    } else if (this.state.topGoal.goaldescription === "improve mental game") {
+      this.setState({
+        tipToDisplay: <ul>
+          <li>Read Maxiumum Climbing or Climbing Warrior</li>
+          <li>Meditate for 5 minutes in your car before you get in the gym</li>
+          <li>Consciously relax each part of your body before you get on the wall</li>
+        </ul>
+      })
+    } else if (this.state.topGoal.goaldescription === "work on technique") {
+      this.setState({
+        tipToDisplay: <ul>
+          <li>Focus on a singler chosen technique for the whole session</li>
+          <li>When you top out or clip the chains, ask yourself if you focused on that technique for that climb or how you did</li>
+          <li>Here are some to get you started: breathwork, locking off, hanging low on slopers, not climbing square to the wall </li>
+        </ul>
+      })
+    } else {
+      <></>;
+    }
+  };
+
   render() {
-    console.log(this.state.topGoal)
 
     return (
       <div>
@@ -182,12 +237,23 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
             <div className="content-header">
               <h2>Hey, {this.state.climberProfile.username}</h2>
               <h3>Hopefully your climbing sessions are going well!</h3>
-              <h4 style={{ paddingTop: "10px"}}>{this.state.topGoal.goaldescription !== "" ? <span className="highlighted">&nbsp;Remember, your primary goal right now is to<strong> {this.state.topGoal.goaldescription}</strong>.&nbsp;</span>: "Looks like you don't have any goals set as your top priority. Head over to the Goal Deck and set some up!"}</h4>
-              <Button
-            className="btn-auth"
-              >
+              <h4 style={{ paddingTop: "10px" }}>
+                {this.state.topGoal.goaldescription !== "" ? (
+                  <span className="highlighted">
+                    &nbsp;Remember, your primary goal right now is to
+                    <strong> {this.state.topGoal.goaldescription}</strong>
+                    .&nbsp; Try these tips for your next sesh:
+                  </span>
+                ) : (
+                  "Looks like you don't have any goals set as your top priority. Head over to the Goal Deck and set some up!"
+                )}
+              </h4>
+              <div id="tip-display">
+           {this.state.tipToDisplay}
+              </div>
+              <Button className="btn-auth">
                 <Link
-                  style={{ color: "white", textDecoration: "none"}}
+                  style={{ color: "white", textDecoration: "none" }}
                   to="/climber/sessions"
                 >
                   {" "}
@@ -195,10 +261,9 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                 </Link>
               </Button>
               &nbsp; &nbsp;
-                  <Button className="btn-auth"
-              >
+              <Button className="btn-auth">
                 <Link
-                  style={{ color: "white", textDecoration: "none"}}
+                  style={{ color: "white", textDecoration: "none" }}
                   to="/climber/goals"
                 >
                   {" "}
@@ -207,7 +272,6 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
               </Button>
             </div>
             <Row>
-
               <Col>
                 <Card className="climber-profile-card">
                   <CardImg
