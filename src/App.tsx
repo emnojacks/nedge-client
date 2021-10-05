@@ -39,7 +39,7 @@ class App extends Component<AppProps, AppState> {
       });
     }
     //     if (localStorage.getItem('isAdmin')){
-    // this.setState({isAdmin: localStorage.getItem(true)!})
+    // this.setState({isAdmin: localStorage.getItem('isAdmin')!})
     //     }
   }
 
