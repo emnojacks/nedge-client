@@ -56,9 +56,12 @@ class Login extends Component<LoginProps, LoginState> {
           window.alert(data.message);
           if (data.sessionToken) {
             this.props.updateSessionToken(data.sessionToken);
+            // if (data.isAdmin) {
+            // this.props.updateAdmin(data.isAdmin);
+            // }
             if (data.climber.isAdmin === true) {
               this.props.setIsAdmin(this.state.isAdmin);
-              // console.log("climber set to admin via login");
+              console.log("climber set to admin via login");
             }
           }
         }
