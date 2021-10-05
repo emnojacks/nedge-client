@@ -67,7 +67,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
       },
       climberGoals: [],
       topGoalDescription: "",
-      tipToDisplay: <ul>Try these tips on your next session</ul>,
+      tipToDisplay: <ul></ul>,
     };
   }
 
