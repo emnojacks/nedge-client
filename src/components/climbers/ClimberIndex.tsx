@@ -226,7 +226,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
       this.setState({
         tipToDisplay: (
           <ul>
-            <li>&nbsp;Read Maxiumum Climbing or <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiH0b3t4rTzAhVYHM0KHRFEBWAQFnoECAgQAQ&url=https%3A%2F%2Fwarriorsway.com%2F&usg=AOvVaw1cTLkDt3SSKD-fbZGikPCs">The Warrior's Way</a></li>
+            <li>&nbsp;Read Maxiumum Climbing or The Warrior's Way</li>
             <li>
               &nbsp;Meditate for 5 minutes in your car before you get in the gym
             </li>
