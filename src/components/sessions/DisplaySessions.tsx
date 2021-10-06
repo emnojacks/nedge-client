@@ -91,7 +91,7 @@ class DisplaySessions extends Component<
           <Container className="inner-container">
             <h2>recent sessions</h2>
             <p>Your sessions and climbing conditions will be green if successful and red if not. Click into each day to update or expand! 
-              <br></br>You've logged <span className="highlighted">&nbsp;{this.props.climberSessions.length} climbing sessions&nbsp;</span> recently.
+              <br></br>You've logged <span className="highlighted"><strong>&nbsp;{this.props.climberSessions.length} climbing sessions&nbsp;</strong></span> recently.
               {this.props.climberSessions.length <= 10 ? " That's not very many! Log more sessions to get to the edge of your ability." : this.props.climberSessions.length
                 <20 ? " That's a good amount. Keep recording your sessions to help you get to the edge of your ability." : " Wow, you are on a roll. Have you noticed any patterns?"}
             </p>
@@ -150,7 +150,7 @@ class DisplaySessions extends Component<
                               style={{ color: session.egocondition>="4" ? "green" : session.egocondition<="1" ? "red" : "#282c34" }}>
                               ego
                             </section>
-                            <section style={{ fontStyle:"italic"}}>{session.sessionnotes}</section>
+                            <section style={{ fontSize: "11.5px"}}>"{session.sessionnotes}"</section>
                           </div>
                         </CardText>
                       </CardBody>
