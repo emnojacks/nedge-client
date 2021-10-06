@@ -199,10 +199,10 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
       this.setState({
         tipToDisplay: (
           <ul>
-            <li>do up and downs on the tension board at 50% lift</li>
-            <li>do a short hangboard warmup before you start your session</li>
-            <li>do a longer hangboard interval session after you climb</li>
-            <li>remember proper form is to engage your core and shoulders</li>
+            <li>&nbsp;do up and downs on the tension board at 50% lift</li>
+            <li>&nbsp;do a short hangboard warmup before you start your session</li>
+            <li>&nbsp;do a longer hangboard interval session after you climb</li>
+            <li>&nbsp;remember proper form is to engage your core and shoulders</li>
           </ul>
         ),
       });
@@ -212,11 +212,11 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
       this.setState({
         tipToDisplay: (
           <ul>
-            <li>cross train at least once a week</li>
-            <li>do 10 lat pull downs</li>
-            <li>squat the bar, then add weight slowly</li>
+            <li>&nbsp;cross train at least once a week</li>
+            <li>&nbsp;do 10 lat pull downs</li>
+            <li>&nbsp;squat the bar, then add weight slowly</li>
             <li>
-              start deadlifting with a primary goal of 100% of your bodyweight,
+              &nbsp;start deadlifting with a primary goal of 100% of your bodyweight,
               then 1.5x - 2x your body weight
             </li>
           </ul>
@@ -226,12 +226,12 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
       this.setState({
         tipToDisplay: (
           <ul>
-            <li>Read Maxiumum Climbing or Climbing Warrior</li>
+            <li>&nbsp;Read Maxiumum Climbing or <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiH0b3t4rTzAhVYHM0KHRFEBWAQFnoECAgQAQ&url=https%3A%2F%2Fwarriorsway.com%2F&usg=AOvVaw1cTLkDt3SSKD-fbZGikPCs">The Warrior's Way</a></li>
             <li>
-              Meditate for 5 minutes in your car before you get in the gym
+              &nbsp;Meditate for 5 minutes in your car before you get in the gym
             </li>
             <li>
-              Consciously relax each part of your body before you get on the
+              &nbsp;Consciously relax each part of your body before you get on the
               wall
             </li>
           </ul>
@@ -241,14 +241,14 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
       this.setState({
         tipToDisplay: (
           <ul>
-            <li>Focus on a singler chosen technique for the whole session</li>
+            <li>&nbsp;Focus on a singler chosen technique for the whole session</li>
             <li>
-              When you top out or clip the chains, ask yourself if you focused
+              &nbsp;When you top out or clip the chains, ask yourself if you focused
               on that technique for that climb or how you did
             </li>
             <li>
-              Here are some to get you started: breathwork, locking off, hanging
-              low on slopers, and not climbing square to the wall{" "}
+              &nbsp;Here are some to get you started: breathwork, locking off, hanging
+              low on slopers, flagging your feet, and not climbing square to the wall{" "}
             </li>
           </ul>
         ),

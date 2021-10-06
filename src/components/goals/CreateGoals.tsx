@@ -187,7 +187,7 @@ class CreateGoals extends Component<CreateGoalsProps, CreateGoalsState> {
                 </Button>
               </FormGroup>
               <br></br>
-                <small>Now go prioritize your new goals.</small>
+                <small>Now, go prioritize your new goals!</small>
             </Form>
           </Container>
         </Container>

@@ -5,7 +5,7 @@
   --middle-red: #d78a76;
   --middle-red-light: #f9b09e;
   --yellow-orange: #f2a541;
-  --maize-crayola: #f3ca40;
+  --maize-crayola: #faf6e9;
   --queen-blue: #577590;
   --queen-blue-light: #839eb6;
   --burnt-orange: #bd520f;
@@ -14,6 +14,7 @@
   --dark-electric-blue: #465f72;
   --logo-orange: #df9627;
   --react-bg: #282c34;
+--session-card-success: #9ACCB1;
 }
 
 .App {
@@ -144,7 +145,7 @@
 .btn-nav {
   margin-left: 1em;
   background-color: var(--yellow-orange) !important;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 h1 {
@@ -292,7 +293,7 @@ h1 {
 }
 
 .session-card {
-  border-radius: 0.5em !important;
+  border-radius: 0.25em !important;
   color: var(--react-bg);
 }
 
@@ -315,15 +316,15 @@ h1 {
   justify-content: space-between;
   /* align-items: center; */
   padding: 0px !important;
-  border-top: none!important;
+  border-top: none !important;
 }
-
 
 .goal-card-footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+border-top: none!important;
 }
 
 .goal-card {
@@ -386,4 +387,12 @@ th {
 .highlighted {
   background-color: var(--yellow-orange);
   opacity: 0.84;
+}
+
+.tip-display > li {
+list-style-type: url(../src/assets/mountains-2.png)!important;
+}
+
+.tip-display > li::marker {
+content: url(../src/assets/mountains-2.png)!important;
 }

@@ -9,6 +9,7 @@ import {
   Container,
 } from "reactstrap";
 import pen from "../../assets/pen-blck.png";
+import clock from "../../assets/clock.png";
 import trash from "../../assets/trash-blck.png";
 import { Session } from "../../types/Types";
 import APIURL from "../../helpers/environment.js";
@@ -90,7 +91,7 @@ class DisplaySessions extends Component<
         <Container className="lighter-div">
           <Container className="inner-container">
             <h2>recent sessions</h2>
-            <p>Your sessions and climbing conditions will be green if successful and red if not. Click into each day to update or expand! 
+            <p>Your sessions and climbing conditions will be blue if you thought they were successful and orange if not. Clicking into each day expands it to update. 
               <br></br>You've logged <span className="highlighted"><strong>&nbsp;{this.props.climberSessions.length} climbing sessions&nbsp;</strong></span> recently.
               {this.props.climberSessions.length <= 10 ? " That's not very many! Log more sessions to get to the edge of your ability." : this.props.climberSessions.length
                 <20 ? " That's a good amount. Keep recording your sessions to help you get to the edge of your ability." : " Wow, you are on a roll. Have you noticed any patterns?"}
@@ -104,8 +105,9 @@ class DisplaySessions extends Component<
                       key={session.id}
                       style={{
                         backgroundColor: session.sessionsuccessful
-                          ? "#9ACCB1"
-                          : "#f9b09e",
+                          ? "#87b0d2"
+                          : "#f2a541",
+                        opacity: ".8"
                       }}
                     >
                       <CardHeader style={{padding: "0px"}}>
@@ -126,7 +128,10 @@ class DisplaySessions extends Component<
                       <CardBody id="session-card-body">
                         <CardText>
                           <div className="session-card-deets">
-                            <section>{session.sessionlength} hr</section>
+                            <section>
+                              <img src={clock} width="13px" alt="clock icon" />
+                              &nbsp; {session.sessionlength}
+                            </section>
                             <section>
                               {session.sessionpartner ? <img src="https://cdn-icons-png.flaticon.com/512/4726/4726440.png" width="20px" alt="two people"/> : ""}
                               {session.crosstraining ? <img src="https://cdn-icons-png.flaticon.com/512/1000/1000008.png" width="20px" alt="barbell"/> : " "}
@@ -150,7 +155,7 @@ class DisplaySessions extends Component<
                               style={{ color: session.egocondition>="4" ? "green" : session.egocondition<="1" ? "red" : "#282c34" }}>
                               ego
                             </section>
-                            <section style={{ fontSize: "11.5px"}}>"{session.sessionnotes}"</section>
+                            <section style={{ fontSize: "11.5px"}}>{session.sessionnotes}</section>
                           </div>
                         </CardText>
                       </CardBody>
