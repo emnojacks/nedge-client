@@ -271,7 +271,7 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
                   <span className="highlighted">
                     &nbsp;Remember, your primary goal right now is to
                     <strong> {this.state.topGoal.goaldescription}</strong>
-                    .&nbsp; Try these tips for your next sesh:
+                    .&nbsp; <br></br>Try these tips for your next sesh:
                   </span>
                 ) : (
                   "Looks like you don't have any goals set as your top priority. Head over to the Goal Deck and set some up!"
