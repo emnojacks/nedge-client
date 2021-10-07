@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Container, Table } from "reactstrap";
+import { Container, Table, Button } from "reactstrap";
 import { Redirect } from "react-router-dom";
 import { Climber } from "../../types/Types";
 import APIURL from "../../helpers/environment.js";
@@ -50,6 +50,29 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
     console.log(this.state.climberProfiles.length);
   };
 
+  fetchGymMembers = async () => {
+    try {
+      console.log("fetching climber profiles");
+      const res = await fetch(`${APIURL}/gym/gym_members`, {
+        method: "GET",
+        headers: new Headers({
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.props.sessionToken}`,
+        }),
+      });
+      const json = await res.json();
+      this.setState({
+        climberProfiles: json.climberProfiles,
+      });
+      console.log(this.state.climberProfiles)
+    } catch (error) {
+      console.log(error,
+      "failed to fetch profiles");
+    }
+    console.log(this.state.climberProfiles);
+    console.log(this.state.climberProfiles.length);
+  };
+      
   //this won't work when i specify that it will intake an array of climbers
   //says that the "this" keyword could possibly be undefined & 
   //that a and b dont exist on type climber
@@ -80,9 +103,7 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
               <h2>climbers on NEDGE</h2>
             </div>
             <div className="climber-display">
-              <Table hover striped className="gym-table"
-              
-              >
+              <Table hover striped className="gym-table">
                 <thead>
                   <tr>
                     <th>Username</th>
@@ -116,6 +137,12 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
               </Table>
             </div>
           </Container>
+          
+          <Button className="btn-auth"
+          onClick={this.fetchGymMembers}
+          >
+          just climbers at my gym
+          </Button>
         </Container>
       </div>
     );

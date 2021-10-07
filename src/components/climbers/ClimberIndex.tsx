@@ -24,7 +24,6 @@ import { Climber } from "../../types/Types";
 import { Goal } from "../../types/Types";
 import { Link } from "react-router-dom";
 import APIURL from "../../helpers/environment.js";
-import { JsxElement } from "typescript";
 // let APIURL = "http://localhost:3000";
 
 interface ClimberIndexProps {
@@ -185,10 +184,13 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
       this.setState({
         tipToDisplay: (
           <ul>
-            <li> do 2 full circuits of easy routes on the boulder wall</li>
+            <li> do 2 full circuits of easy routes on the boulder wall, jogging or moving swiftly between routes</li>
             <li> double up on rope climbs</li>
             <li>
-              traverse the boulder wall or roped areas during gym slow time
+              traverse the boulder wall or roped areas during a slow time at the gym and simply go for as long as possible
+            </li>
+             <li>
+             take active rests but also do not dally on a route - i.e. chalking up incessantly while you wait for the courage to make the move 
             </li>
           </ul>
         ),
@@ -199,10 +201,17 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
       this.setState({
         tipToDisplay: (
           <ul>
-            <li>&nbsp;do up and downs on the tension board at 50% lift</li>
-            <li>&nbsp;do a short hangboard warmup before you start your session</li>
-            <li>&nbsp;do a longer hangboard interval session after you climb</li>
-            <li>&nbsp;remember proper form is to engage your core and shoulders</li>
+            <li>&nbsp;do up and downs on the tension board</li>
+            <li>
+              &nbsp;do a short hangboard warmup before you start your session
+            </li>
+            <li>
+              &nbsp;do a longer hangboard interval session after you climb
+            </li>
+            <li>
+              &nbsp;remember proper form is to engage your core and shoulders as
+              you hang
+            </li>
           </ul>
         ),
       });
@@ -216,8 +225,8 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
             <li>&nbsp;do 10 lat pull downs</li>
             <li>&nbsp;squat the bar, then add weight slowly</li>
             <li>
-              &nbsp;start deadlifting with a primary goal of 100% of your bodyweight,
-              then 1.5x - 2x your body weight
+              &nbsp;start deadlifting with a primary goal of 100% of your
+              bodyweight, then 1.5x - 2x your body weight
             </li>
           </ul>
         ),
@@ -226,13 +235,16 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
       this.setState({
         tipToDisplay: (
           <ul>
-            <li>&nbsp;Read Maxiumum Climbing or The Warrior's Way</li>
+            <li>&nbsp;Read Maxiumum Climbing or The Rock Warrior's Way</li>
             <li>
               &nbsp;Meditate for 5 minutes in your car before you get in the gym
             </li>
             <li>
-              &nbsp;Consciously relax each part of your body before you get on the
-              wall
+              &nbsp;Consciously relax each part of your body before you get on
+              the wall
+            </li>
+            <li>
+              &nbsp;Breath in when you reach to clip and out when you've clipped
             </li>
           </ul>
         ),
@@ -241,14 +253,19 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
       this.setState({
         tipToDisplay: (
           <ul>
-            <li>&nbsp;Focus on a singler chosen technique for the whole session</li>
+            <li>&nbsp;Focus on a singular technique for the whole session</li>
             <li>
-              &nbsp;When you top out or clip the chains, ask yourself if you focused
-              on that technique for that climb or how you did
+              &nbsp;When you top out or clip the chains, ask yourself if you
+              focused on that technique for that climb
             </li>
             <li>
-              &nbsp;Here are some to get you started: breathwork, locking off, hanging
-              low on slopers, flagging your feet, and not climbing square to the wall{" "}
+              &nbsp;Here are some to get you started: breathwork, locking off,
+              hanging low on slopers, flagging your feet, open gripped crimping,
+              not climbing square to the wall{" "}
+            </li>
+            <li>
+              &nbsp;If you are working a specific movement repeatedly, make sure
+              you're not going at 100%. This isn't a performance session.
             </li>
           </ul>
         ),
@@ -268,10 +285,10 @@ class ClimberIndex extends Component<ClimberIndexProps, ClimberIndexState> {
               <h3>Hopefully your climbing sessions are going well!</h3>
               <h4 style={{ paddingTop: "10px" }}>
                 {this.state.topGoal.goaldescription !== "" ? (
-                  <span className="highlighted">
-                    &nbsp;Remember, your primary goal right now is to
+                  <span>
+                    Remember, your primary goal right now is to
                     <strong> {this.state.topGoal.goaldescription}</strong>
-                    .&nbsp; <br></br>Try these tips for your next sesh:
+                    .&nbsp; <br></br>Try these exercises for your next sesh:
                   </span>
                 ) : (
                   "Looks like you don't have any goals set as your top priority. Head over to the Goal Deck and set some up!"

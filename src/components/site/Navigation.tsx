@@ -39,10 +39,10 @@ class Navigation extends Component<NavigationProps, NavigationState> {
       //NAV LOGO
       <Navbar expand="sm" color="faded" light className="navBar">
         <NavbarBrand style={{ marginLeft: "1em" }}>
-          <Link to="/about">
+          
             <img src={logo} alt="nedge logo" height="35px" width="35px"></img>
             &nbsp;
-          </Link>
+          
         </NavbarBrand>
         {/* TOGGLE HAMBURGER */}
 
@@ -56,14 +56,21 @@ class Navigation extends Component<NavigationProps, NavigationState> {
           {/* GOALS LINK */}
           <Nav navbar>
             <NavItem>
-              <Button className="btn-nav">
-                <Link to="/">Home</Link>
+             <Button className="btn-nav">
+                <Link to="/about">about</Link>
               </Button>
             </NavItem>
-
+            
             <NavItem>
               <Button className="btn-nav">
-                <Link to="/climber/goals">Goals</Link>
+                <Link to="/">home</Link>
+              </Button>
+            </NavItem>
+            
+            
+            <NavItem>
+              <Button className="btn-nav">
+                <Link to="/climber/goals">goals</Link>
               </Button>
             </NavItem>
 
@@ -71,14 +78,14 @@ class Navigation extends Component<NavigationProps, NavigationState> {
 
             <NavItem>
               <Button className="btn-nav">
-                <Link to="/climber/sessions">Sessions</Link>
+                <Link to="/climber/sessions">sessions</Link>
               </Button>
             </NavItem>
 
             {/* GYM VIEW LINK */}
             <NavItem>
               <Button className="btn-nav">
-                <Link to="/gym">Gym View</Link>
+                <Link to="/gym">gym </Link>
               </Button>
             </NavItem>
             {/* LOGOUT LINK */}
@@ -87,7 +94,7 @@ class Navigation extends Component<NavigationProps, NavigationState> {
                 className="btn-nav"
                 onClick={this.props.clearSessionToken}
               >
-                Logout
+                logout
               </Button>
             </NavItem>
           </Nav>

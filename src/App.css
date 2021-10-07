@@ -142,6 +142,10 @@
   justify-content: center;
 }
 
+.navBar {
+list-style-type: none;
+}
+
 .btn-nav {
   margin-left: 1em;
   background-color: var(--yellow-orange) !important;
@@ -389,10 +393,10 @@ th {
   opacity: 0.84;
 }
 
-.tip-display > li {
+/* .tip-display li {
 list-style-type: url(../src/assets/mountains-2.png)!important;
-}
+} */
 
-.tip-display > li::marker {
+#tip-display ul li::marker {
 content: url(../src/assets/mountains-2.png)!important;
 }
