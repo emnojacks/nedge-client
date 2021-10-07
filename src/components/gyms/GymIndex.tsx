@@ -137,7 +137,7 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
                     <p>
                       Looks like you're currently haunt the walls of{" "}
                       <strong> {this.state.climberProfile.gymname}</strong>.
-                      Toggle to see members at your gym.
+                      Toggle to see members at your gym using NEDGE.
                     </p>
                     <Label className="switch">
                       <Input
@@ -149,10 +149,10 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
                     </Label>
                   </Container>
                 ) : (
-                  <>
+                  <Container>
                     Looks like you don't have a homegym. If that's changed,
                     update your profile.{" "}
-                  </>
+                  </Container>
                 )}
               </Row>
               <br></br>
