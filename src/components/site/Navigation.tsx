@@ -39,10 +39,8 @@ class Navigation extends Component<NavigationProps, NavigationState> {
       //NAV LOGO
       <Navbar expand="sm" color="faded" light className="navBar">
         <NavbarBrand style={{ marginLeft: "1em" }}>
-          
-            <img src={logo} alt="nedge logo" height="35px" width="35px"></img>
-            &nbsp;
-          
+          <img src={logo} alt="nedge logo" height="35px" width="35px"></img>
+          &nbsp;
         </NavbarBrand>
         {/* TOGGLE HAMBURGER */}
 
@@ -56,18 +54,11 @@ class Navigation extends Component<NavigationProps, NavigationState> {
           {/* GOALS LINK */}
           <Nav navbar>
             <NavItem>
-             <Button className="btn-nav">
-                <Link to="/about">about</Link>
-              </Button>
-            </NavItem>
-            
-            <NavItem>
               <Button className="btn-nav">
-                <Link to="/">home</Link>
+                <Link to="/">beta</Link>
               </Button>
             </NavItem>
-            
-            
+
             <NavItem>
               <Button className="btn-nav">
                 <Link to="/climber/goals">goals</Link>
@@ -85,9 +76,16 @@ class Navigation extends Component<NavigationProps, NavigationState> {
             {/* GYM VIEW LINK */}
             <NavItem>
               <Button className="btn-nav">
-                <Link to="/gym">gym </Link>
+                <Link to="/gym">gym</Link>
               </Button>
             </NavItem>
+            {/* ABOUT LINK */}
+            <NavItem>
+              <Button className="btn-nav">
+                <Link to="/about">about</Link>
+              </Button>
+            </NavItem>
+
             {/* LOGOUT LINK */}
             <NavItem>
               <Button
