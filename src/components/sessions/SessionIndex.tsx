@@ -57,7 +57,6 @@ class SessionIndex extends Component<SessionIndexProps, SessionIndexState> {
         climberSessions: json.existingSessions,
       });
       this.sortClimberSessions();
-      console.log(this.state.climberSessions);
       console.log(this.state.climberSessions.length)
     } catch (error) {
       console.log(error);

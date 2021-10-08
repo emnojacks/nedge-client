@@ -50,7 +50,6 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
       this.setState({
         climberProfile: climberProfile,
       });
-      console.log(this.state.climberProfile);
     } catch (error) {
       console.log(error, "failed to fetch profile");
     }
@@ -72,9 +71,7 @@ class GymIndex extends Component<GymIndexProps, GymIndexState> {
       });
     } catch (error) {
       console.log(error, "failed to fetch profiles");
-    }
-    console.log(this.state.climberProfiles);
-    console.log(this.state.climberProfiles.length);
+    };
   };
 
 
